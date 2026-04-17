@@ -1,5 +1,3 @@
-import math
-
 full_marks = int(input("Enter Full Marks:"))
 obtained_marks = float(input("Enter Obtained Marks:"))
 
