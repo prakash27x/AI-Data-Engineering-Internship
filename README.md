@@ -15,8 +15,8 @@ AI-Data-Engineering-Internship/
 │   └── README.md
 ├── Week-2 April_21/          # API data fetching & analysis
 │   ├── task_1.py
-│   ├── task2_fetch_and_filter.py
-│   ├── task3_weather_analysis.py
+│   ├── task_2.py
+│   ├── task_3.py
 │   ├── posts.csv
 │   ├── posts_filtered.csv
 │   ├── weather.csv
@@ -49,11 +49,11 @@ AI-Data-Engineering-Internship/
 
 **Focus:** REST APIs, CSV handling, data analysis
 
-| Task | Difficulty | File | Purpose |
-|------|-----------|------|---------|
-| 1 | Easy | `task_1.py` | Fetch users from API and print |
-| 2 | Medium | `task2_fetch_and_filter.py` | Fetch posts, save to CSV, filter |
-| 3 | Hard | `task3_weather_analysis.py` | Weather API integration and analysis |
+| Task| File | Purpose |
+|------|------|---------|
+| 1 | `task_1.py` | Fetch users from API and print |
+| 2 | `task2.py` | Fetch posts, save to CSV, filter |
+| 3 | 'task_3.py` | Weather API integration and analysis |
 
 **Key Concepts:** HTTP requests, JSON parsing, CSV operations, data analysis, real API integration
 
