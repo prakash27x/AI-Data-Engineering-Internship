@@ -1,0 +1,2 @@
+File handling in Python is the process of creating, reading, updating, and deleting files on a system.
+Python uses the built-in open() function to interact with files, requiring a file name and an access mode.
