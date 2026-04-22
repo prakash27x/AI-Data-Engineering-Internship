@@ -1,11 +1,11 @@
 This repository records exercises completed during the internship work.
+
+## Branch record
+- `main`: baseline branch
+- `April_17`: branch used to add exercises done on april 17
+
 ## On April 17
 - std_grade_calculator.py
 - mulplication-table_generator.py
 - maximum number finder.py
 - file_handling.py (reads `textfile.txt` and prints total word count)
-
-## Branch record
-
-- `main`: baseline branch
-- `April_17`: branch used to add exercises done on april 17
