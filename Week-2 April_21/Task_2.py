@@ -36,7 +36,7 @@ if response.status_code == 200:
                 filtered_posts.append(row)
 
     print(f"✓ Found {len(filtered_posts)} posts with titles > 5 words")
-
+    
     # Step 4: Save filtered posts to a new CSV
     filtered_csv_file = 'posts_filtered.csv'
     print(f"\nSaving filtered posts to {filtered_csv_file}...")
