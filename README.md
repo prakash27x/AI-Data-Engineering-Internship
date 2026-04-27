@@ -23,10 +23,18 @@ AI-Data-Engineering-Internship/
 │   ├── weather.csv
 │   ├── weather_summary.txt
 │   └── README.md
+|
+├── Week-2 April_24/          # News data pipeline & analytics
+│   ├── data_collection.py
+│   ├── answer_assigned_task.py
+│   ├── news_data.csv
+│   ├── headlines_longer_than_6_words.csv
+│   ├── Assigned_task.txt
+│   ├── task_output.png
+│   └── README.md  # Detailed instructions and analysis
 └── README.md
 ```
 
 ---
 
-
-*Last Updated: April 22, 2026* 
+*Last Updated: April 28, 2026* 
