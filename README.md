@@ -13,6 +13,7 @@ AI-Data-Engineering-Internship/
 │   ├── mulplication-table_generator.py
 │   ├── file_handling.py
 │   └── README.md
+|
 ├── Week-2 April_21/          # API data fetching & analysis
 │   ├── task_1.py
 │   ├── task_2.py
