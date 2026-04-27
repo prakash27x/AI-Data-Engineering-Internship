@@ -46,13 +46,6 @@ This folder contains scripts and data for analyzing news headlines from the GNew
    ```
    python answer_assigned_task.py
    ```
-
-## Notes
-
-- All analysis is performed by reading from `news_data.csv` (not directly from the API).
-- The pipeline ensures no duplicate headlines are saved.
-- Output files (e.g., filtered headlines) are generated as needed by the scripts.
-
 ---
 
 ## Task Output
