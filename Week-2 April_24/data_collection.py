@@ -17,14 +17,14 @@ try:
 
         file_name = "news_data.csv"
         csv_data_headers = [
-           "id", "title", "description", "content", "publishedAt", "sourceCountry", "sourceName", "url"
+           "id", "title", "description", "publishedAt", "sourceCountry", "url"
         ]
 
-        #loading existing url of each news
+        #loading existing IDs of each news
         existing_ids = set()
 
         if os.path.exists(file_name):
-            with open(file_name, "r", newline="", encoding="utf-8") as file:
+            with open(file_name, "r", newline="") as file:
                 reader = csv.DictReader(file)
                 for row in reader:
                     existing_ids.add(row["id"])
@@ -49,10 +49,8 @@ try:
                     'id': article['id'],
                     'title': article.get('title') or "N/A",
                     'description': article.get('description') or "N/A",
-                    'content': article.get('content') or "N/A",
                     'publishedAt': article.get('publishedAt') or "N/A",
                     'sourceCountry': article.get('source', {}).get('country') or "N/A",
-                    'sourceName': article.get('source', {}).get('name') or "N/A",
                     'url' : article.get('url'),
                 })
 
@@ -63,4 +61,4 @@ try:
         print(f"Error: Failed to fetch data. Status Code: {response.status_code}")
 
 except Exception as e:
-    print(f"Error: Exception occured. Status code: {e.code}")
+    print(f"Error: Exception occured. Status code: {e}")
