@@ -17,7 +17,7 @@ try:
 
         file_name = "news_data.csv"
         csv_data_headers = [
-           "id", "title", "description", "publishedAt", "sourceCountry", "url"
+           "id", "title", "description", "publishedAt", "sourceCountry","sourceName", "url"
         ]
 
         #loading existing IDs of each news
@@ -51,6 +51,7 @@ try:
                     'description': article.get('description') or "N/A",
                     'publishedAt': article.get('publishedAt') or "N/A",
                     'sourceCountry': article.get('source', {}).get('country') or "N/A",
+                    'sourceName': article.get('source', {}).get('name') or "N/A",
                     'url' : article.get('url'),
                 })
 

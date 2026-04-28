@@ -84,7 +84,7 @@ with open("news_data.csv", "r", ) as file:
     reader = csv.DictReader(file)
     for row in reader:
         country_code = row.get("sourceCountry", "")
-        source_name = row.get("sourcename", "")  # Adjust key if your column is named differently
+        source_name = row.get("sourceName", "")
         if country_code in country_codes and source_name:
             source_counts[source_name] = source_counts.get(source_name, 0) + 1
 
@@ -172,4 +172,4 @@ longest = max(averages, key=averages.get)
 shortest = min(averages, key=averages.get)
 
 print(f"Country with longest average headline: {country_code_name_mapping[longest]} ({averages[longest]:.2f} words)")
-print(f"Country with shortest average headline: {country_code_name_mapping[shortest]} ({averages[shortest]:.2f} words)")
+print(f"Country with shortest average headline: {country_code_name_mapping[shortest]} ({averages[shortest]:.2f} words)\n")
