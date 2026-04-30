@@ -1,5 +1,6 @@
 Task 01 · Create, Insert & Query [Medium]
 Create a MySQL database, populate it with data, and run queries to answer questions about it.
+
 1 Create a database called library.db with a table books (id, title, author, year, genre, rating REAL)
 2 Insert at least 8 books — use a mix of genres, years, and ratings
 3 Query 1: SELECT all books published after 2000, ordered by rating (highest first)
@@ -7,3 +8,20 @@ Create a MySQL database, populate it with data, and run queries to answer questi
 5 Query 3: Find the average rating across all books
 6 Query 4: Count how many books exist per genre — use GROUP BY genre
 7 Print all query results neatly with labels — not just raw tuples
+
+_______________________________________________________________________________________________________
+
+Task 02  · API → MySQL Pipeline  [Hard]
+Build the full data collection pipeline — fetch from internet, store in database
+Fetch user data from an API, store it in MySQL, and query it — complete automated pipeline.
+
+1 Fetch all users from https://jsonplaceholder.typicode.com/users
+2 Create app.db with a users table: id, name, email, phone, city, company_name
+3 Extract city from address.city and company name from company.name (nested JSON!)
+4 Insert all 10 users into the database with proper error handling
+5 Query 1: Print all users sorted alphabetically by name
+6 Query 2: Find users from the same city (GROUP BY city, HAVING COUNT > 1)
+7 Add a second table posts — fetch from /posts and insert only posts by user_id 1, 2, and 3
+
+_______________________________________________________________________________________________________
+
