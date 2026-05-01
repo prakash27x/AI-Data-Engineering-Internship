@@ -40,3 +40,16 @@ Fetches 7-day weather forecasts for Kathmandu, Pokhara, and Butwal from the Open
 ## Output
 
 ![Task 3 Output](outputs/task_3.png)
+
+---
+
+# Task 04 · Update, Delete & Data Integrity
+
+Builds a student grade management system using `mysql.connector`, inserts sample students, assigns grades from scores, deletes failing records, adds a `passed` column for data integrity, and checks for duplicate student names before inserting.
+
+## Files
+- `Task_4.py` — main script
+
+## Output
+
+![Task 4 Output](outputs/task_4.png)

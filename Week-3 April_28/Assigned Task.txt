@@ -36,3 +36,17 @@ Use the Open-Meteo API to fetch 7-day weather for 3 cities and store + compare t
 5 Query 2: Find the single hottest day across all 3 cities
 6 Query 3: Find days where the temperature difference (max - min) is greater than 10°C
 7 Save a summary report to a summary.txt file using Python file handling (Week 1 skill!
+
+______________________________________________________________________________________________________
+
+Task 04 · Update, Delete & Data Integrity [Hard]
+Build a student grade management system — insert, update, delete, and validate data.
+
+1 Create grades.db with a students table: id, name, subject, score, grade TEXT
+2 Insert 15 students with various scores (mix them between 40–100)
+3 Write a function assign_grade(score) that returns A/B/C/D/F based on score
+4 UPDATE all rows — set the grade column using your function
+5 DELETE all students who scored below 50 — they didn't pass
+6 Add a new column passed BOOLEAN using ALTER TABLE — set it based on score >= 50
+7 Query: show count of students per grade, ordered from A to F
+8 Handle the case where a student name is entered twice — check before inserting
