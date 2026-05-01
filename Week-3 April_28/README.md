@@ -24,3 +24,19 @@ Similarly fetches data from https://jsonplaceholder.typicode.com/posts and then 
 ## Output
 
 ![Task 2 Output](outputs/task_2.png)
+
+---
+
+# Task 03 · Weather Data + Analysis
+
+Fetches 7-day weather forecasts for Kathmandu, Pokhara, and Butwal from the Open-Meteo API, stores the data in a MySQL `weather` database, and runs comparison queries.
+
+## Environment Variable
+- `OPEN_METEO_API_URL` — Open-Meteo forecast endpoint used by `Task_3.py`
+
+## Files
+- `Task_3.py` — main script
+
+## Output
+
+![Task 3 Output](outputs/task_3.png)
