@@ -1,0 +1,25 @@
+7-DAY WEATHER FORECAST SUMMARY REPORT
+------------------------------------------------------------
+
+QUERY 1: Which city has the highest average max temperature?
+Pokhara: Avg Max Temp = 26.3°C
+------------------------------------------------------------
+
+QUERY 2: Find the single hottest day across all 3 cities
+Hottest Day: Pokhara on 2026-05-05
+Maximum Temperature: 29.0°C
+------------------------------------------------------------
+
+QUERY 3: Days with temperature difference > 10°C
+Kathmandu on 2026-05-04: Max 24.8°C, Min 13.9°C, Difference 10.9°C
+Kathmandu on 2026-05-05: Max 25.6°C, Min 14.1°C, Difference 11.5°C
+Kathmandu on 2026-05-06: Max 24.9°C, Min 14.2°C, Difference 10.7°C
+Pokhara on 2026-05-02: Max 26.2°C, Min 15.4°C, Difference 10.8°C
+Pokhara on 2026-05-05: Max 29.0°C, Min 16.3°C, Difference 12.7°C
+Pokhara on 2026-05-06: Max 28.0°C, Min 14.9°C, Difference 13.1°C
+Pokhara on 2026-05-07: Max 27.0°C, Min 13.8°C, Difference 13.2°C
+Butwal on 2026-05-02: Max 21.8°C, Min 11.2°C, Difference 10.6°C
+Butwal on 2026-05-04: Max 24.8°C, Min 13.3°C, Difference 11.5°C
+Butwal on 2026-05-05: Max 24.6°C, Min 12.1°C, Difference 12.5°C
+Butwal on 2026-05-06: Max 23.7°C, Min 10.9°C, Difference 12.8°C
+Butwal on 2026-05-07: Max 22.4°C, Min 10.0°C, Difference 12.4°C
