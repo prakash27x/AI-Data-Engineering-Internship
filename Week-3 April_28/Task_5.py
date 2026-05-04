@@ -1,3 +1,7 @@
+# Task 05 · The Full System [Hard — Capstone]
+# Bring everything together — Weeks 1, 2, and 3 in one script
+# Build a complete automated data system — fetch, store, analyse, and export. No manual steps.
+
 import csv
 import json
 import os
@@ -79,5 +83,66 @@ def store_data(countries_data):
         if conn is not None and conn.is_connected():   
             conn.close()
 
+def run_report():
+    try:
+        conn = mysql.connector.connect(
+            host = 'localhost',     
+            user = 'root',
+            password = 'root',
+            database = 'countries_db'
+        )
+        print("Queried Data From countries_db:")
+        print("-" * 60)
+        cursor = conn.cursor()
+        cursor.execute("SELECT name, population FROM countries ORDER BY population DESC LIMIT 10")
+        top_countries = cursor.fetchall()
+        print("Top 10 Most Populous Countries:")
+        print(f"{'Name':<45} {'Population'}")
+        for name, population in top_countries:
+            print(f"{name:<45} {population}")
+
+        print("-" * 32)
+        cursor.execute("SELECT region, COUNT(*) FROM countries GROUP BY region")
+        region_counts = cursor.fetchall()
+        print("\nNumber of Countries by Region:")
+        print(f"{'Region':<20} {'Count'}")
+        for region, count in region_counts:
+            print(f"{region:<20} {count}")
+        
+        print("-" * 60)
+        cursor.execute("SELECT name, area FROM countries ORDER BY area DESC LIMIT 10")
+        largest_countries = cursor.fetchall()
+        print("\nTop 10 Largest Countries by Area:")
+        print(f"{'Name':<45} {'Area (sq km)'}")
+        for name, area in largest_countries:
+            print(f"{name:<45} {area}")
+        
+        with open("queried_report.csv", "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["Type", "Name", "Value"])
+
+            for name, pop in top_countries:
+                writer.writerow(["population", name, pop])
+
+            writer.writerow([])
+
+            for name, area in largest_countries:
+                writer.writerow(["area", name, area])
+            
+            writer.writerow([]) 
+
+            for region, count in region_counts:
+                writer.writerow(["region_count", region, count])
+
+    except mysql.connector.Error as err:
+        print(f"Error running report: {err}")
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if conn is not None and conn.is_connected():
+            conn.close()
+        
+
 countries_data = fetch_data()
 store_data(countries_data)
+run_report()

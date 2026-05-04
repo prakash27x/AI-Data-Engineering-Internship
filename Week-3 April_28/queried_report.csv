@@ -1,0 +1,29 @@
+Type,Name,Value
+population,India,1417492000
+population,China,1408280000
+population,United States,340110988
+population,Indonesia,284438782
+population,Pakistan,241499431
+population,Nigeria,223800000
+population,Brazil,213421037
+population,Bangladesh,169828911
+population,Russia,146028325
+population,Mexico,130575786
+
+area,Russia,17098200.0
+area,Antarctica,14000000.0
+area,Canada,9984670.0
+area,China,9706960.0
+area,United States,9525070.0
+area,Brazil,8515770.0
+area,Australia,7692020.0
+area,India,3287260.0
+area,Argentina,2780400.0
+area,Kazakhstan,2724900.0
+
+region_count,Europe,53
+region_count,Asia,50
+region_count,Americas,56
+region_count,Africa,59
+region_count,Oceania,27
+region_count,Antarctic,5
