@@ -33,11 +33,13 @@ AI-Data-Engineering-Internship/
 │   ├── task_output.png
 │   └── README.md  # Detailed instructions and analysis
 │
-├── Week-3 April_28/          # Weather API, MySQL storage & analysis
+├── Week-3 April_28/          # MySQL storage, reporting & capstone analysis
+|   ├── Assigned_task.txt
 │   ├── Task_1.py
 │   ├── Task_2.py
 │   ├── Task_3.py
 │   ├── Task_4.py
+│   ├── Task_5.py
 │   ├── outputs/
 │   └── README.md
 └── README.md
@@ -45,4 +47,4 @@ AI-Data-Engineering-Internship/
 
 ---
 
-*Last Updated: May 1, 2026*
+*Last Updated: May 4, 2026*

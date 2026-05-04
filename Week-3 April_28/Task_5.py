@@ -1,4 +1,4 @@
-# Task 05 · The Full System [Hard — Capstone]
+# Task 05 · The Full System
 # Bring everything together — Weeks 1, 2, and 3 in one script
 # Build a complete automated data system — fetch, store, analyse, and export. No manual steps.
 
