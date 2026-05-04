@@ -50,3 +50,16 @@ Build a student grade management system — insert, update, delete, and validate
 6 Add a new column passed BOOLEAN using ALTER TABLE — set it based on score >= 50
 7 Query: show count of students per grade, ordered from A to F
 8 Handle the case where a student name is entered twice — check before inserting
+______________________________________________________________________________________________________
+
+Task 05 · The Full System [Hard — Capstone]
+Bring everything together — Weeks 1, 2, and 3 in one script
+Build a complete automated data system — fetch, store, analyse, and export. No manual steps.
+
+Fetch data from any public API with error handling
+Store ALL fetched data in a properly structured MySQL database
+Run at least 3 meaningful SQL queries and print results with labels
+Export query results to a CSV file (combine Week 1 + Week 3)
+Handle errors at every step — API, database, file
+Write reusable functions: fetch_data(), store_data(), run_report()
+Bonus Schedule it: run the whole thing every time you run the script fresh
