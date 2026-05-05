@@ -1,0 +1,16 @@
+Task A · Multi-Table Relational System [Hard]
+Using mysql-connector-python, create a database called store_db 
+   : with three tables — customers, products, and orders — where orders links to the other two via foreign keys. 
+Insert at least 10 customers, 8 products, and 20 orders using %s parameterized queries. 
+Then run these 4 queries and print the results with clear labels: 
+    total money spent per customer (JOIN + price × quantity, sorted highest first), most ordered product by total quantity, customers who placed more than 2 orders (HAVING COUNT), and average order value per city. 
+Finally, export the revenue-per-customer result into a revenue_report.csv using Python's csv module.
+Deliverable: MySQL store_db + Python script + revenue_report.csv
+
+Task B · API Monitor with Change Detection [Hard]
+Using mysql-connector-python and https://jsonplaceholder.typicode.com/posts, build a monitoring script that detects changes between runs.
+Create a database called monitor_db with two tables — posts (stores fetched data) and change_log (records what changed and when). 
+On first run, insert all posts and log each as 'NEW'. Then manually update one row in MySQL (UPDATE posts SET title='Changed' WHERE id=1) and re-run — your script must detect the mismatch and log it as 'MODIFIED' in change_log. 
+Print results for: post count per user, all change log entries from the latest run, and which user triggered the most change events. 
+Wrap every API call and DB operation in try/except with printed error messages.
+Deliverable: MySQL monitor_db with both tables populated + Python script
