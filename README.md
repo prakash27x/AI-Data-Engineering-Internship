@@ -42,9 +42,17 @@ AI-Data-Engineering-Internship/
 │   ├── Task_5.py
 │   ├── outputs/
 │   └── README.md
+│
+├── Week-3 May_4/             # MySQL database tasks and API monitoring
+│   ├── multi-table_relational_system.py
+│   ├── api_monitor_mysql.py
+│   ├── revenue_report.csv
+│   ├── assigned_task.txt
+|   |── outputs
+│   └── README.md
 └── README.md
 ```
 
 ---
 
-*Last Updated: May 4, 2026*
+*Last Updated: May 5, 2026*
