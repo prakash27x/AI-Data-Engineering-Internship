@@ -43,7 +43,7 @@ AI-Data-Engineering-Internship/
 │   ├── outputs/
 │   └── README.md
 │
-├── Week-3 May_4/             # MySQL database tasks and API monitoring
+├── Week-4 May_4/             # MySQL database tasks and API monitoring
 │   ├── multi-table_relational_system.py
 │   ├── api_monitor_mysql.py
 │   ├── revenue_report.csv
