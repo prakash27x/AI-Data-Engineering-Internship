@@ -50,9 +50,30 @@ AI-Data-Engineering-Internship/
 │   ├── assigned_task.txt
 |   |── outputs
 │   └── README.md
+│
+├── Week-4 May_8/             # Advanced ETL & Data Engineering
+│   ├── Task_1.ipynb          # Clean messy CSV with grading
+│   ├── Task_2.ipynb          # API → Clean → Save pipeline
+│   ├── Task_3.ipynb          # Multi-source ETL with MySQL
+│   ├── Task_4.ipynb          # Transform & Enrich with pivot table
+│   ├── Task_5.ipynb          # Full ETL System capstone
+│   ├── clean_students_data.csv
+│   ├── enriched_students.csv
+│   ├── merged_data.csv
+│   ├── etl_data_run1.csv
+│   ├── etl_data_run2.csv
+│   ├── Assigned_Task.txt
+│   ├── outputs/              # Screenshots and visualizations
+│   │   ├── task4.png
+│   │   ├── task4_1.png
+│   │   ├── task5.png
+│   │   ├── task5_1.png
+│   │   └── task5_2.png
+│   └── README.md
+│
 └── README.md
 ```
 
 ---
 
-*Last Updated: May 5, 2026*
+*Last Updated: May 11, 2026*
