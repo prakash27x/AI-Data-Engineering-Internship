@@ -1,0 +1,79 @@
+Task 01  ·  Clean a Messy CSV  [Medium]
+Independent — practice every cleaning technique on a prepared dataset
+Goal: Create a messy CSV yourself, then write a cleaning script that fixes every problem.
+1 Create  messy_students.csv  manually — add at least 15 rows with these problems deliberately:
+    → Some rows with missing score or name  → Duplicate rows  → Names in inconsistent casing
+    → Score stored as string e.g. '85'  → Extra spaces in names  → Some scores below 0 (invalid)
+2 Load it with Pandas and print df.info() + df.isnull().sum() — show the problems first
+3 Fix all 6 problems: nulls, duplicates, casing, type, whitespace, invalid values
+4 Add a  grade  column: A (≥90), B (≥75), C (≥50), F (<50) — use df['score'].apply()
+5 Save the cleaned result to  clean_students.csv  and print a before/after row count.
+
+Deliverable:  messy_students.csv  +  clean_students.csv  +  cleaning script
+Bonus: Print a full cleaning report — how many nulls, dupes, and bad values were fixed
+
+-------------------------------------------------------------------------------------------------
+
+Task 02  ·  API → Clean → Save  [Hard]
+Full ETL pipeline —real API data, Pandas clean, saved to CSV and SQLite
+Goal: Build a complete ETL pipeline from an API, clean the data with Pandas, and load to both CSV and SQLite.
+1 EXTRACT: Fetch all 100 posts from  https://jsonplaceholder.typicode.com/posts
+2 Load into a Pandas DataFrame using  pd.DataFrame(data)
+3 TRANSFORM: Keep only columns  userId, id, title, body
+4 Add a  word_count  column —count words in the title using .str.split().str.len()
+5 Filter: keep only posts where word_count >= 4
+6 Standardise: title to title case, strip whitespace from body
+7 LOAD: Save cleaned data to  clean_posts.csv  (no index) and to SQLite  posts.db  using df.to_sql()
+8 Print: total posts fetched, posts after filter, and top 3 users by post count.
+
+Deliverable:  clean_posts.csv  +  posts.db  +  3 printed stats
+Bonus: Add error handling for the API call and validate that all userId values are integers
+
+---------------------------------------------------------------------------------------------------
+
+Task 03  ·  Multi-Source ETL  [Hard]
+Merge data from two sources, clean and combine, load as one unified dataset
+Goal: Combine users and their posts from two API endpoints into one clean merged DataFrame.
+1 EXTRACT: Fetch users from  /users  and posts from  /posts  — two separate API calls
+2 Create two DataFrames:  df_users  and  df_posts
+3 From df_users keep: id, name, email, city (from address.city — requires pd.json_normalize!)
+4 From df_posts keep: userId, title — rename userId to  id  to match users
+5 TRANSFORM: Merge the two DataFrames on  id  using  pd.merge(df_users, df_posts, on='id')
+6 Count posts per user — add a  post_count  column to df_users using df_posts.groupby('id').size()
+7 Clean: lowercase email, strip whitespace from name and city, drop nulls
+8 LOAD: Save to  merged_data.csv  and  merged.db  — print the top 3 most active users
+
+Deliverable:  merged_data.csv  +  merged.db  +  top 3 users printed.
+Bonus: also merge todos and add  completion_rate  column
+
+----------------------------------------------------------------------------------------------------
+
+Task 04  ·  Transform & Enrich  [Hard]
+Focus purely on the Transform step — advanced column engineering with Pandas
+Goal: Take your clean_students.csv from Task 01 and enrich it with multiple new calculated columns.
+1 Load  clean_students.csv  from Task 01 into a DataFrame
+2 Add  grade  column: A (≥90), B (≥75), C (≥60), D (≥50), F (<50) — use apply() with a function
+3 Add  passed  column: True if score >= 50, False otherwise
+4 Add  score_category  column: 'High' (≥80), 'Medium' (50–79), 'Low' (<50)
+5 Add  rank  column: rank all students by score — highest score gets rank 1 (use .rank(ascending=False))
+6 Group by grade —print count, mean score, and min/max score per grade using groupby()
+7 Sort the final DataFrame by rank and reset the index
+8 Save enriched data to  enriched_students.csv  and print the top 5 ranked students
+
+Deliverable:  enriched_students.csv  +  groupby summary printed in terminal
+Bonus: Use pivot_table() to create a summary table — grade vs subject vs average score
+
+-----------------------------------------------------------------------------------------------------
+
+Task 05  ·  Full ETL System  [Hard —Month 1 Capstone]
+Bring together everything from Week 1 → 2 → 3 → 4 in one complete automated pipeline
+Goal: Build a fully automated, reusable ETL pipeline that you could run every day to get fresh data.
+
+Must EXTRACT from at least 1 real public API with full error handling
+Must Load into Pandas —clean nulls, duplicates, types, and string issues
+Must TRANSFORM —add at least 2 calculated/enriched columns
+Must LOAD to SQLite using df.to_sql() AND export to clean CSV
+Must Write reusable functions: extract(), transform(), load() —not one big block
+Should Add logging —print what each step is doing and how many rows
+
+Bonus: Run full pipeline twice —2nd run should not create duplicate rows
