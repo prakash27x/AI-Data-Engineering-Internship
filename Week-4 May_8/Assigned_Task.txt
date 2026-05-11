@@ -20,10 +20,10 @@ Goal: Build a complete ETL pipeline from an API, clean the data with Pandas, and
 1 EXTRACT: Fetch all 100 posts from  https://jsonplaceholder.typicode.com/posts
 2 Load into a Pandas DataFrame using  pd.DataFrame(data)
 3 TRANSFORM: Keep only columns  userId, id, title, body
-4 Add a  word_count  column —count words in the title using .str.split().str.len()
+4 Add a  word_count  column ———> count words in the title using .str.split().str.len()
 5 Filter: keep only posts where word_count >= 4
 6 Standardise: title to title case, strip whitespace from body
-7 LOAD: Save cleaned data to  clean_posts.csv  (no index) and to SQLite  posts.db  using df.to_sql()
+7 LOAD: Save cleaned data to  clean_posts.csv  (no index) and to mysql  posts.db  using df.to_sql()
 8 Print: total posts fetched, posts after filter, and top 3 users by post count.
 
 Deliverable:  clean_posts.csv  +  posts.db  +  3 printed stats
