@@ -63,12 +63,16 @@ AI-Data-Engineering-Internship/
 │   ├── etl_data_run1.csv
 │   ├── etl_data_run2.csv
 │   ├── Assigned_Task.txt
-│   ├── outputs/              # Screenshots and visualizations
-│   │   ├── task4.png
-│   │   ├── task4_1.png
-│   │   ├── task5.png
-│   │   ├── task5_1.png
-│   │   └── task5_2.png
+│   └── README.md
+│
+├── Week-5 May_12/            # Final unified data pipeline & audit
+│   ├── Task_1.ipynb
+│   ├── Task_2.ipynb
+│   ├── Task_3.ipynb
+│   ├── messy_users.csv
+│   ├── final_unified_data.csv
+│   ├── task_2_audit_report.csv
+│   ├── task_3_final_data.csv
 │   └── README.md
 │
 └── README.md
