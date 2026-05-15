@@ -1,0 +1,6 @@
+issue_type,detected_count,fixed_count,before_row_count,after_row_count
+Null values,0,0,100,100
+Duplicate rows,0,0,100,100
+Type mismatches,0,0,100,100
+Out-of-range values,0,0,100,100
+Inconsistent string formats,100,100,100,100
