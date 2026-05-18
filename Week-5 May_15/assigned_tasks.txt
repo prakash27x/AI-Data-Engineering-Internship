@@ -1,0 +1,64 @@
+Task 01  ·  EDA Checklist on Your Own Data  [Medium]
+Run the full EDA checklist on a dataset you already built this internship
+Take any CSV or SQLite database from Weeks 1–4 and run every step of the EDA checklist on it.
+
+1 Load the dataset into a Pandas DataFrame — use pd.read_csv() or pd.read_sql()
+2 Print df.shape, df.info(), df.dtypes — document what you find in comments
+3 Check for missing values: df.isnull().sum() — what % is missing per column?
+4 Run df.describe() — identify 3 observations (e.g. mean vs median, suspicious min/max)
+5 Run df['col'].value_counts() on at least 1 categorical column
+6 Plot a histogram for every numeric column — do they look normal or skewed?
+7 Plot a box plot for at least 2 columns — are there outliers?
+8 Write a 5-line comment block at the top summarising what you found
+
+Deliverable: .py script with all 8 steps + charts saved as .png files
+_________________________________________________________________________________________________
+
+Task 02  ·  Distribution Deep Dive  [Hard]
+Fetch real data, analyse every distribution, find and handle outliers
+Fetch weather data for 7 days across 5 cities, store in SQLite, and deeply analyse the distributions.
+
+1 Fetch 7-day max + min temperature for 5 cities from Open-Meteo API — store in weather.db
+2 Load into Pandas —run the full EDA checklist (shape, nulls, describe, value_counts)
+3 Plot a histogram of max temperatures across ALL cities combined — is it normally distributed?
+4 Plot side-by-side box plots comparing max temp across the 5 cities using sns.boxplot(x='city', y='max_temp')
+5 Identify any outlier days using IQR method: outlier = value > Q3 + 1.5*IQR or < Q1 - 1.5*IQR
+6 Plot a KDE curve for each city's temperature on the same chart — which city has the widest spread?
+7 Calculate: mean, median, std, min, max per city — print as a grouped summary table
+8 Write 5 observations from your analysis — what patterns did you find?
+
+Deliverable: weather.db + 4 charts saved as .png + written observations.
+Bonus: add rainfall data as a 3rd column and compare
+_________________________________________________________________________________________________
+
+Task 03  ·  Correlation Analysis  [Hard]
+Build a dataset with multiple variables and find meaningful correlations between them.
+Create a synthetic student dataset with multiple columns, then perform a full correlation analysis.
+
+1 Create a CSV with 50 students — columns: name, study_hours, sleep_hours, attendance_pct, score, passed
+2 Make the data realistic — students who study more should generally score higher (add some noise)
+3 Load into Pandas and run the full EDA checklist first
+4 Calculate df.corr() — print the full correlation matrix
+5 Create a seaborn heatmap — annotate with values, use 'coolwarm' colormap
+6 Find the top 3 strongest correlations and the top 3 weakest — print them with explanation
+7 Plot scatter plots for the 2 most correlated pairs — add a regression line using sns.regplot()
+8 Answer in comments: Does more study always mean higher score? What does the data actually say?
+
+Deliverable: students.csv + heatmap.png + 2 scatter plots + written analysis
+Bonus: Use sns.pairplot(hue='passed') — do passed/failed students form clear clusters?
+_________________________________________________________________________________________________
+
+Task 04  ·  Full EDA Report  [Hard —Week Capstone]
+Write a complete EDA report on a real-world dataset —tell the story of the data
+Fetch a real dataset from any public API, perform a full EDA, and write a clean report with charts and insights.
+
+Fetch API → Clean data [Pandas ETL] → Summary stats [ describe() ] → Visualise [matplotlib] → Report [findings]
+
+Must Fetch a new dataset —something interesting to you (sports, crypto, weather, books...)
+Must Run complete EDA checklist: shape, nulls, describe, value_counts, distributions
+Must At least 5 charts —histogram, box plot, bar chart, scatter plot, correlation heatmap
+Must All charts labelled: title, xlabel, ylabel —saved as .png files
+Must Written report (in comments or .txt): 8–10 observations from your analysis
+Should Group comparisons —compare distributions between at least 2 categories
+
+Bonus Use sns.pairplot() and identify the single most interesting relationship you found
