@@ -66,18 +66,33 @@ AI-Data-Engineering-Internship/
 │   └── README.md
 │
 ├── Week-5 May_12/            # Final unified data pipeline & audit
-│   ├── Task_1.ipynb
-│   ├── Task_2.ipynb
-│   ├── Task_3.ipynb
+│   ├── Task_1.ipynb          # Fault-tolerant multi-source ETL with conflict resolution
+│   ├── Task_2.ipynb          # Data quality audit pipeline
+│   ├── Task_3.ipynb          # Modular logged ETL pipeline
 │   ├── messy_users.csv
 │   ├── final_unified_data.csv
 │   ├── task_2_audit_report.csv
 │   ├── task_3_final_data.csv
-│   └── README.md
+│   └── README.md             # Week 5 summary and outputs
 │
+├── Week-5 May_15/            # EDA, distributions, correlation analysis, and reporting
+│   ├── Task_1.ipynb          # EDA checklist on existing data
+│   ├── Task_2.ipynb          # Distribution deep dive on weather data
+│   ├── Task_3.ipynb          # Correlation analysis on student data
+│   ├── Task_4.ipynb          # Full EDA report on a real-world dataset
+│   ├── clean_posts.csv
+│   ├── clean_students_data.csv
+│   ├── messy_students_data.csv
+│   ├── students.csv
+│   ├── task_1/
+│   ├── task_2/
+│   ├── task_3/
+│   ├── task_4/
+│   └── readme.md             # Week 5 analysis summary and charts
+
 └── README.md
 ```
 
 ---
 
-*Last Updated: May 11, 2026*
+*Last Updated: May 19, 2026*
