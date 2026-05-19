@@ -1,6 +1,6 @@
 Task 01  ·  EDA Checklist on Your Own Data  [Medium]
 Run the full EDA checklist on a dataset you already built this internship
-Take any CSV or SQLite database from Weeks 1–4 and run every step of the EDA checklist on it.
+Take any CSV or MySQL database from Weeks 1–4 and run every step of the EDA checklist on it.
 
 1 Load the dataset into a Pandas DataFrame — use pd.read_csv() or pd.read_sql()
 2 Print df.shape, df.info(), df.dtypes — document what you find in comments
@@ -16,7 +16,7 @@ ________________________________________________________________________________
 
 Task 02  ·  Distribution Deep Dive  [Hard]
 Fetch real data, analyse every distribution, find and handle outliers
-Fetch weather data for 7 days across 5 cities, store in SQLite, and deeply analyse the distributions.
+Fetch weather data for 7 days across 5 cities, store in MySQL, and deeply analyse the distributions.
 
 1 Fetch 7-day max + min temperature for 5 cities from Open-Meteo API — store in weather.db
 2 Load into Pandas —run the full EDA checklist (shape, nulls, describe, value_counts)
