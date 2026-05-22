@@ -60,9 +60,3 @@ All charts are generated inside the matching task subfolder so each notebook kee
 - [clean_students_data.csv](clean_students_data.csv)
 - [messy_students_data.csv](messy_students_data.csv)
 - [students.csv](students.csv)
-
-## Notes
-
-- The folder is organized around notebooks and generated visuals.
-- Task outputs are stored in the task subfolders to keep each analysis separate and easy to review.
-- Task 4 images were regenerated so the plots in `task_4/` are now unique and no longer duplicated from Task 3.

@@ -84,10 +84,10 @@ AI-Data-Engineering-Internship/
 │   ├── clean_students_data.csv
 │   ├── messy_students_data.csv
 │   ├── students.csv
-│   ├── task_1/
-│   ├── task_2/
-│   ├── task_3/
-│   ├── task_4/
+│   ├── task_1/                 # Histogram, BoxPlot
+│   ├── task_2/                 # Histogram, BoxPlot, KDE Curve
+│   ├── task_3/                 # Histogram, BoxPlot, HeatMap, Pairplot
+│   ├── task_4/                 # Histogram, BoxPlot, HeatMap, Pairplot, ScatterPlot
 │   └── readme.md             # Week 5 analysis summary and charts
 
 └── README.md
