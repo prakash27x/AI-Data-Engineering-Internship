@@ -1,0 +1,28 @@
+Task 1: Multi-Chart Visualization Notebook
+Using any real dataset (e.g., Titanic, Iris, or your ETL dataset),
+    Create a Jupyter notebook with at least 6 chart types: bar, line, histogram, scatter, box plot, and heatmap. 
+    Each chart must have a proper title, axis labels with units, and a 1-sentence insight caption beneath it. 
+    UseMatplotlib for at least 4 and Seaborn for at least 2.
+_________________________________________________________________________________________________
+
+Task 2: Storytelling Dashboard (Subplot Grid)
+Choose a dataset with at least 3 numeric and 2 categorical columns. 
+Build a 2×2 subplot figure that tells a cohesive story —each panel must connect to a central theme (e.g., 'Customer Behavior'). 
+Apply a consistent color palette, shared legends, proper annotations, and exportat 300 DPI.
+Write a 3 sentence narrative summary at the top of your notebook explaining the story.
+_________________________________________________________________________________________________
+
+Task 3: Interactive Plotly Report
+Using Plotly Express, recreate 3 of your Matplotlib charts as interactive equivalents. 
+Add custom hover data (at least 2 columnsshown on hover), color-encode a categorical variable, and export each as a standalone HTML file. 
+Additionally, build a 4th interactive chart typenot covered in class (e.g., choropleth map, sunburst, treemap) with documented code explaining your design choices.
+_________________________________________________________________________________________________
+
+Task 4: Visualization Critique + Redesign
+Find 2 real-world charts online (news, research, or Kaggle) that have poor design (misleading scale, chart junk, wrong chart type, missing labels).
+For each: 
+        (1) document 3 specific design flaws,
+        (2) recreate the chart in Python with your fixes applied, 
+        (3) write a before/after comparison explaining every change. Submit a notebook with both original image embeds and your redesigns
+
+
