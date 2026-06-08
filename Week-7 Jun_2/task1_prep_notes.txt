@@ -1,0 +1,10 @@
+1. Dropped Name because it is an identifier-style column with very high cardinality and no stable predictive value.
+2. Kept Total as the target so the feature pipeline can clean and prepare the remaining student attributes.
+3. Standardized Gender into male/female and treated numeric codes such as 0 and 1 as missing because they are not meaningful labels.
+4. Converted Grade into an ordinal grade_level feature so the natural order of grades is preserved instead of being flattened into arbitrary categories.
+5. Parsed Math, Science, English, and Total from dirty text values like '28 marks' into numeric columns before preprocessing.
+6. Used median imputation for numeric columns because it is robust to outliers and works well on the noisy score values.
+7. Used most_frequent imputation for Gender because the column is categorical and the mode is the safest default fill.
+8. One-hot encoded Gender because it is nominal and should not be forced into an artificial order.
+9. Applied StandardScaler to the numeric feature block so grade_level and the subject scores are on comparable scales.
+10. Performed an 80/20 train-test split to keep a clean holdout set for later modeling.

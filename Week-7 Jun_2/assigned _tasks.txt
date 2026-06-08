@@ -1,0 +1,38 @@
+Week 7 — Tasks & Assignments
+--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
+T1 : Full Feature Preparation Pipeline - MEDIUM
+Take your Week 4 ETL dataset (or any dataset with 8+ columns, mixed types, and some nulls). 
+Apply the full prep pipeline: 
+    (1) drop low-value columns with justification,
+    (2) impute missing values using at least 2 strategies,
+    (3) encode all categoricals appropriately,
+    (4) scale numerics with StandardScaler, 
+    (5) perform a 80/20 train-test split.
+Output: a clean X_train, X_test, y_train, y_test and a written comment for every decision made.
+
+--------------------------------------------------------------------------------------------
+T2 : Feature Engineering Challenge - HARD
+Using a datetime-rich dataset (e.g., Uber rides, sales transactions, AirBnb listings),
+    engineer at least 6 new features: extract day-of-week, hour, is_weekend from timestamps;
+    create 2 interaction features (multiply/ratio);
+    apply log transform to at least 1 skewed numeric column; bin one continuous variable.
+Then compare model accuracy (use any simple classifier) before and after your engineered features. 
+Document the accuracy delta and explain why each feature helps.
+
+--------------------------------------------------------------------------------------------
+T3 : Encoding Strategy Comparison - HARD
+Take a dataset with at least 3 categorical columns of varying cardinality (low, medium, high). 
+Apply Label Encoding, One-Hot Encoding, and Ordinal Encoding (where appropriate) to each. 
+Train the same Logistic Regression model on each encoded version. 
+Measure and compare accuracy, training time, and feature count for each strategy. 
+Write a 1-paragraph recommendation on which encoding approach to use and why, backed by your results.
+
+--------------------------------------------------------------------------------------------3
+T4 : Scaler Sensitivity Experiment - HARD
+Take a dataset with mixed-scale numeric features. 
+Train a KNN classifier (k=5) and an SVM on the raw (unscaled) data, then with StandardScaler, MinMaxScaler, and RobustScaler.
+Record accuracy for all 8 combinations (2 models × 4 scaling options) in a results table. 
+Inject 5 outlier rows artificially and re-run.
+Which scaler is most robust?
+Visualize the results as a grouped bar chart and write a conclusion explaining the practical takeaway for ML practitioners.
