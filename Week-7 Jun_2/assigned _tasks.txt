@@ -28,7 +28,7 @@ Train the same Logistic Regression model on each encoded version.
 Measure and compare accuracy, training time, and feature count for each strategy. 
 Write a 1-paragraph recommendation on which encoding approach to use and why, backed by your results.
 
---------------------------------------------------------------------------------------------3
+-----------------------------------------------------------------------------------------------
 T4 : Scaler Sensitivity Experiment - HARD
 Take a dataset with mixed-scale numeric features. 
 Train a KNN classifier (k=5) and an SVM on the raw (unscaled) data, then with StandardScaler, MinMaxScaler, and RobustScaler.
