@@ -89,10 +89,32 @@ AI-Data-Engineering-Internship/
 │   ├── task_3/                 # Histogram, BoxPlot, HeatMap, Pairplot
 │   ├── task_4/                 # Histogram, BoxPlot, HeatMap, Pairplot, ScatterPlot
 │   └── readme.md             # Week 5 analysis summary and charts
+│
+├── Week-6 May_26/            # Data visualization, dashboards, and chart redesign
+│   ├── Task_01.ipynb         # Multi-chart visualization notebook
+│   ├── Task_02.ipynb         # Storytelling dashboard
+│   ├── Task_03.ipynb         # Interactive Plotly charts
+│   ├── Task_04.ipynb         # Chart redesign exercise
+│   ├── Titanic-Dataset.csv
+│   ├── Task1/                # Static chart outputs
+│   ├── Task2/                # Dashboard output
+│   ├── Task3/                # Interactive HTML chart outputs
+│   ├── Task4/                # Redesigned chart outputs
+│   └── README.md
+│
+├── Week-7 Jun_2/             # Feature preparation, feature engineering, and encoding
+│   ├── Task 01/
+│   │   └── Task_1.ipynb      # Full feature preparation pipeline
+│   ├── Task 02/
+│   │   └── Task_2.ipynb      # Feature engineering challenge
+│   ├── Task 03/
+│   │   └── Task_3.ipynb      # Encoding strategy comparison
+│   ├── assigned _tasks.txt
+│   └── readme.md             # Week 7 task summary and results
 
 └── README.md
 ```
 
 ---
 
-*Last Updated: May 19, 2026*
+*Last Updated: June 15, 2026*
