@@ -14,7 +14,9 @@ Output: a clean X_train, X_test, y_train, y_test and a written comment for every
 --------------------------------------------------------------------------------------------
 T2 : Feature Engineering Challenge - HARD
 Using a datetime-rich dataset (e.g., Uber rides, sales transactions, AirBnb listings),
-    engineer at least 6 new features: extract day-of-week, hour, is_weekend from timestamps;
+    engineer at least 6 new features: extract day-of-week, 
+                                      hour,
+                                      is_weekend from timestamps;
     create 2 interaction features (multiply/ratio);
     apply log transform to at least 1 skewed numeric column; bin one continuous variable.
 Then compare model accuracy (use any simple classifier) before and after your engineered features. 
@@ -23,7 +25,10 @@ Document the accuracy delta and explain why each feature helps.
 --------------------------------------------------------------------------------------------
 T3 : Encoding Strategy Comparison - HARD
 Take a dataset with at least 3 categorical columns of varying cardinality (low, medium, high). 
-Apply Label Encoding, One-Hot Encoding, and Ordinal Encoding (where appropriate) to each. 
+Apply:
+        Label Encoding,
+        One-Hot Encoding,
+        Ordinal Encoding (where appropriate) to each. 
 Train the same Logistic Regression model on each encoded version. 
 Measure and compare accuracy, training time, and feature count for each strategy. 
 Write a 1-paragraph recommendation on which encoding approach to use and why, backed by your results.
