@@ -17,10 +17,10 @@ This task compares three categorical encoding approaches on the airline passenge
 ### Workflow
 
 ```text
-Original Data
-      |
-Train-Test Split
-      |
+                     Original Data
+                           |
+                    Train-Test Split
+                           |
       +--------------------+--------------------+
       |                    |                    |
 Label Encoding      One-Hot Encoding     Ordinal Encoding
@@ -45,3 +45,67 @@ Logistic Model       Logistic Model       Logistic Model
 ### Recommendation
 
 I recommend using **Ordinal Encoding** because it gave the best overall result. It matched Label Encoding with the highest accuracy of **0.876116**, trained the fastest at **0.214222 seconds**, and used only **22 features**, while One-Hot Encoding was slower and slightly less accurate.
+
+## Task 04: Scaler Sensitivity Experiment
+
+This task studies how feature scaling affects distance-based machine learning models. The Breast Cancer Prediction dataset was used because it contains numeric features with different scales. KNN with `k=5` and SVM were trained on raw data, then retrained after applying `StandardScaler`, `MinMaxScaler`, and `RobustScaler`.
+
+### Workflow
+
+```text
+                     Breast Cancer Dataset
+                              |
+                        Train-Test Split
+                              |
+      +----------------+----------------+----------------+
+      |                |                |                |                
+     Raw        StandardScaler    MinMaxScaler     RobustScaler
+      |                |                |                |
+   KNN + SVM       KNN + SVM       KNN + SVM       KNN + SVM
+      |                |                |                |
+      +----------------+----------------+----------------+
+                              |
+                        Compare Accuracy
+                              |
+                        Add 5 Outlier Rows
+                              |
+                        Re-run Scaled Models
+                              |
+                        Check Robust Scaler
+```
+
+### Results Before Outliers
+
+| Model | Scaler | Accuracy |
+|---|---|---:|
+| KNN | Raw | 0.956140 |
+| SVM | Raw | 0.947368 |
+| KNN | StandardScaler | 0.947368 |
+| SVM | StandardScaler | 0.982456 |
+| KNN | MinMaxScaler | 0.964912 |
+| SVM | MinMaxScaler | 0.973684 |
+| KNN | RobustScaler | 0.956140 |
+| SVM | RobustScaler | 0.964912 |
+
+### Outlier Robustness
+
+Five artificial outlier rows were added to the training data, then the scaled models were trained again.
+
+| Model | Scaler | Before | After | Change |
+|---|---|---:|---:|---:|
+| KNN | StandardScaler | 0.947368 | 0.964912 | +1.75% |
+| SVM | StandardScaler | 0.982456 | 0.956140 | -2.63% |
+| KNN | MinMaxScaler | 0.964912 | 0.956140 | -0.88% |
+| SVM | MinMaxScaler | 0.973684 | 0.956140 | -1.75% |
+| KNN | RobustScaler | 0.956140 | 0.956140 | 0.00% |
+| SVM | RobustScaler | 0.964912 | 0.973684 | +0.88% |
+
+### Visualization
+
+The results were visualized using a grouped bar chart with scaling methods on the x-axis and separate bars for KNN and SVM accuracy. The chart includes all 8 model-scaler combinations: Raw, StandardScaler, MinMaxScaler, and RobustScaler for both models.
+
+![Task 04 grouped bar chart](Task%2004/task4_grouped_bar_chart.png)
+
+### Conclusion
+
+Scaling clearly affected KNN and SVM because both models depend on distances or margins in feature space. Before adding outliers, SVM with `StandardScaler` gave the highest accuracy. After adding outliers, `RobustScaler` showed the best stability because it uses the median and IQR instead of mean and standard deviation. In practical ML work, `StandardScaler` is a strong default for normally distributed data, while `RobustScaler` is a better choice when outliers are present.

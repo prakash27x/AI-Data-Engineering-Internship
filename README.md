@@ -109,6 +109,10 @@ AI-Data-Engineering-Internship/
 │   │   └── Task_2.ipynb      # Feature engineering challenge
 │   ├── Task 03/
 │   │   └── Task_3.ipynb      # Encoding strategy comparison
+│   ├── Task 04/
+│   │   ├── Task_4.ipynb      # Scaler sensitivity experiment
+│   │   ├── task4.txt         # Task explanation
+│   │   └── task4_grouped_bar_chart.png
 │   ├── assigned _tasks.txt
 │   └── readme.md             # Week 7 task summary and results
 
@@ -117,4 +121,4 @@ AI-Data-Engineering-Internship/
 
 ---
 
-*Last Updated: June 15, 2026*
+*Last Updated: June 16, 2026*

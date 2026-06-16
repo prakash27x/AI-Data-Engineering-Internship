@@ -1,0 +1,384 @@
+This task is asking you to **test how different scaling methods affect ML model performance**.
+
+The main idea:
+
+> Some ML algorithms are sensitive to feature scale. You need to compare model performance before and after scaling.
+
+---
+
+## 1. "Take a dataset with mixed-scale numeric features"
+
+You need a dataset where numerical columns have different ranges.
+
+Example:
+
+| Age | Income | Distance | Score |
+| --- | ------ | -------- | ----- |
+| 25  | 30000  | 5        | 80    |
+| 40  | 90000  | 120      | 90    |
+
+Notice:
+
+```text
+Age          → 20-80
+Income       → 30000-100000
+Distance     → 0-500
+Score        → 0-100
+```
+
+The scales are very different.
+
+Good datasets:
+
+* Customer data
+* Loan prediction
+* Titanic (after cleaning)
+* Student performance
+* Healthcare data
+
+---
+
+## 2. "Train a KNN classifier (k=5) and an SVM on raw data"
+
+First train models **without scaling**.
+
+Raw data:
+
+```
+Features
+   |
+   |
+KNN(k=5)
+   |
+Accuracy
+```
+
+and:
+
+```
+Features
+   |
+   |
+SVM
+   |
+Accuracy
+```
+
+Example:
+
+```python
+KNeighborsClassifier(n_neighbors=5)
+
+SVC()
+```
+
+---
+
+Why KNN and SVM?
+
+Because they depend on distance.
+
+Example:
+
+KNN calculates:
+
+```
+distance between points
+```
+
+If one feature is:
+
+```
+Income = 90000
+```
+
+and another:
+
+```
+Age = 30
+```
+
+Income dominates the distance calculation.
+
+Scaling fixes this.
+
+---
+
+# 3. "then with StandardScaler, MinMaxScaler, and RobustScaler"
+
+Now repeat training with different scalers.
+
+You need 4 cases:
+
+### 1. No scaling
+
+```
+Raw data
+    |
+KNN
+SVM
+```
+
+---
+
+### 2. StandardScaler
+
+Formula:
+
+```
+mean = 0
+std = 1
+```
+
+Example:
+
+Before:
+
+```
+Age:
+20,30,40
+```
+
+After:
+
+```
+-1
+0
+1
+```
+
+---
+
+### 3. MinMaxScaler
+
+Changes values into:
+
+```
+0 to 1
+```
+
+Example:
+
+Before:
+
+```
+10,50,100
+```
+
+After:
+
+```
+0
+0.44
+1
+```
+
+---
+
+### 4. RobustScaler
+
+Uses:
+
+* median
+* IQR
+
+It is less affected by outliers.
+
+Example:
+
+Data:
+
+```
+10
+12
+15
+1000
+```
+
+StandardScaler gets affected by 1000.
+
+RobustScaler handles it better.
+
+---
+
+# 4. "Record accuracy for all 8 combinations"
+
+You have:
+
+2 models:
+
+```
+KNN
+SVM
+```
+
+4 scaling methods:
+
+```
+Raw
+StandardScaler
+MinMaxScaler
+RobustScaler
+```
+
+Total:
+
+```
+2 × 4 = 8 experiments
+```
+
+Your result table:
+
+| Model | Scaler         | Accuracy |
+| ----- | -------------- | -------- |
+| KNN   | Raw            | 0.70     |
+| KNN   | StandardScaler | 0.82     |
+| KNN   | MinMaxScaler   | 0.80     |
+| KNN   | RobustScaler   | 0.84     |
+| SVM   | Raw            | 0.75     |
+| SVM   | StandardScaler | 0.86     |
+| SVM   | MinMaxScaler   | 0.85     |
+| SVM   | RobustScaler   | 0.87     |
+
+---
+
+# 5. "Inject 5 outlier rows artificially"
+
+You have to add fake extreme values.
+
+Example:
+
+Normal data:
+
+```
+Age     Income
+25      30000
+40      60000
+```
+
+Add:
+
+```
+90      999999
+95      888888
+```
+
+Code idea:
+
+```python
+outliers = pd.DataFrame({
+    "Age":[90,95],
+    "Income":[999999,888888]
+})
+
+df = pd.concat(
+    [df,outliers]
+)
+```
+
+Then run the same experiment again.
+
+---
+
+# 6. "Which scaler is most robust?"
+
+You compare:
+
+Before outliers:
+
+```
+StandardScaler accuracy = 85%
+RobustScaler accuracy   = 86%
+```
+
+After outliers:
+
+```
+StandardScaler accuracy = 70%
+RobustScaler accuracy   = 84%
+```
+
+Conclusion:
+
+RobustScaler handled outliers better.
+
+---
+
+# 7. "Visualize results as grouped bar chart"
+
+Your chart:
+
+X-axis:
+
+```
+Scaler
+```
+
+Bars:
+
+```
+KNN accuracy
+SVM accuracy
+```
+
+Example:
+
+```
+Accuracy
+
+90 |
+80 |       █       █
+70 | █  █  █  █
+60 |
+    Raw Standard MinMax Robust
+```
+
+---
+
+# 8. "Write conclusion"
+
+Example:
+
+```python
+# Conclusion:
+# Scaling improved KNN and SVM performance because both models depend on distance.
+# StandardScaler and MinMaxScaler performed better than raw data.
+# RobustScaler showed the best stability after adding outliers because it uses median
+# and IQR, making it less sensitive to extreme values.
+# In real ML projects, scaler selection depends on data distribution and presence
+# of outliers.
+```
+
+---
+
+In short, the task wants:
+
+```
+Same dataset
+
+        |
+        |
+  4 scaling methods
+
+        |
+        |
+
+KNN + SVM
+
+        |
+        |
+
+Compare accuracy
+
+        |
+        |
+
+Add outliers
+
+        |
+        |
+
+Find which scaler survives better
+```
+
+It is basically a **scaling impact experiment**.

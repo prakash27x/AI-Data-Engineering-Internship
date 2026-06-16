@@ -40,4 +40,5 @@ Train a KNN classifier (k=5) and an SVM on the raw (unscaled) data, then with St
 Record accuracy for all 8 combinations (2 models × 4 scaling options) in a results table. 
 Inject 5 outlier rows artificially and re-run.
 Which scaler is most robust?
-Visualize the results as a grouped bar chart and write a conclusion explaining the practical takeaway for ML practitioners.
+Visualize the results as a grouped bar chart
+write a conclusion explaining the practical takeaway for ML practitioners.
