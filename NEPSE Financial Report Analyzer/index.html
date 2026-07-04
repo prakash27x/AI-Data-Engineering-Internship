@@ -1,0 +1,305 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NEPSE Financial Analyzer | Instant Financial Report Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d1e4ff",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "primary": "#051125",
+                    "secondary": "#47607e",
+                    "on-primary-container": "#828da7",
+                    "tertiary-fixed-dim": "#efc062",
+                    "on-secondary-container": "#48617e",
+                    "tertiary": "#191000",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#001d36",
+                    "tertiary-fixed": "#ffdea4",
+                    "on-tertiary-container": "#b0872f",
+                    "surface-tint": "#545e76",
+                    "secondary-fixed-dim": "#afc9ea",
+                    "surface-variant": "#e1e3e4",
+                    "on-background": "#191c1d",
+                    "tertiary-container": "#342300",
+                    "inverse-primary": "#bbc6e2",
+                    "on-primary-fixed": "#101b30",
+                    "surface-container": "#edeeef",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-bright": "#f8f9fa",
+                    "primary-fixed": "#d7e2ff",
+                    "on-surface-variant": "#45474d",
+                    "primary-fixed-dim": "#bbc6e2",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#c2dcff",
+                    "primary-container": "#1b263b",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#2f4865",
+                    "background": "#f8f9fa",
+                    "on-surface": "#191c1d",
+                    "outline-variant": "#c5c6cd",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#5d4200",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary-fixed": "#261900",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "outline": "#75777d",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-fixed-variant": "#3c475d"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #051125 0%, #1b263b 50%, #2d3748 100%); }
+        .feature-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+        .feature-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(5, 17, 37, 0.2); border-color: #051125; }
+        .glass-effect { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); }
+        .gradient-text { background: linear-gradient(135deg, #051125 0%, #47607e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-box { background: linear-gradient(135deg, rgba(5, 17, 37, 0.05) 0%, rgba(71, 96, 126, 0.05) 100%); }
+        section { scroll-margin-top: 80px; }
+</style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-highest border-b border-outline-variant shadow-sm">
+<div class="max-w-7xl mx-auto px-lg py-sm flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-lg">trending_up</span>
+</div>
+<h1 class="font-bold text-primary text-lg hidden sm:block">NEPSE Financial Analyzer</h1>
+</div>
+<div class="flex items-center gap-md">
+<button onclick="toggleTheme()" class="p-base text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">light_mode</span>
+</button>
+<a href="dashboard.html" class="px-lg py-sm bg-primary text-on-primary rounded-lg font-bold hover:opacity-90 transition-opacity">Launch App</a>
+</div>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-28 px-lg hero-gradient text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-20 right-20 w-96 h-96 bg-white rounded-full mix-blend-overlay blur-3xl"></div>
+<div class="absolute bottom-20 left-20 w-80 h-80 bg-secondary-fixed rounded-full mix-blend-overlay blur-3xl"></div>
+</div>
+<div class="max-w-5xl mx-auto text-center relative z-10">
+<h2 class="text-5xl sm:text-6xl font-bold mb-md leading-tight tracking-tight">Instant Financial Analysis</h2>
+<p class="text-xl sm:text-2xl opacity-95 mb-lg max-w-3xl mx-auto leading-relaxed">Extract data from NEPSE financial reports, compare companies, and make informed investment decisions in seconds.</p>
+<div class="flex flex-col sm:flex-row gap-md justify-center">
+<a href="upload_file.html" class="px-xl py-md bg-white text-primary rounded-lg font-bold hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">cloud_upload</span>
+Upload Report
+</a>
+<a href="dashboard.html" class="px-xl py-md bg-secondary text-white rounded-lg font-bold hover:bg-secondary/90 shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">dashboard</span>
+View Dashboard
+</a>
+</div>
+</div>
+</section>
+
+<!-- Features Section -->
+<section class="py-20 px-lg bg-surface-container-lowest">
+<div class="max-w-6xl mx-auto">
+<h3 class="text-4xl font-bold text-center gradient-text mb-lg">Why Choose NEPSE Financial Analyzer?</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature 1 -->
+<div class="feature-card bg-white p-lg rounded-xl border border-outline-variant">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-primary-container text-2xl">description</span>
+</div>
+<h4 class="font-bold text-primary mb-sm text-lg">PDF Data Extraction</h4>
+<p class="text-on-surface-variant">Automatic financial data extraction using advanced PDF processing tools for accurate results.</p>
+</div>
+<!-- Feature 2 -->
+<div class="feature-card bg-white p-lg rounded-xl border border-outline-variant">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-secondary-container text-2xl">compare_arrows</span>
+</div>
+<h4 class="font-bold text-primary mb-sm text-lg">Company Comparison</h4>
+<p class="text-on-surface-variant">Compare multiple companies side-by-side with interactive charts and detailed metrics.</p>
+</div>
+<!-- Feature 3 -->
+<div class="feature-card bg-white p-lg rounded-xl border border-outline-variant">
+<div class="w-12 h-12 bg-tertiary-container rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-tertiary text-2xl">trending_up</span>
+</div>
+<h4 class="font-bold text-primary mb-sm text-lg">Quarterly Trends</h4>
+<p class="text-on-surface-variant">Track performance across quarters to identify growth patterns and investment opportunities.</p>
+</div>
+<!-- Feature 4 -->
+<div class="feature-card bg-white p-lg rounded-xl border border-outline-variant">
+<div class="w-12 h-12 bg-primary-fixed rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-primary-container text-2xl">speed</span>
+</div>
+<h4 class="font-bold text-primary mb-sm text-lg">Lightning Fast</h4>
+<p class="text-on-surface-variant">Process financial reports in seconds with optimized extraction algorithms and instant dashboard generation.</p>
+</div>
+<!-- Feature 5 -->
+<div class="feature-card bg-white p-lg rounded-xl border border-outline-variant">
+<div class="w-12 h-12 bg-secondary-fixed rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-secondary text-2xl">public</span>
+</div>
+<h4 class="font-bold text-primary mb-sm text-lg">100% Free & Public</h4>
+<p class="text-on-surface-variant">No login required. Open access for all retail investors, traders, and researchers.</p>
+</div>
+<!-- Feature 6 -->
+<div class="feature-card bg-white p-lg rounded-xl border border-outline-variant">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-tertiary text-2xl">data_thresholding</span>
+</div>
+<h4 class="font-bold text-primary mb-sm text-lg">Complete Metrics</h4>
+<p class="text-on-surface-variant">Extract every financial metric from reports for comprehensive analysis and insights.</p>
+</div>
+</div>
+</section>
+
+<!-- How It Works -->
+<section class="py-20 px-lg bg-surface-container-lowest">
+<div class="max-w-5xl mx-auto">
+<h3 class="text-4xl font-bold text-center gradient-text mb-lg">How It Works</h3>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md">
+<div class="text-center">
+<div class="stat-box w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-md text-2xl font-bold shadow-lg">1</div>
+<h4 class="font-bold text-primary mb-sm text-lg">Upload PDF</h4>
+<p class="text-on-surface-variant text-sm">Select company, report type, and upload the financial PDF report.</p>
+</div>
+<div class="text-center">
+<div class="stat-box w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center mx-auto mb-md text-2xl font-bold shadow-lg">2</div>
+<h4 class="font-bold text-primary mb-sm text-lg">Extract Data</h4>
+<p class="text-on-surface-variant text-sm">Advanced PDF processing automatically extracts all financial metrics and structured data.</p>
+</div>
+<div class="text-center">
+<div class="stat-box w-16 h-16 bg-tertiary text-white rounded-full flex items-center justify-center mx-auto mb-md text-2xl font-bold shadow-lg">3</div>
+<h4 class="font-bold text-primary mb-sm text-lg">View Dashboard</h4>
+<p class="text-on-surface-variant text-sm">Explore company financials with interactive charts and detailed analysis.</p>
+</div>
+<div class="text-center">
+<div class="stat-box w-16 h-16 bg-tertiary-fixed rounded-full flex items-center justify-center mx-auto mb-md text-2xl font-bold text-tertiary shadow-lg">4</div>
+<h4 class="font-bold text-primary mb-sm text-lg">Compare & Decide</h4>
+<p class="text-on-surface-variant text-sm">Compare multiple companies side-by-side to make data-driven investment decisions.</p>
+</div>
+</div>
+</section>
+
+<!-- Supported Companies -->
+<section class="py-20 px-lg bg-white">
+<div class="max-w-5xl mx-auto">
+<h3 class="text-4xl font-bold text-center gradient-text mb-lg">Supported Sectors</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant hover:border-primary transition-colors\">
+<h4 class="font-bold text-primary mb-md flex items-center gap-sm\">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl\">hydropower</span>
+Hydropower Companies
+</h4>
+<p class="text-on-surface-variant text-sm mb-md">Analyze revenue, costs, assets, and energy-specific metrics for hydropower sector companies.</p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-xs bg-primary-fixed text-on-primary-container rounded-lg text-xs font-bold">PHCL</span>
+<span class="px-sm py-xs bg-primary-fixed text-on-primary-container rounded-lg text-xs font-bold">CHCL</span>
+<span class="px-sm py-xs bg-primary-fixed text-on-primary-container rounded-lg text-xs font-bold">UPPER</span>
+<span class="px-sm py-xs bg-primary-fixed text-on-primary-container rounded-lg text-xs font-bold">+ More</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant hover:border-primary transition-colors">
+<h4 class="font-bold text-primary mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl">account_balance</span>
+Commercial Banks
+</h4>
+<p class="text-on-surface-variant text-sm mb-md">Compare interest income, deposits, loans, ROA, ROE and banking sector ratios.</p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-xs bg-secondary-fixed text-on-secondary-fixed rounded-lg text-xs font-bold">NABIL</span>
+<span class="px-sm py-xs bg-secondary-fixed text-on-secondary-fixed rounded-lg text-xs font-bold">ADBL</span>
+<span class="px-sm py-xs bg-secondary-fixed text-on-secondary-fixed rounded-lg text-xs font-bold">NICA</span>
+<span class="px-sm py-xs bg-secondary-fixed text-on-secondary-fixed rounded-lg text-xs font-bold">+ More</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-28 px-lg bg-gradient-to-br from-primary to-primary-container text-white relative overflow-hidden">
+<div class="absolute inset-0 opacity-20">
+<div class="absolute top-10 right-10 w-72 h-72 bg-white rounded-full mix-blend-overlay blur-3xl"></div>
+</div>
+<div class="max-w-3xl mx-auto text-center relative z-10">
+<h3 class="text-4xl sm:text-5xl font-bold mb-md leading-tight">Ready to Start Analyzing?</h3>
+<p class="text-xl opacity-95 mb-lg">Upload your first financial report and get instant insights. No sign-up, no credit card needed.</p>
+<a href="upload_file.html" class="inline-flex items-center gap-sm px-xl py-md bg-white text-primary rounded-lg font-bold hover:bg-surface transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+Upload Your First Report
+</a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-surface-container-highest border-t border-outline-variant">
+<div class="max-w-6xl mx-auto px-lg py-lg">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-lg">
+<div>
+<h4 class="font-bold text-primary mb-md text-lg">About</h4>
+<ul class="space-y-xs text-on-surface-variant text-sm">
+<li><a href="#" class="hover:text-primary transition-colors">About Us</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">How It Works</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">Features</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-md text-lg">Resources</h4>
+<ul class="space-y-xs text-on-surface-variant text-sm">
+<li><a href="#" class="hover:text-primary transition-colors">FAQ</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">User Guide</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">API Docs</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-md text-lg">Legal</h4>
+<ul class="space-y-xs text-on-surface-variant text-sm">
+<li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">Terms of Service</a></li>
+<li><a href="#" class="hover:text-primary transition-colors">Disclaimer</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-md text-lg">Data Source</h4>
+<p class="text-on-surface-variant text-sm">Financial data from Nepal Stock Exchange (NEPSE) and company filings.</p>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-md text-center text-on-surface-variant text-sm">
+<p>© 2026 NEPSE Financial Analyzer | Open Source Project | Built with PyMuPDF & Python | All Data Shared Publicly</p>
+</div>
+</div>
+</footer>
+
+<script>
+function toggleTheme() {
+    const html = document.documentElement;
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+}
+</script>
+</body>
+</html>
