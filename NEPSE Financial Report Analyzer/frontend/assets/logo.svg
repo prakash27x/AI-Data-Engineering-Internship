@@ -1,0 +1,10 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">NEPSE Analyzer Logo</title>
+  <desc id="logoDesc">Navy square with rising chart mark for the NEPSE Analyzer brand.</desc>
+  <rect width="160" height="160" rx="32" fill="#0B1630"/>
+  <path d="M38 108L68 78L88 92L122 56" stroke="#D8E4FF" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M104 56H122V74" stroke="#F6D28A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="40" cy="120" r="10" fill="#C7DAFF"/>
+  <circle cx="68" cy="92" r="10" fill="#C7DAFF"/>
+  <circle cx="88" cy="104" r="10" fill="#C7DAFF"/>
+</svg>

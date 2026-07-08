@@ -1,0 +1,357 @@
+/* ==========================================
+   GLOBAL STYLES
+========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   TYPOGRAPHY
+========================================== */
+
+.section-badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #051125;
+  line-height: 1.2;
+}
+
+.section-description {
+  margin-top: 20px;
+  color: #6b7280;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero-gradient {
+  background: linear-gradient(135deg, #051125 0%, #16253d 50%, #243b55 100%);
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.primary-btn-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #051125;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.primary-btn-light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+   FEATURE CARDS
+========================================== */
+
+.feature-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  transition: 0.35s ease;
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 24px;
+}
+
+.feature-icon span {
+  font-size: 34px;
+  color: #051125;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  color: #051125;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  color: #6b7280;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   STEP CARDS
+========================================== */
+
+.step-card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid #ececec;
+  transition: 0.3s;
+  height: 100%;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+}
+
+.step-number {
+  width: 65px;
+  height: 65px;
+  margin: auto auto 24px;
+
+  border-radius: 50%;
+  background: #051125;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.step-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+  color: #051125;
+}
+
+.step-card p {
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   SECTOR CARDS
+========================================== */
+
+.sector-card {
+  background: white;
+
+  border-radius: 18px;
+
+  border: 1px solid #e5e7eb;
+
+  padding: 35px;
+
+  transition: 0.3s;
+}
+
+.sector-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.sector-icon {
+  width: 65px;
+
+  height: 65px;
+
+  border-radius: 16px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.sector-icon span {
+  font-size: 34px;
+
+  color: #051125;
+}
+
+.sector-card h3 {
+  font-size: 1.35rem;
+
+  font-weight: 700;
+
+  color: #051125;
+}
+
+.sector-card p {
+  color: #6b7280;
+
+  margin-top: 8px;
+
+  line-height: 1.7;
+}
+
+.sector-tag {
+  background: #eef2ff;
+
+  color: #1e3a8a;
+
+  padding: 8px 18px;
+
+  border-radius: 999px;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+}
+
+/* ==========================================
+   CTA
+========================================== */
+
+.cta-section {
+  background: linear-gradient(135deg, #051125, #1b3555);
+
+  padding: 110px 20px;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer-title {
+  font-size: 1.15rem;
+
+  font-weight: 700;
+
+  color: white;
+
+  margin-bottom: 18px;
+}
+
+.footer-text {
+  color: #9ca3af;
+
+  line-height: 1.8;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #9ca3af;
+
+  text-decoration: none;
+
+  transition: 0.25s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* ==========================================
+   MATERIAL ICONS
+========================================== */
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+
+  .hero-gradient h2 {
+    font-size: 2.8rem;
+  }
+
+  .feature-card,
+  .step-card,
+  .sector-card {
+    padding: 24px;
+  }
+
+  .cta-section {
+    padding: 80px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-gradient {
+    padding-top: 130px;
+
+    padding-bottom: 90px;
+  }
+
+  .hero-gradient h2 {
+    font-size: 2.2rem;
+  }
+
+  .primary-btn-light {
+    width: 100%;
+
+    justify-content: center;
+  }
+}

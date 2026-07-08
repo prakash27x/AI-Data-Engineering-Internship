@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEPSE Financial Intelligence | AI Financial Report Analyzer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#051125",
+                        secondary: "#47607e",
+                        surface: "#f8f9fa",
+                        background: "#ffffff",
+                        primaryContainer: "#1b263b",
+                        secondaryContainer: "#c2dcff",
+                        outline: "#d9d9d9",
+                        textPrimary: "#191c1d",
+                        textSecondary: "#6b7280",
+                        primaryFixed: "#d7e2ff",
+                        secondaryFixed: "#d1e4ff",
+                        tertiaryFixed: "#ffdea4"
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="bg-surface text-textPrimary">
+    <!-- ========================= -->
+    <!-- Header -->
+    <!-- ========================= -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="h-20 flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center shadow-md">
+                        <span class="material-symbols-outlined text-white">
+                            trending_up
+                        </span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary">
+                            NEPSE Financial Intelligence
+                        </h1>
+                        <p class="text-sm text-gray-500 hidden sm:block">
+                            AI Powered Financial Report Analyzer
+                        </p>
+                    </div>
+                </a>
+                <!-- Right Side -->
+                <div class="flex items-center gap-4">
+                    <!-- Theme Button -->
+                    <button onclick="toggleTheme()"
+                        class="w-11 h-11 rounded-lg flex items-center justify-center hover:bg-gray-100 transition">
+                        <span class="material-symbols-outlined">
+                            light_mode
+                        </span>
+                    </button>
+                    <!-- Launch -->
+                    <a href="dashboard.html"
+                        class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
+                        Launch Application
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ========================= -->
+    <!-- Hero -->
+    <!-- ========================= -->
+    <section class="hero-gradient relative overflow-hidden pt-40 pb-32">
+        <!-- Background Blur -->
+        <div class="absolute inset-0">
+            <div
+                class="absolute top-16 right-10 w-96 h-96 rounded-full bg-white/10 blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-blue-300/10 blur-3xl">
+            </div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <span
+                    class="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur text-sm font-medium text-white mb-6">
+                    AI Powered Financial Analysis
+                </span>
+                <h2
+                    class="text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                    Analyze Quarterly & Annual Financial Reports
+                    <span class="block mt-2">
+                        Within Seconds
+                    </span>
+                </h2>
+                <p
+                    class="mt-8 text-lg lg:text-xl text-gray-200 leading-relaxed">
+                    Upload NEPSE-listed company financial reports and instantly
+                    extract financial statements, visualize trends,
+                    compare companies, and make smarter investment decisions
+                    using AI-powered analysis.
+                </p>
+                <!-- Buttons -->
+                <div
+                    class="mt-12 flex flex-col sm:flex-row justify-center gap-5">
+                    <a href="upload_file.html"
+                        class="inline-flex items-center justify-center gap-2 bg-white text-primary font-semibold px-8 py-4 rounded-xl hover:scale-105 transition">
+                        <span class="material-symbols-outlined">
+                            cloud_upload
+                        </span>
+                        Upload Report
+                    </a>
+                    <a href="dashboard.html"
+                        class="inline-flex items-center justify-center gap-2 border border-white text-white font-semibold px-8 py-4 rounded-xl hover:bg-white hover:text-primary transition">
+                        <span class="material-symbols-outlined">
+                            dashboard
+                        </span>
+                        View Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <!-- ================================= -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="section-badge">
+                    Features
+                </span>
+                <h2 class="section-title">
+                    Everything You Need to Analyze Financial Reports
+                </h2>
+                <p class="section-description">
+                    Designed for investors, researchers, students, and financial
+                    analysts to extract meaningful insights from NEPSE-listed
+                    company reports effortlessly.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+                <!-- Card 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-blue-100">
+                        <span class="material-symbols-outlined">
+                            description
+                        </span>
+                    </div>
+                    <h3>PDF Data Extraction</h3>
+                    <p>
+                        Automatically extract financial statements and important
+                        metrics from quarterly and annual PDF reports.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-indigo-100">
+                        <span class="material-symbols-outlined">
+                            compare_arrows
+                        </span>
+                    </div>
+                    <h3>Company Comparison</h3>
+                    <p>
+                        Compare multiple companies side-by-side using interactive
+                        charts and detailed financial indicators.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-amber-100">
+                        <span class="material-symbols-outlined">
+                            monitoring
+                        </span>
+                    </div>
+                    <h3>Quarterly Trends</h3>
+                    <p>
+                        Visualize business growth through quarterly trends and
+                        identify long-term financial performance.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-green-100">
+                        <span class="material-symbols-outlined">
+                            speed
+                        </span>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>
+                        Generate comprehensive reports within seconds using
+                        optimized AI-powered extraction techniques.
+                    </p>
+                </div>
+                <!-- Card 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-purple-100">
+                        <span class="material-symbols-outlined">
+                            public
+                        </span>
+                    </div>
+                    <h3>No Login Required</h3>
+                    <p>
+                        Access the platform instantly without creating an account.
+                        Completely free and publicly available.
+                    </p>
+                </div>
+                <!-- Card 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon bg-red-100">
+                        <span class="material-symbols-outlined">
+                            analytics
+                        </span>
+                    </div>
+                    <h3>Comprehensive Metrics</h3>
+                    <p>
+                        Extract assets, liabilities, income statements,
+                        profitability ratios, EPS, and many more financial
+                        indicators.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================================= -->
+    <!-- How It Works -->
+    <!-- ================================= -->
+    <section id="workflow" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="section-badge">
+                    Workflow
+                </span>
+                <h2 class="section-title">
+                    Analyze Reports in Four Simple Steps
+                </h2>
+                <p class="section-description">
+                    From uploading a financial report to comparing companies,
+                    everything happens within a few clicks.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-number">
+                        1
+                    </div>
+                    <h3>Upload Report</h3>
+                    <p>
+                        Choose a company, report type, and upload the PDF
+                        financial report.
+                    </p>
+                </div>
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-number">
+                        2
+                    </div>
+                    <h3>Extract Data</h3>
+                    <p>
+                        AI automatically extracts tables, statements,
+                        and financial figures from the document.
+                    </p>
+                </div>
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-number">
+                        3
+                    </div>
+                    <h3>View Dashboard</h3>
+                    <p>
+                        Explore interactive charts, graphs, and
+                        financial statements generated instantly.
+                    </p>
+                </div>
+                <!-- Step 4 -->
+                <div class="step-card">
+                    <div class="step-number">
+                        4
+                    </div>
+                    <h3>Compare Companies</h3>
+                    <p>
+                        Evaluate multiple companies and make
+                        informed investment decisions based on
+                        financial performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Supported Sectors Section Starts Here -->
+    <!-- ================================= -->
+    <!-- Supported Sectors -->
+    <!-- ================================= -->
+    <section id="sectors" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="section-badge">
+                    Supported Companies
+                </span>
+                <h2 class="section-title">
+                    Analyze Companies Across Multiple Sectors
+                </h2>
+                <p class="section-description">
+                    Our platform currently supports financial report analysis
+                    for major sectors listed on the Nepal Stock Exchange (NEPSE).
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 mt-16">
+                <!-- Hydropower -->
+                <div class="sector-card">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="sector-icon bg-blue-100">
+                            <span class="material-symbols-outlined">
+                                hydro_power
+                            </span>
+                        </div>
+                        <div>
+                            <h3>Hydropower Companies</h3>
+                            <p>
+                                Revenue, production, profitability,
+                                assets and energy sector analysis.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="sector-tag">UPPER</span>
+                        <span class="sector-tag">CHCL</span>
+                        <span class="sector-tag">PHCL</span>
+                        <span class="sector-tag">+ More</span>
+                    </div>
+                </div>
+                <!-- Banking -->
+                <div class="sector-card">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="sector-icon bg-green-100">
+                            <span class="material-symbols-outlined">
+                                account_balance
+                            </span>
+                        </div>
+                        <div>
+                            <h3>Commercial Banks</h3>
+                            <p>
+                                Analyze loans, deposits, ROE, ROA,
+                                EPS and banking performance.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="sector-tag">NABIL</span>
+                        <span class="sector-tag">NICA</span>
+                        <span class="sector-tag">ADBL</span>
+                        <span class="sector-tag">+ More</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================================= -->
+    <!-- CTA -->
+    <!-- ================================= -->
+    <section class="cta-section">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-white">
+                Ready to Analyze Your First Financial Report?
+            </h2>
+            <p class="mt-6 text-lg text-gray-200 leading-relaxed">
+                Upload a quarterly or annual report and let AI extract,
+                organize and visualize financial insights in seconds.
+            </p>
+            <div class="mt-10">
+                <a href="upload_file.html" class="primary-btn-light">
+                    <span class="material-symbols-outlined">
+                        cloud_upload
+                    </span>
+                    Upload Report
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ================================= -->
+    <!-- Footer -->
+    <!-- ================================= -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+            <div class="grid md:grid-cols-4 gap-10">
+                <!-- About -->
+                <div>
+                    <h3 class="footer-title">
+                        NEPSE Financial Intelligence
+                    </h3>
+                    <p class="footer-text">
+                        AI-powered financial report analyzer
+                        for investors, students, researchers,
+                        and financial professionals.
+                    </p>
+                </div>
+                <!-- Platform -->
+                <div>
+                    <h3 class="footer-title">
+                        Platform
+                    </h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Upload Report</a></li>
+                    </ul>
+                </div>
+                <!-- Resources -->
+                <div>
+                    <h3 class="footer-title">
+                        Resources
+                    </h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">User Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!-- Data Source -->
+                <div>
+                    <h3 class="footer-title">
+                        Data Source
+                    </h3>
+                    <p class="footer-text">
+                        Financial reports published by
+                        Nepal Stock Exchange (NEPSE)
+                        and listed companies.
+                    </p>
+                </div>
+            </div>
+            <hr class="border-gray-700 my-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-400">
+                    © 2026 NEPSE Financial Intelligence.
+                    All Rights Reserved.
+                </p>
+                <p class="text-sm text-gray-500">
+                    Built with ❤️ using Python
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= -->
+    <!-- JavaScript -->
+    <!-- ========================= -->
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Dashboard | NEPSE Financial Analyzer</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d1e4ff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9fa",
+                        "primary": "#051125",
+                        "secondary": "#47607e",
+                        "on-primary-container": "#828da7",
+                        "tertiary-fixed-dim": "#efc062",
+                        "on-secondary-container": "#48617e",
+                        "tertiary": "#191000",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#001d36",
+                        "tertiary-fixed": "#ffdea4",
+                        "on-tertiary-container": "#b0872f",
+                        "surface-tint": "#545e76",
+                        "secondary-fixed-dim": "#afc9ea",
+                        "surface-variant": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "tertiary-container": "#342300",
+                        "inverse-primary": "#bbc6e2",
+                        "on-primary-fixed": "#101b30",
+                        "surface-container": "#edeeef",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-bright": "#f8f9fa",
+                        "primary-fixed": "#d7e2ff",
+                        "on-surface-variant": "#45474d",
+                        "primary-fixed-dim": "#bbc6e2",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#c2dcff",
+                        "primary-container": "#1b263b",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4865",
+                        "background": "#f8f9fa",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c5c6cd",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5d4200",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed": "#261900",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "outline": "#75777d",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed-variant": "#3c475d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "container-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+
+    <header class="fixed top-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg py-sm">
+        <div class="flex items-center gap-md">
+            <button class="md:hidden p-base text-on-surface" id="sidebar-toggle">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">NEPSE Financial Analyzer</span>
+        </div>
+        <div class="flex items-center gap-md">
+            <div class="bg-surface-container-low rounded-full px-md py-xs hidden lg:flex items-center gap-sm border border-outline-variant">
+                <span class="material-symbols-outlined text-outline">search</span>
+                <input class="bg-transparent border-none focus:ring-0 text-body-md w-48" placeholder="Search ticker (e.g. ADBL)" type="text">
+            </div>
+            <button class="p-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer theme-toggle-btn" title="Toggle Dark/Light Mode">
+                <span class="material-symbols-outlined">light_mode</span>
+            </button>
+            <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</button>
+        </div>
+    </header>
+
+    <aside class="fixed left-0 top-0 h-full w-[260px] hidden md:flex flex-col bg-surface dark:bg-surface border-r border-outline-variant z-40 pt-24" id="sidebar">
+        <div class="px-md mb-xl">
+            <div class="flex items-center gap-sm p-sm">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary font-bold">N</div>
+                <div>
+                    <h2 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed leading-tight">NEPSE Analyzer</h2>
+                    <p class="font-label-md text-label-md text-on-surface-variant">Market Intelligence</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-base px-md flex-grow">
+            <a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold rounded-full transition-all duration-200 ease-in-out" href="dashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-label-md text-label-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="upload_file.html">
+                <span class="material-symbols-outlined">cloud_upload</span>
+                <span class="font-label-md text-label-md">Report Upload</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="dashboard.html">
+                <span class="material-symbols-outlined">pie_chart</span>
+                <span class="font-label-md text-label-md">Sector Analysis</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="comparative_analysis.html">
+                <span class="material-symbols-outlined">compare_arrows</span>
+                <span class="font-label-md text-label-md">Comparative Analysis</span>
+            </a>
+            <div class="mt-xl">
+                <a href="upload_file.html" class="w-full py-md bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
+                    <span class="material-symbols-outlined">add</span>
+                    <span>New Analysis</span>
+                </a>
+            </div>
+        </div>
+        <div class="p-md mt-auto flex flex-col gap-base border-t border-outline-variant">
+            <button class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left theme-toggle-btn">
+                <span class="material-symbols-outlined">light_mode</span>
+                <span class="font-label-md text-label-md">Toggle Theme</span>
+            </button>
+            <button class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left" id="shortcuts-btn">
+                <span class="material-symbols-outlined">help</span>
+                <span class="font-label-md text-label-md">Keyboard Shortcuts</span>
+            </button>
+            <button class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left" id="feedback-btn">
+                <span class="material-symbols-outlined">feedback</span>
+                <span class="font-label-md text-label-md">Feedback</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen">
+        <section class="mb-xl">
+            <div class="flex justify-between items-end mb-md">
+                <div>
+                    <h1 class="font-display-lg text-display-lg text-primary">Market Overview</h1>
+                    <p class="text-on-surface-variant font-body-md">Live NEPSE Index performance and key indicators.</p>
+                </div>
+                <div class="text-right">
+                    <div class="inline-flex items-center gap-xs px-sm py-xs bg-emerald-100 text-emerald-800 rounded-full font-bold text-label-md">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                        MARKET OPEN
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+                <div class="glass-card p-md rounded-xl shadow-sm">
+                    <p class="font-label-md text-label-md text-on-surface-variant">NEPSE INDEX</p>
+                    <div class="flex items-baseline gap-sm">
+                        <span class="font-headline-md text-headline-md text-primary">2,045.18</span>
+                        <span class="text-emerald-600 font-bold text-label-md">+1.24%</span>
+                    </div>
+                </div>
+                <div class="glass-card p-md rounded-xl shadow-sm">
+                    <p class="font-label-md text-label-md text-on-surface-variant">SENSITIVE INDEX</p>
+                    <div class="flex items-baseline gap-sm">
+                        <span class="font-headline-md text-headline-md text-primary">388.42</span>
+                        <span class="text-emerald-600 font-bold text-label-md">+0.85%</span>
+                    </div>
+                </div>
+                <div class="glass-card p-md rounded-xl shadow-sm">
+                    <p class="font-label-md text-label-md text-on-surface-variant">FLOAT INDEX</p>
+                    <div class="flex items-baseline gap-sm">
+                        <span class="font-headline-md text-headline-md text-primary">141.67</span>
+                        <span class="text-emerald-600 font-bold text-label-md">+1.12%</span>
+                    </div>
+                </div>
+                <div class="glass-card p-md rounded-xl shadow-sm">
+                    <p class="font-label-md text-label-md text-on-surface-variant">TOTAL TURNOVER (NPR)</p>
+                    <div class="flex items-baseline gap-sm">
+                        <span class="font-headline-md text-headline-md text-primary">4.52B</span>
+                        <span class="text-on-surface-variant font-bold text-label-md">High Vol</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-12 gap-gutter">
+            <div class="col-span-12 lg:col-span-9 space-y-gutter">
+                <div class="glass-card p-lg rounded-xl shadow-sm">
+                    <div class="flex justify-between items-center mb-md">
+                        <div class="flex items-center gap-sm">
+                            <div class="w-10 h-10 bg-secondary-fixed rounded-lg flex items-center justify-center font-bold text-on-secondary-fixed">A</div>
+                            <div>
+                                <h3 class="font-headline-sm text-headline-sm text-primary">Agricultural Development Bank (ADBL)</h3>
+                                <p class="text-label-md text-on-surface-variant">Commercial Banking | FY 2080/81 Q4</p>
+                            </div>
+                        </div>
+                        <button class="bg-surface-container-high px-md py-xs rounded-lg text-label-md font-bold hover:bg-outline-variant transition-colors" id="switch-company-btn">Switch Company</button>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">REVENUE</p>
+                            <p class="font-headline-sm text-headline-sm text-primary">NPR 18.4B</p>
+                            <p class="text-emerald-600 text-label-md font-bold">↑ 8.2% YoY</p>
+                        </div>
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">NET PROFIT</p>
+                            <p class="font-headline-sm text-headline-sm text-primary">NPR 3.12B</p>
+                            <p class="text-emerald-600 text-label-md font-bold">↑ 12.5% YoY</p>
+                        </div>
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">EPS (ANNUALIZED)</p>
+                            <p class="font-headline-sm text-headline-sm text-primary">NPR 24.15</p>
+                            <p class="text-error text-label-md font-bold">↓ 2.1% QoQ</p>
+                        </div>
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">TOTAL ASSETS</p>
+                            <p class="font-headline-sm text-headline-sm text-primary">NPR 245.8B</p>
+                            <p class="text-on-surface-variant text-label-md font-bold">Stable</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                    <div class="glass-card p-lg rounded-xl shadow-sm">
+                        <div class="flex justify-between items-center mb-lg">
+                            <h4 class="font-headline-sm text-headline-sm text-primary">Revenue Trend</h4>
+                            <span class="text-label-md text-on-surface-variant">Last 5 Quarters</span>
+                        </div>
+                        <div class="h-64 flex items-end justify-between gap-sm px-md pb-md">
+                            <div class="w-full bg-primary-fixed-dim rounded-t h-[40%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">12.4B</span>
+                            </div>
+                            <div class="w-full bg-primary-fixed-dim rounded-t h-[55%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">14.1B</span>
+                            </div>
+                            <div class="w-full bg-primary-fixed-dim rounded-t h-[65%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">15.8B</span>
+                            </div>
+                            <div class="w-full bg-primary-fixed-dim rounded-t h-[85%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">17.9B</span>
+                            </div>
+                            <div class="w-full bg-primary rounded-t h-[100%] cursor-pointer group relative">
+                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-100">18.4B</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mt-sm text-label-md text-on-surface-variant px-md">
+                            <span>Q4 '79</span><span>Q1 '80</span><span>Q2 '80</span><span>Q3 '80</span><span>Q4 '80</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-lg rounded-xl shadow-sm">
+                        <div class="flex justify-between items-center mb-lg">
+                            <h4 class="font-headline-sm text-headline-sm text-primary">Net Profit Trend</h4>
+                            <span class="text-label-md text-on-surface-variant">Annualized Growth</span>
+                        </div>
+                        <div class="h-64 relative overflow-hidden flex items-center">
+                            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 200">
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#47607e;stop-opacity:0.2"></stop>
+                                        <stop offset="100%" style="stop-color:#47607e;stop-opacity:0"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M 0 160 Q 50 140 100 150 T 200 100 T 300 80 T 400 50" fill="none" stroke="#47607e" stroke-width="3"></path>
+                                <path d="M 0 160 Q 50 140 100 150 T 200 100 T 300 80 T 400 50 V 200 H 0 Z" fill="url(#gradient)"></path>
+                                <circle cx="0" cy="160" fill="#051125" r="4"></circle>
+                                <circle cx="100" cy="150" fill="#051125" r="4"></circle>
+                                <circle cx="200" cy="100" fill="#051125" r="4"></circle>
+                                <circle cx="300" cy="80" fill="#051125" r="4"></circle>
+                                <circle cx="400" cy="50" fill="#051125" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="flex justify-between mt-sm text-label-md text-on-surface-variant px-md">
+                            <span>2077</span><span>2078</span><span>2079</span><span>2080</span><span>2081</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-12 lg:col-span-3 space-y-gutter">
+                <div class="bg-primary-container text-on-primary rounded-xl shadow-lg p-lg relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-lg opacity-10 scale-150 transform -rotate-12 group-hover:rotate-0 transition-transform">
+                        <span class="material-symbols-outlined text-[80px]">psychology</span>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-sm mb-md">
+                            <span class="material-symbols-outlined text-tertiary-fixed-dim">auto_awesome</span>
+                            <h4 class="font-headline-sm text-headline-sm">AI Performance Summary</h4>
+                        </div>
+                        <p class="font-body-md mb-lg leading-relaxed text-on-primary-container/90">
+                            ADBL shows strong <span class="text-tertiary-fixed-dim font-bold">operational efficiency</span> with a 12.5% YoY profit surge. While EPS dipped slightly this quarter, the overall balance sheet expansion suggests robust long-term solvency. Market positioning remains favorable within the commercial banking tier.
+                        </p>
+                        <button class="w-full py-sm bg-tertiary-fixed text-on-tertiary-fixed rounded-lg font-bold text-label-md hover:bg-tertiary-fixed-dim transition-colors">Download Detailed Report</button>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-xl shadow-sm flex flex-col h-full overflow-hidden">
+                    <div class="p-lg border-b border-outline-variant">
+                        <h4 class="font-headline-sm text-headline-sm text-primary">Sector Watch</h4>
+                        <p class="text-label-md text-on-surface-variant">Top Performers Today</p>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="px-lg py-md">
+                            <div class="flex items-center justify-between mb-sm">
+                                <span class="font-label-md text-label-md font-bold text-secondary">Hydropower</span>
+                                <span class="text-label-md text-emerald-600 font-bold">+2.41%</span>
+                            </div>
+                            <div class="space-y-base">
+                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
+                                    <span class="font-body-md text-primary">UPPER</span>
+                                    <span class="text-emerald-600 font-bold text-label-md">▲ 4.5%</span>
+                                </div>
+                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
+                                    <span class="font-body-md text-primary">SHPC</span>
+                                    <span class="text-emerald-600 font-bold text-label-md">▲ 3.2%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-outline-variant mx-lg">
+                        <div class="px-lg py-md">
+                            <div class="flex items-center justify-between mb-sm">
+                                <span class="font-label-md text-label-md font-bold text-secondary">Commercial Banking</span>
+                                <span class="text-label-md text-emerald-600 font-bold">+1.08%</span>
+                            </div>
+                            <div class="space-y-base">
+                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
+                                    <span class="font-body-md text-primary">NABIL</span>
+                                    <span class="text-emerald-600 font-bold text-label-md">▲ 1.8%</span>
+                                </div>
+                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
+                                    <span class="font-body-md text-primary">GBIME</span>
+                                    <span class="text-error font-bold text-label-md">▼ 0.4%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="p-md text-center text-label-md font-bold text-primary hover:underline bg-surface-container-low" href="#">View All Sectors</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-surface-dim dark:bg-surface-dim text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md">
+        <div>
+            <span class="font-label-md text-label-md font-bold">© 2026 NEPSE Financial Analyzer | Data source: Nepal Stock Exchange</span>
+        </div>
+        <div class="flex gap-xl">
+            <span class="text-emerald-600 font-bold">System Status: Operational</span>
+            <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Privacy Policy</a>
+            <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">API Docs</a>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
