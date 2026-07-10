@@ -1,0 +1,79 @@
+metric,mapped_field,period,value
+Equity Share Capital,share_capital,Q2_2082,1030500000
+Equity Share Capital,share_capital,Q1_2082,1030500000
+Equity Share Capital,share_capital,Q2_2081,635500000
+Reserve and Surplus,reserves_and_surplus,Q2_2082,322215059
+Reserve and Surplus,reserves_and_surplus,Q1_2082,330722835
+Reserve and Surplus,reserves_and_surplus,Q2_2081,295429622
+Total Equity,total_equity,Q2_2082,1352715059
+Total Equity,total_equity,Q1_2082,1361222835
+Total Equity,total_equity,Q2_2081,930929622
+Long Term Borrowings,long_term_borrowings,Q2_2082,1280417798
+Long Term Borrowings,long_term_borrowings,Q1_2082,1275402603
+Long Term Borrowings,long_term_borrowings,Q2_2081,1275402603
+Total Non-Current Liabilities,,Q2_2082,1280417798
+Total Non-Current Liabilities,,Q1_2082,1275402603
+Total Non-Current Liabilities,,Q2_2081,1275402603
+Short Term Loans & Borrowings,short_term_borrowings,Q2_2082,173208635
+Short Term Loans & Borrowings,short_term_borrowings,Q1_2082,159908635
+Short Term Loans & Borrowings,short_term_borrowings,Q2_2081,489773476
+Trade and Other Payables,,Q2_2082,180246449
+Trade and Other Payables,,Q1_2082,89838885
+Trade and Other Payables,,Q2_2081,112902190
+Total Current Liabilities,total_current_liabilities,Q2_2082,353455083
+Total Current Liabilities,total_current_liabilities,Q1_2082,249747520
+Total Current Liabilities,total_current_liabilities,Q2_2081,602675666
+Total Equity and Liabilities,total_equity_and_liabilities,Q2_2082,2986587940
+Total Equity and Liabilities,total_equity_and_liabilities,Q1_2082,2886372958
+Total Equity and Liabilities,total_equity_and_liabilities,Q2_2081,2809007891
+"Property, Plant and Equipment",,Q2_2082,123587
+"Property, Plant and Equipment",,Q1_2082,135945
+"Property, Plant and Equipment",,Q2_2081,148304
+Intangible Assets,,Q2_2082,2867325560
+Intangible Assets,,Q1_2082,2779056205
+Intangible Assets,,Q2_2081,2722254900
+"Net Property, Plant and Equipment",,Q2_2082,2867449147
+"Net Property, Plant and Equipment",,Q1_2082,2779192151
+"Net Property, Plant and Equipment",,Q2_2081,2722403204
+Trade and Other Receivable,,Q2_2082,42761681
+Trade and Other Receivable,,Q1_2082,3382388
+Trade and Other Receivable,,Q2_2081,
+Cash and Cash Equivalent,cash_and_cash_equivalents,Q2_2082,2318803
+Cash and Cash Equivalent,cash_and_cash_equivalents,Q1_2082,26312524
+Cash and Cash Equivalent,cash_and_cash_equivalents,Q2_2081,1671082
+Other Current Assets,,Q2_2082,74058309
+Other Current Assets,,Q1_2082,77485896
+Other Current Assets,,Q2_2081,84933605
+Total Current Assets,total_current_assets,Q2_2082,119138793
+Total Current Assets,total_current_assets,Q1_2082,107180808
+Total Current Assets,total_current_assets,Q2_2081,86604687
+Total Assets,total_assets,Q2_2082,2986587940
+Total Assets,total_assets,Q1_2082,2886372958
+Total Assets,total_assets,Q2_2081,2809007891
+Add: IFRIC Income,,Q2_2082,
+Add: IFRIC Income,,Q1_2082,36004033
+Add: IFRIC Income,,Q2_2081,30056908
+Add: Other Income,,Q2_2082,171500
+Add: Other Income,,Q1_2082,236
+Add: Other Income,,Q2_2081,471
+Total Income,total_income,Q2_2082,42106786
+Total Income,total_income,Q1_2082,36004268
+Total Income,total_income,Q2_2081,30057379
+Less: Employee Benefit and Administrative Expenses,,Q2_2082,768566
+Less: Employee Benefit and Administrative Expenses,,Q1_2082,698697
+Less: Employee Benefit and Administrative Expenses,,Q2_2081,2794786
+Less : Depreciation Amortization,,Q2_2082,26581488
+Less : Depreciation Amortization,,Q1_2082,12359
+Less : Depreciation Amortization,,Q2_2081,49435
+Earning Before Interest & Tax,,Q2_2082,14756732
+Earning Before Interest & Tax,,Q1_2082,35293213
+Earning Before Interest & Tax,,Q2_2081,27213159
+Earning Before Tax,profit_before_tax,Q2_2082,-8507776
+Earning Before Tax,profit_before_tax,Q1_2082,35293213
+Earning Before Tax,profit_before_tax,Q2_2081,27213159
+Earning After Tax (EAT),net_profit,Q2_2082,-8507776
+Earning After Tax (EAT),net_profit,Q1_2082,35293213
+Earning After Tax (EAT),net_profit,Q2_2081,27213159
+Total Comprehensive Income,total_comprehensive_income,Q2_2082,-8507776
+Total Comprehensive Income,total_comprehensive_income,Q1_2082,35293213
+Total Comprehensive Income,total_comprehensive_income,Q2_2081,27213159

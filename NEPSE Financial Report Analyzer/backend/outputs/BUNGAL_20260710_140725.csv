@@ -1,0 +1,106 @@
+metric,mapped_field,period,value
+"Properties, Plant & Equipments",,Q3_2082,2943043991
+"Properties, Plant & Equipments",,Q2_2082,2974930761
+"Properties, Plant & Equipments",,Q3_2081,3064188298
+Total Non-Current Assets,,Q3_2082,2943043991
+Total Non-Current Assets,,Q2_2082,2974930761
+Total Non-Current Assets,,Q3_2081,3064188298
+Deposits,,Q3_2082,825416
+Deposits,,Q2_2082,825416
+Deposits,,Q3_2081,3097731
+Other Loans & Advances,,Q3_2082,15276631
+Other Loans & Advances,,Q2_2082,11744559
+Other Loans & Advances,,Q3_2081,24749829
+Sundry Debtors,,Q3_2082,25892895
+Sundry Debtors,,Q2_2082,43409926
+Sundry Debtors,,Q3_2081,22993576
+Cash & Bank Balance,cash_and_cash_equivalents,Q3_2082,9954793
+Cash & Bank Balance,cash_and_cash_equivalents,Q2_2082,16782903
+Cash & Bank Balance,cash_and_cash_equivalents,Q3_2081,9371193
+Total Current Assets,total_current_assets,Q3_2082,51949736
+Total Current Assets,total_current_assets,Q2_2082,72762804
+Total Current Assets,total_current_assets,Q3_2081,60212328
+Total Assets,total_assets,Q3_2082,2994993727
+Total Assets,total_assets,Q2_2082,3047693565
+Total Assets,total_assets,Q3_2081,3124400626
+Share Capital,share_capital,Q3_2082,830000000
+Share Capital,share_capital,Q2_2082,830000000
+Share Capital,share_capital,Q3_2081,539500000
+Reserve and Surplus,reserves_and_surplus,Q3_2082,-127181056
+Reserve and Surplus,reserves_and_surplus,Q2_2082,-94551697
+Reserve and Surplus,reserves_and_surplus,Q3_2081,-41570302
+Total Equity,total_equity,Q3_2082,702818944
+Total Equity,total_equity,Q2_2082,735448303
+Total Equity,total_equity,Q3_2081,497929698
+Secured Loans,secured_loans,Q3_2082,2027470741
+Secured Loans,secured_loans,Q2_2082,2004196353
+Secured Loans,secured_loans,Q3_2081,2104401000
+Total Non-Current Liabilities,,Q3_2082,2027470741
+Total Non-Current Liabilities,,Q2_2082,2004196353
+Total Non-Current Liabilities,,Q3_2081,2104401000
+Trade and Other Payables,,Q3_2082,188653867
+Trade and Other Payables,,Q2_2082,193973648
+Trade and Other Payables,,Q3_2081,238053875
+Total Current Liabilities,total_current_liabilities,Q3_2082,264704042
+Total Current Liabilities,total_current_liabilities,Q2_2082,308048910
+Total Current Liabilities,total_current_liabilities,Q3_2081,522069928
+Total Liabilities,total_liabilities,Q3_2082,2292174783
+Total Liabilities,total_liabilities,Q2_2082,2312245262
+Total Liabilities,total_liabilities,Q3_2081,2626470928
+Total Equity and Liabilities,total_equity_and_liabilities,Q3_2082,2994993727
+Total Equity and Liabilities,total_equity_and_liabilities,Q2_2082,3047693565
+Total Equity and Liabilities,total_equity_and_liabilities,Q3_2081,3124400626
+Revenue from Operations,revenue,Q3_2082,236641648
+Revenue from Operations,revenue,Q2_2082,185259565
+Revenue from Operations,revenue,Q3_2081,221215216
+Less: Direct Expenses,,Q3_2082,10917195
+Less: Direct Expenses,,Q2_2082,8781024
+Less: Direct Expenses,,Q3_2081,12601510
+Less : Amortization of project Assets,,Q3_2082,90730605
+Less : Amortization of project Assets,,Q2_2082,59011480
+Less : Amortization of project Assets,,Q3_2081,88050086
+Gross Profit,gross_profit,Q3_2082,134993847
+Gross Profit,gross_profit,Q2_2082,117467061
+Gross Profit,gross_profit,Q3_2081,120563621
+Staff Costs,,Q3_2082,10335356
+Staff Costs,,Q2_2082,7166566
+Staff Costs,,Q3_2081,9768665
+Other Operating Costs,,Q3_2082,9960404
+Other Operating Costs,,Q2_2082,1486882
+Other Operating Costs,,Q3_2081,6721255
+Financial Costs,finance_costs,Q3_2082,118965152
+Financial Costs,finance_costs,Q2_2082,80658962
+Financial Costs,finance_costs,Q3_2081,150438543
+Depreciation,,Q3_2082,622934
+Depreciation,,Q2_2082,415289
+Depreciation,,Q3_2081,688120
+Net Profit before Tax,profit_before_tax,Q3_2082,-4889998
+Net Profit before Tax,profit_before_tax,Q2_2082,27739362
+Net Profit before Tax,profit_before_tax,Q3_2081,-47052962
+Net Profit,net_profit,Q3_2082,-4889998
+Net Profit,net_profit,Q2_2082,27739362
+Net Profit,net_profit,Q3_2081,-47052962
+Earning Per Shares (EPS) - Rs.,eps,Q3_2082,-0.59
+Earning Per Shares (EPS) - Rs.,eps,Q2_2082,3.34
+Earning Per Shares (EPS) - Rs.,eps,Q3_2081,-8.72
+Networth Per Shares - Rs.,networth_per_share,Q3_2082,84.68
+Networth Per Shares - Rs.,networth_per_share,Q2_2082,88.61
+Networth Per Shares - Rs.,networth_per_share,Q3_2081,92.29
+Liquity Ratio,liquidity_ratio,Q3_2082,0.2
+Liquity Ratio,liquidity_ratio,Q2_2082,0.24
+Liquity Ratio,liquidity_ratio,Q3_2081,0.12
+Return of Assets - Rs.,return_on_assets,Q3_2082,360.84
+Return of Assets - Rs.,return_on_assets,Q2_2082,367.19
+Return of Assets - Rs.,return_on_assets,Q3_2081,579.13
+Market Value of Shares - Rs.,market_value_per_share,Q3_2082,615.0
+Market Value of Shares - Rs.,market_value_per_share,Q2_2082,637.2
+Market Value of Shares - Rs.,market_value_per_share,Q3_2081,
+Maximum Price,maximum_share_price,Q3_2082,822.0
+Maximum Price,maximum_share_price,Q2_2082,
+Maximum Price,maximum_share_price,Q3_2081,53
+Minimum Price,minimum_share_price,Q3_2082,555.1
+Minimum Price,minimum_share_price,Q2_2082,
+Minimum Price,minimum_share_price,Q3_2081,2143903
+Closing Price,closing_share_price,Q3_2082,615.0
+Closing Price,closing_share_price,Q2_2082,
+Closing Price,closing_share_price,Q3_2081,32882

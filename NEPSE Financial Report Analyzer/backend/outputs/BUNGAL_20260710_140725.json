@@ -1,0 +1,335 @@
+{
+  "metadata": {
+    "source_pdf": "Bungal.pdf",
+    "extracted_at": "2026-07-10T14:07:25",
+    "important_metric_count": 22,
+    "company": "BUNGAL",
+    "sector": "hydropower",
+    "report_type": "quarterly",
+    "fiscal_year": "2082/83",
+    "quarter": "Q3"
+  },
+  "headers": [
+    "Q3_2082",
+    "Q2_2082",
+    "Q3_2081"
+  ],
+  "metrics": [
+    {
+      "metric": "Properties, Plant & Equipments",
+      "field": null,
+      "values": [
+        2943043991,
+        2974930761,
+        3064188298
+      ]
+    },
+    {
+      "metric": "Total Non-Current Assets",
+      "field": null,
+      "values": [
+        2943043991,
+        2974930761,
+        3064188298
+      ]
+    },
+    {
+      "metric": "Deposits",
+      "field": null,
+      "values": [
+        825416,
+        825416,
+        3097731
+      ]
+    },
+    {
+      "metric": "Other Loans & Advances",
+      "field": null,
+      "values": [
+        15276631,
+        11744559,
+        24749829
+      ]
+    },
+    {
+      "metric": "Sundry Debtors",
+      "field": null,
+      "values": [
+        25892895,
+        43409926,
+        22993576
+      ]
+    },
+    {
+      "metric": "Cash & Bank Balance",
+      "field": "cash_and_cash_equivalents",
+      "values": [
+        9954793,
+        16782903,
+        9371193
+      ]
+    },
+    {
+      "metric": "Total Current Assets",
+      "field": "total_current_assets",
+      "values": [
+        51949736,
+        72762804,
+        60212328
+      ]
+    },
+    {
+      "metric": "Total Assets",
+      "field": "total_assets",
+      "values": [
+        2994993727,
+        3047693565,
+        3124400626
+      ]
+    },
+    {
+      "metric": "Share Capital",
+      "field": "share_capital",
+      "values": [
+        830000000,
+        830000000,
+        539500000
+      ]
+    },
+    {
+      "metric": "Reserve and Surplus",
+      "field": "reserves_and_surplus",
+      "values": [
+        -127181056,
+        -94551697,
+        -41570302
+      ]
+    },
+    {
+      "metric": "Total Equity",
+      "field": "total_equity",
+      "values": [
+        702818944,
+        735448303,
+        497929698
+      ]
+    },
+    {
+      "metric": "Secured Loans",
+      "field": "secured_loans",
+      "values": [
+        2027470741,
+        2004196353,
+        2104401000
+      ]
+    },
+    {
+      "metric": "Total Non-Current Liabilities",
+      "field": null,
+      "values": [
+        2027470741,
+        2004196353,
+        2104401000
+      ]
+    },
+    {
+      "metric": "Trade and Other Payables",
+      "field": null,
+      "values": [
+        188653867,
+        193973648,
+        238053875
+      ]
+    },
+    {
+      "metric": "Total Current Liabilities",
+      "field": "total_current_liabilities",
+      "values": [
+        264704042,
+        308048910,
+        522069928
+      ]
+    },
+    {
+      "metric": "Total Liabilities",
+      "field": "total_liabilities",
+      "values": [
+        2292174783,
+        2312245262,
+        2626470928
+      ]
+    },
+    {
+      "metric": "Total Equity and Liabilities",
+      "field": "total_equity_and_liabilities",
+      "values": [
+        2994993727,
+        3047693565,
+        3124400626
+      ]
+    },
+    {
+      "metric": "Revenue from Operations",
+      "field": "revenue",
+      "values": [
+        236641648,
+        185259565,
+        221215216
+      ]
+    },
+    {
+      "metric": "Less: Direct Expenses",
+      "field": null,
+      "values": [
+        10917195,
+        8781024,
+        12601510
+      ]
+    },
+    {
+      "metric": "Less : Amortization of project Assets",
+      "field": null,
+      "values": [
+        90730605,
+        59011480,
+        88050086
+      ]
+    },
+    {
+      "metric": "Gross Profit",
+      "field": "gross_profit",
+      "values": [
+        134993847,
+        117467061,
+        120563621
+      ]
+    },
+    {
+      "metric": "Staff Costs",
+      "field": null,
+      "values": [
+        10335356,
+        7166566,
+        9768665
+      ]
+    },
+    {
+      "metric": "Other Operating Costs",
+      "field": null,
+      "values": [
+        9960404,
+        1486882,
+        6721255
+      ]
+    },
+    {
+      "metric": "Financial Costs",
+      "field": "finance_costs",
+      "values": [
+        118965152,
+        80658962,
+        150438543
+      ]
+    },
+    {
+      "metric": "Depreciation",
+      "field": null,
+      "values": [
+        622934,
+        415289,
+        688120
+      ]
+    },
+    {
+      "metric": "Net Profit before Tax",
+      "field": "profit_before_tax",
+      "values": [
+        -4889998,
+        27739362,
+        -47052962
+      ]
+    },
+    {
+      "metric": "Net Profit",
+      "field": "net_profit",
+      "values": [
+        -4889998,
+        27739362,
+        -47052962
+      ]
+    },
+    {
+      "metric": "Earning Per Shares (EPS) - Rs.",
+      "field": "eps",
+      "values": [
+        -0.59,
+        3.34,
+        -8.72
+      ]
+    },
+    {
+      "metric": "Networth Per Shares - Rs.",
+      "field": "networth_per_share",
+      "values": [
+        84.68,
+        88.61,
+        92.29
+      ]
+    },
+    {
+      "metric": "Liquity Ratio",
+      "field": "liquidity_ratio",
+      "values": [
+        0.2,
+        0.24,
+        0.12
+      ]
+    },
+    {
+      "metric": "Return of Assets - Rs.",
+      "field": "return_on_assets",
+      "values": [
+        360.84,
+        367.19,
+        579.13
+      ]
+    },
+    {
+      "metric": "Market Value of Shares - Rs.",
+      "field": "market_value_per_share",
+      "values": [
+        615.0,
+        637.2,
+        null
+      ]
+    },
+    {
+      "metric": "Maximum Price",
+      "field": "maximum_share_price",
+      "values": [
+        822.0,
+        null,
+        53
+      ]
+    },
+    {
+      "metric": "Minimum Price",
+      "field": "minimum_share_price",
+      "values": [
+        555.1,
+        null,
+        2143903
+      ]
+    },
+    {
+      "metric": "Closing Price",
+      "field": "closing_share_price",
+      "values": [
+        615.0,
+        null,
+        32882
+      ]
+    }
+  ],
+  "raw_text_preview": "Bungal Hydro Limited\nDhobighat-03, Lalitpur\nPhone No: 015424335, Email id: info.kghep@gmail.com\nUnaudited Financial Report (Quartely)\nFor Third Quarter Fiscal Year 2082/83 Ended Chaitra 30, 2082 (April 13, 2026)\nStatement of Financial Position\n( In NPR)\nCorreponding Previous\nThis Quarter Ending Previous Quarter\nYear Quarter Ending\nParticulars Chaitra End 2082 Ending Poush End\nChaitra End 2081\n(Unaudited) 2082 (Unaudited)\n(Unaudited)\nAssets\nNon-Current Assets:\nProperties, Plant & Equipments 2,943,043,991 2,974,930,761 3,064,188,298\nInvestments - - -\nTotal Non-Current Assets 2,943,043,991 2,974,930,761 3,064,188,298\nCurrent Assets:\nDeposits 825,416 825,416 3,097,731\nOther Loans & Advances 15,276,631 11,744,559 24,749,829\nSundry Debtors 25,892,895 43,409,926 22,993,576\nCash & Bank Balance 9,954,793 16,782,903 9,371,193\nTotal Current Assets 51,949,736 72,762,804 60,212,328\nTotal Assets 2,994,993,727 3,047,693,565 3,124,400,626\nEquity\nShare Capital 830,000,000 830,000,000 539,500,000\nReserve and Surplus (127,181,056) (94,551,697) (41,570,302)\nTotal Equity 702,818,944 735,448,303 497,929,698\nLiabilities\nNon-Current Liabilities:\nSecured Loans 2,027,470,741 2,004,196,353 2,104,401,000\nUnsecured Loans - - -\nTotal Non-Current Liabilities 2,027,470,741 2,004,196,353 2,104,401,000\nCurrent Liabilities:\nTrade and Other Payables 188,653,867 193,973,648 238,053,875\nSecured Loans 76,050,175 114,075,262 284,016,053\nDeferred Tax Liabilities - - -\nTotal Current Liabilities 264,704,042 308,048,910 522,069,928\nTotal Liabilities 2,292,174,783 2,312,245,262 2,626,470,928\nTotal Equity and Liabilities 2,994,993,727 3,047,693,565 3,124,400,626\nStatement of Profit (Loss)\n( In NPR)\nCorreponding Previous\nThis Quarter Ending Previous Quarter\nYear Quarter Ending\nParticulars Chaitra End 2082 Ending Poush End\nChaitra End 2081\n(Unaudited) 2082 (Unaudited)\n(Unaudited)\nRevenue from Operations 236,641,648 185,259,565 221,215,216\nLess: Direct Expenses 10,917,195 8,781,024 12,601,510\nLess : Amortization of project Assets 90,730,605 59,011,480 88,050,086\nGross Profit 134,993,847 117,467,061 120,563,621\nOther Income - -\nStaff Costs 10,335,356 7,166,566 9,768,665\nOther Operating Costs 9,960,404 1,486,882 6,721,255\nFinancial Costs 118,965,152 80,658,962 150,438,543\nDepreciation 622,934 415,289 688,120\nNet Profit before Tax (4,889,998) 27,739,362 (47,052,962)\nIncome Tax - - -\nNet Profit (4,889,998) 27,739,362 (47,052,962)\nNotes :\n* The figures are regrouped and rearranged where necessary.\n* Financial Statement are prepared in accordance with the applicable Nepal Financial Reporting Standards.\n* The Unaudited financial figures are subject to change from external auditors and regulatory authority.\nThird Quarter Disclosure as of Chaitra 30, 2082 (April 13, 2026)\nas per Securities Registration and Issuance Regualtion Annexure 14\n(Related to Sub- Regulation 1 of Regulation 26)\n1. Financial Statement\na) The financial statements for the third quarter have been published as a part of this report.\nb"
+}

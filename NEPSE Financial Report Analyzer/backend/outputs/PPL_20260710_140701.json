@@ -1,0 +1,272 @@
+{
+  "metadata": {
+    "source_pdf": "PPL.pdf",
+    "extracted_at": "2026-07-10T14:07:01",
+    "important_metric_count": 13,
+    "company": "PPL",
+    "sector": "hydropower",
+    "report_type": "quarterly",
+    "fiscal_year": "2082/83",
+    "quarter": "Q3"
+  },
+  "headers": [
+    "Q3_2082",
+    "Q2_2082",
+    "Q3_2081"
+  ],
+  "metrics": [
+    {
+      "metric": "Properties, Plant & Equipments",
+      "field": null,
+      "values": [
+        108,
+        116,
+        906598
+      ]
+    },
+    {
+      "metric": "Intangible Assets under IFRIC 12",
+      "field": null,
+      "values": [
+        873486,
+        881701,
+        null
+      ]
+    },
+    {
+      "metric": "Deferred Tax Assets",
+      "field": null,
+      "values": [
+        13,
+        13,
+        7
+      ]
+    },
+    {
+      "metric": "Total Non-Current Assets",
+      "field": null,
+      "values": [
+        873608,
+        881831,
+        906606
+      ]
+    },
+    {
+      "metric": "Deposits",
+      "field": null,
+      "values": [
+        667,
+        667,
+        1205
+      ]
+    },
+    {
+      "metric": "Sundry Debtors & other Current Assets",
+      "field": null,
+      "values": [
+        25385,
+        14449,
+        10275
+      ]
+    },
+    {
+      "metric": "Cash & Bank Balance",
+      "field": "cash_and_cash_equivalents",
+      "values": [
+        81097,
+        90724,
+        15098
+      ]
+    },
+    {
+      "metric": "Total Current Assets",
+      "field": "total_current_assets",
+      "values": [
+        107149,
+        112787,
+        31858
+      ]
+    },
+    {
+      "metric": "Total Assets",
+      "field": "total_assets",
+      "values": [
+        980757,
+        994618,
+        938464
+      ]
+    },
+    {
+      "metric": "Share Capital",
+      "field": "share_capital",
+      "values": [
+        948900,
+        948900,
+        632600
+      ]
+    },
+    {
+      "metric": "Reserve and Surplus",
+      "field": "reserves_and_surplus",
+      "values": [
+        -37208,
+        -21390,
+        -12518
+      ]
+    },
+    {
+      "metric": "Share Premium",
+      "field": null,
+      "values": [
+        65476,
+        65476,
+        null
+      ]
+    },
+    {
+      "metric": "Total Equity",
+      "field": "total_equity",
+      "values": [
+        977168,
+        992986,
+        620082
+      ]
+    },
+    {
+      "metric": "Trade and Other Payables",
+      "field": null,
+      "values": [
+        3474,
+        1517,
+        358
+      ]
+    },
+    {
+      "metric": "Provision",
+      "field": null,
+      "values": [
+        115,
+        115,
+        null
+      ]
+    },
+    {
+      "metric": "Total Current Liabilities",
+      "field": "total_current_liabilities",
+      "values": [
+        3589,
+        1631,
+        358
+      ]
+    },
+    {
+      "metric": "Total Liabilities",
+      "field": "total_liabilities",
+      "values": [
+        3589,
+        1631,
+        318382
+      ]
+    },
+    {
+      "metric": "Total Equity and Liabilities",
+      "field": "total_equity_and_liabilities",
+      "values": [
+        980757,
+        994618,
+        938464
+      ]
+    },
+    {
+      "metric": "Revenue from Operations",
+      "field": "revenue",
+      "values": [
+        53598,
+        31715,
+        69640
+      ]
+    },
+    {
+      "metric": "Less: Direct Expenses",
+      "field": null,
+      "values": [
+        29722,
+        7157,
+        10057
+      ]
+    },
+    {
+      "metric": "Gross Profit",
+      "field": "gross_profit",
+      "values": [
+        23876,
+        24558,
+        59583
+      ]
+    },
+    {
+      "metric": "Other Income",
+      "field": null,
+      "values": [
+        10,
+        9,
+        22
+      ]
+    },
+    {
+      "metric": "Administrative Expenses",
+      "field": null,
+      "values": [
+        14276,
+        7354,
+        null
+      ]
+    },
+    {
+      "metric": "Amortization of Intangible Assets",
+      "field": null,
+      "values": [
+        24644,
+        16429,
+        null
+      ]
+    },
+    {
+      "metric": "Depreciation",
+      "field": null,
+      "values": [
+        109,
+        109,
+        24716
+      ]
+    },
+    {
+      "metric": "Finance Cost",
+      "field": "finance_costs",
+      "values": [
+        2897,
+        2897,
+        20217
+      ]
+    },
+    {
+      "metric": "Net Profit before Tax",
+      "field": "profit_before_tax",
+      "values": [
+        -18040,
+        -2222,
+        7802
+      ]
+    },
+    {
+      "metric": "Net Profit",
+      "field": "net_profit",
+      "values": [
+        -18040,
+        -2222,
+        7802
+      ]
+    }
+  ],
+  "raw_text_preview": "Unaudited Financial Results (Quarterly)\n3rd Quarter of financial Year 2082/83\nBalance Sheet as on Chaitra end, 2082 (Unaudited) (NPR '000)\nCorresponding\nThis Quarter Previous Quarter\nPrevious Year\nParticulars ending As at 30th ending As at 29th\nending As at 31th\nChaitra, 2082 Poush, 2082\nChaitra, 2081\nAssets\nNon-Current Assets:\nProperties, Plant & Equipments 108 116 906,598\nIntangible Assets under IFRIC 12 873,486 881,701 -\nInvestments - - -\nPrepaid Insurance - - -\nDeferred Tax Assets 13 13 7\nTotal Non-Current Assets 873,608 881,831 906,606\nCurrent Assets:\nDeposits 667 667 1,205\nOther Loans & Advances - - 5,280\nTrade Receivables - 6,948 -\nSundry Debtors & other Current Assets 25,385 14,449 10,275\nInventories - - -\nCash & Bank Balance 81,097 90,724 15,098\nPreliminary Expenses - - -\nPrepaid Expenses - - -\nTotal Current Assets 107,149 112,787 31,858\nTotal Assets 980,757 994,618 938,464\nEquity\nShare Capital 948,900 948,900 632,600\nReserve and Surplus (37,208) (21,390) (12,518)\nShare Premium 65,476 65,476 -\nTotal Equity 977,168 992,986 620,082\nLiabilities\nNon-Current Liabilities:\nLong Term Borrowings - - 318,024\nUnsecured Loans - - -\nTotal Non-Current Liabilities - - 318,024\nCurrent Liabilities:\nTrade and Other Payables 3,474 1,517 358\nProvision 115 115 -\nCurrent portion of Long Term Borrowings - - -\nBridge Gap Loan - - -\nDividend Payable - - -\nDeferred Tax Liabilities - - -\nTotal Current Liabilities 3,589 1,631 358\nTotal Liabilities 3,589 1,631 318,382\nTotal Equity and Liabilities 980,757 994,618 938,464\nProfit & Loss Accounts for the period ended Chaitra end, 2082 (Unaudited) (NPR '000)\nCorresponding\nThis Quarter Previous Quarter\nParticulars Previous Year Quarter\nEnding Ending\nEnding\nRevenue from Operations 53,598 31,715 69,640\nLess: Direct Expenses 29,722 7,157 10,057\nGross Profit 23,876 24,558 59,583\nOther Income 10 9 22\nAdministrative Expenses 14,276 7,354 -\nStaff Cost - - 1,081\nOther Operating Costs - - 5,791\nFinance Income - - -\nAmortization of Intangible Assets 24,644 16,429 -\nDepreciation 109 109 24,716\nFinance Cost 2,897 2,897 20,217\nProvision for Staff Bonus - - -\nNet Profit before Tax (18,040) (2,222) 7,802\nTax Expense\nCurrent Tax - - -\nDeffered Tax - - -\nNet Profit (18,040) (2,222) 7,802\ngePsf] .\nkg{ ;Sb5 .\ncfPsf] 5 .\nn'sfOPsf] 5}g ."
+}
