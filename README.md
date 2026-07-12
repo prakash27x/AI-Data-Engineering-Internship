@@ -1,15 +1,18 @@
-# NEPSE Financial Report Analyzer
-
+NEPSE Financial Report Analyzer
 AI-powered platform for extracting, storing, analyzing, and comparing financial reports from NEPSE-listed companies.
+Current Scope
 
-## Current Scope
-- Hydropower sector (initial focus)
-- PDF extraction using pdfplumber
-- Structured storage in MySQL
-- Interactive dashboard and comparative analysis
-- No authentication (public access)
+* Hydropower sector (initial focus)
 
-## Project Structure
+* PDF extraction using pdfplumber
+
+* Structured storage in MySQL
+
+* Interactive dashboard and comparative analysis
+
+* No authentication (public access)
+
+Project Structure
 
 ```
 nepse-financial-analyzer/
@@ -90,14 +93,16 @@ nepse-financial-analyzer/
 └── tests/                       # Unit tests (future)
 ```
 
-## Quick Start
+Quick Start
 
 1. Clone the repo
-2. Copy `.env.example` to `.env`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Set up database
-5. Run: `uvicorn backend.app:app --reload`
 
----
+2. Copy .env.example to .env
+
+3. Install dependencies: pip install -r requirements.txt
+
+4. Set up database
+
+5. Run: uvicorn backend.app:app --reload
 
 This structure supports clean architecture, scalability across sectors, and maintainability.
