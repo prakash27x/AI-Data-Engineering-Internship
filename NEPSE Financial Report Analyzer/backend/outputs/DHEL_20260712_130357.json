@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "source_pdf": "Daramkhola.pdf",
+    "extracted_at": "2026-07-12T13:03:57",
+    "important_metric_count": 16,
+    "value_scale": 1,
+    "company": "DHEL",
+    "sector": "hydropower",
+    "report_type": "quarterly",
+    "fiscal_year": "2082/83",
+    "quarter": "Q2"
+  },
+  "headers": [
+    "Q2_2082",
+    "Q1_2082",
+    "Q2_2081"
+  ],
+  "metrics": [
+    {
+      "metric": "Equity Share Capital",
+      "field": "share_capital",
+      "values": [
+        1030500000,
+        1030500000,
+        635500000
+      ]
+    },
+    {
+      "metric": "Reserve and Surplus",
+      "field": "reserves_and_surplus",
+      "values": [
+        322215059,
+        330722835,
+        295429622
+      ]
+    },
+    {
+      "metric": "Total Equity",
+      "field": "total_equity",
+      "values": [
+        1352715059,
+        1361222835,
+        930929622
+      ]
+    },
+    {
+      "metric": "Long Term Borrowings",
+      "field": "long_term_borrowings",
+      "values": [
+        1280417798,
+        1275402603,
+        1275402603
+      ]
+    },
+    {
+      "metric": "Total Non-Current Liabilities",
+      "field": null,
+      "values": [
+        1280417798,
+        1275402603,
+        1275402603
+      ]
+    },
+    {
+      "metric": "Short Term Loans & Borrowings",
+      "field": "short_term_borrowings",
+      "values": [
+        173208635,
+        159908635,
+        489773476
+      ]
+    },
+    {
+      "metric": "Trade and Other Payables",
+      "field": null,
+      "values": [
+        180246449,
+        89838885,
+        112902190
+      ]
+    },
+    {
+      "metric": "Total Current Liabilities",
+      "field": "total_current_liabilities",
+      "values": [
+        353455083,
+        249747520,
+        602675666
+      ]
+    },
+    {
+      "metric": "Total Equity and Liabilities",
+      "field": "total_equity_and_liabilities",
+      "values": [
+        2986587940,
+        2886372958,
+        2809007891
+      ]
+    },
+    {
+      "metric": "Property, Plant and Equipment",
+      "field": null,
+      "values": [
+        123587,
+        135945,
+        148304
+      ]
+    },
+    {
+      "metric": "Intangible Assets",
+      "field": null,
+      "values": [
+        2867325560,
+        2779056205,
+        2722254900
+      ]
+    },
+    {
+      "metric": "Net Property, Plant and Equipment",
+      "field": null,
+      "values": [
+        2867449147,
+        2779192151,
+        2722403204
+      ]
+    },
+    {
+      "metric": "Trade and Other Receivable",
+      "field": null,
+      "values": [
+        42761681,
+        3382388,
+        null
+      ]
+    },
+    {
+      "metric": "Cash and Cash Equivalent",
+      "field": "cash_and_cash_equivalents",
+      "values": [
+        2318803,
+        26312524,
+        1671082
+      ]
+    },
+    {
+      "metric": "Other Current Assets",
+      "field": null,
+      "values": [
+        74058309,
+        77485896,
+        84933605
+      ]
+    },
+    {
+      "metric": "Total Current Assets",
+      "field": "total_current_assets",
+      "values": [
+        119138793,
+        107180808,
+        86604687
+      ]
+    },
+    {
+      "metric": "Total Assets",
+      "field": "total_assets",
+      "values": [
+        2986587940,
+        2886372958,
+        2809007891
+      ]
+    },
+    {
+      "metric": "Revenue from Sale of Energy",
+      "field": "revenue",
+      "values": [
+        43642083,
+        null,
+        null
+      ]
+    },
+    {
+      "metric": "Gross Profit/ (Loss)",
+      "field": "gross_profit",
+      "values": [
+        41935286,
+        null,
+        null
+      ]
+    },
+    {
+      "metric": "Add: IFRIC Income",
+      "field": null,
+      "values": [
+        null,
+        36004033,
+        30056908
+      ]
+    },
+    {
+      "metric": "Add: Other Income",
+      "field": null,
+      "values": [
+        171500,
+        236,
+        471
+      ]
+    },
+    {
+      "metric": "Total Income",
+      "field": "total_income",
+      "values": [
+        42106786,
+        36004268,
+        30057379
+      ]
+    },
+    {
+      "metric": "Less: Employee Benefit and Administrative Expenses",
+      "field": null,
+      "values": [
+        768566,
+        698697,
+        2794786
+      ]
+    },
+    {
+      "metric": "Less : Depreciation Amortization",
+      "field": null,
+      "values": [
+        26581488,
+        12359,
+        49435
+      ]
+    },
+    {
+      "metric": "Earning Before Interest & Tax",
+      "field": null,
+      "values": [
+        14756732,
+        35293213,
+        27213159
+      ]
+    },
+    {
+      "metric": "Less : Financial Expenses",
+      "field": "finance_costs",
+      "values": [
+        23264508,
+        null,
+        null
+      ]
+    },
+    {
+      "metric": "Earning Before Tax",
+      "field": "profit_before_tax",
+      "values": [
+        -8507776,
+        35293213,
+        27213159
+      ]
+    },
+    {
+      "metric": "Earning After Tax (EAT)",
+      "field": "net_profit",
+      "values": [
+        -8507776,
+        35293213,
+        27213159
+      ]
+    },
+    {
+      "metric": "Total Comprehensive Income",
+      "field": "total_comprehensive_income",
+      "values": [
+        -8507776,
+        35293213,
+        27213159
+      ]
+    }
+  ],
+  "raw_text_preview": "UNAUDITED FINANCIAL STATEMENTS\n\u201cfor the Second Quarter, FY 2082-083 Ended 30 Poush 2082 \u201d\nAmount in NRs.\nAs on 31st\nStatement of Financial Position As on 30th As on 32nd\nAshoj 2082\nPoush 2082 Ashadh 2082\n(17th Oct 2025)\n(14th Jan 2026) (16th July 2025)\nParticulars (Previous\n(Unaudited) (Unaudited)\nQuarter)\nEquity and Liabilities\nEquity\nEquity Share Capital 1,030,500,000 1,030,500,000 635,500,000\nReserve and Surplus 322,215,059 330,722,835 295,429,622\nTotal Equity 1,352,715,059 1,361,222,835 930,929,622\nNon-Current Liabilities\nLong Term Borrowings 1,280,417,798 1,275,402,603 1,275,402,603\nTotal Non-Current Liabilities 1,280,417,798 1,275,402,603 1,275,402,603\nCurrent Liabilities\nShort Term Loans & Borrowings 173,208,635 159,908,635 489,773,476\nTrade and Other Payables 180,246,449 89,838,885 112,902,190\nOther Current Liabilities - - -\nTotal Current Liabilities 353,455,083 249,747,520 602,675,666\nTotal Equity and Liabilities 2,986,587,940 2,886,372,958 2,809,007,891\nAssets\nNon-Current Assets\nProperty, Plant and Equipment 123,587 135,945 148,304\nIntangible Assets 2,867,325,560 2,779,056,205 2,722,254,900\nNet Property, Plant and Equipment 2,867,449,147 2,779,192,151 2,722,403,204\nCurrent Assets\nInventory - - -\nTrade and Other Receivable 42,761,681 3,382,388 -\nCash and Cash Equivalent 2,318,803 26,312,524 1,671,082\nOther Current Assets 74,058,309 77,485,896 84,933,605\nTotal Current Assets 119,138,793 107,180,808 86,604,687\nTotal Assets 2,986,587,940 2,886,372,958 2,809,007,891\nAmount in NRs.\nAs on 31st\nStatement of Profit or Loss As on 30th As on 32nd\nAshoj 2082\nPoush 2082 Ashadh 2082\n(17th Oct 2025)\n(14th Jan 2026) (16th July 2025)\nParticulars (Previous\n(Unaudited) (Unaudited)\nQuarter)\nDirect Income\nRevenue from Sale of Energy 43,642,083 - -\nLess : Cost of Sales 1,706,797 - -\nGross Profit/ (Loss) 41,935,286 - -\nAdd: IFRIC Income - 36,004,033 30,056,908\nAdd: Other Income 171,500 236 471\nTotal Income 42,106,786 36,004,268 30,057,379\nLess: Employee Benefit and\n768,566 698,697 2,794,786\nAdministrative Expenses\nLess : Depreciation Amortization 26,581,488 12,359 49,435\nEarning Before Interest & Tax 14,756,732 35,293,213 27,213,159\nLess : Financial Expenses 23,264,508 - -\nEarning Before Tax (8,507,776) 35,293,213 27,213,159\nLess: Provision for Tax - - -\nEarning After Tax (EAT) (8,507,776) 35,293,213 27,213,159\nOther Comprehensive Income - - -\nTotal Comprehensive Income (8,507,776) 35,293,213 27,213,159\n? d\"No cg'kft ?\n(EPS)\n&)* $)@=@ ^$* !,)#,*&( $^ #),)$,^##"
+}

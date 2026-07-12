@@ -1,8 +1,8 @@
 {
   "metadata": {
     "source_pdf": "Daramkhola.pdf",
-    "extracted_at": "2026-07-10T14:07:25",
-    "important_metric_count": 13,
+    "extracted_at": "2026-07-12T13:03:00",
+    "important_metric_count": 16,
     "company": "DHEL",
     "sector": "hydropower",
     "report_type": "quarterly",
@@ -169,6 +169,24 @@
       ]
     },
     {
+      "metric": "Revenue from Sale of Energy",
+      "field": "revenue",
+      "values": [
+        43642083,
+        null,
+        null
+      ]
+    },
+    {
+      "metric": "Gross Profit/ (Loss)",
+      "field": "gross_profit",
+      "values": [
+        41935286,
+        null,
+        null
+      ]
+    },
+    {
       "metric": "Add: IFRIC Income",
       "field": null,
       "values": [
@@ -220,6 +238,15 @@
         14756732,
         35293213,
         27213159
+      ]
+    },
+    {
+      "metric": "Less : Financial Expenses",
+      "field": "finance_costs",
+      "values": [
+        23264508,
+        null,
+        null
       ]
     },
     {

@@ -1,0 +1,97 @@
+metric,mapped_field,period,value
+"Properties, Plant & Equipments",,Q3_2082,108000
+"Properties, Plant & Equipments",,Q2_2082,116000
+"Properties, Plant & Equipments",,Q3_2081,906598000
+Intangible Assets under IFRIC 12,,Q3_2082,873486000
+Intangible Assets under IFRIC 12,,Q2_2082,881701000
+Intangible Assets under IFRIC 12,,Q3_2081,
+Deferred Tax Assets,,Q3_2082,13000
+Deferred Tax Assets,,Q2_2082,13000
+Deferred Tax Assets,,Q3_2081,7000
+Total Non-Current Assets,,Q3_2082,873608000
+Total Non-Current Assets,,Q2_2082,881831000
+Total Non-Current Assets,,Q3_2081,906606000
+Deposits,,Q3_2082,667000
+Deposits,,Q2_2082,667000
+Deposits,,Q3_2081,1205000
+Sundry Debtors & other Current Assets,,Q3_2082,25385000
+Sundry Debtors & other Current Assets,,Q2_2082,14449000
+Sundry Debtors & other Current Assets,,Q3_2081,10275000
+Cash & Bank Balance,cash_and_cash_equivalents,Q3_2082,81097000
+Cash & Bank Balance,cash_and_cash_equivalents,Q2_2082,90724000
+Cash & Bank Balance,cash_and_cash_equivalents,Q3_2081,15098000
+Total Current Assets,total_current_assets,Q3_2082,107149000
+Total Current Assets,total_current_assets,Q2_2082,112787000
+Total Current Assets,total_current_assets,Q3_2081,31858000
+Total Assets,total_assets,Q3_2082,980757000
+Total Assets,total_assets,Q2_2082,994618000
+Total Assets,total_assets,Q3_2081,938464000
+Share Capital,share_capital,Q3_2082,948900000
+Share Capital,share_capital,Q2_2082,948900000
+Share Capital,share_capital,Q3_2081,632600000
+Reserve and Surplus,reserves_and_surplus,Q3_2082,-37208000
+Reserve and Surplus,reserves_and_surplus,Q2_2082,-21390000
+Reserve and Surplus,reserves_and_surplus,Q3_2081,-12518000
+Share Premium,,Q3_2082,65476000
+Share Premium,,Q2_2082,65476000
+Share Premium,,Q3_2081,
+Total Equity,total_equity,Q3_2082,977168000
+Total Equity,total_equity,Q2_2082,992986000
+Total Equity,total_equity,Q3_2081,620082000
+Long Term Borrowings,long_term_borrowings,Q3_2082,
+Long Term Borrowings,long_term_borrowings,Q2_2082,
+Long Term Borrowings,long_term_borrowings,Q3_2081,318024000
+Unsecured Loans,secured_loans,Q3_2082,
+Unsecured Loans,secured_loans,Q2_2082,
+Unsecured Loans,secured_loans,Q3_2081,
+Trade and Other Payables,,Q3_2082,3474000
+Trade and Other Payables,,Q2_2082,1517000
+Trade and Other Payables,,Q3_2081,358000
+Provision,,Q3_2082,115000
+Provision,,Q2_2082,115000
+Provision,,Q3_2081,
+Current portion of Long Term Borrowings,long_term_borrowings,Q3_2082,
+Current portion of Long Term Borrowings,long_term_borrowings,Q2_2082,
+Current portion of Long Term Borrowings,long_term_borrowings,Q3_2081,
+Bridge Gap Loan,short_term_borrowings,Q3_2082,
+Bridge Gap Loan,short_term_borrowings,Q2_2082,
+Bridge Gap Loan,short_term_borrowings,Q3_2081,
+Total Current Liabilities,total_current_liabilities,Q3_2082,3589000
+Total Current Liabilities,total_current_liabilities,Q2_2082,1631000
+Total Current Liabilities,total_current_liabilities,Q3_2081,358000
+Total Liabilities,total_liabilities,Q3_2082,3589000
+Total Liabilities,total_liabilities,Q2_2082,1631000
+Total Liabilities,total_liabilities,Q3_2081,318382000
+Total Equity and Liabilities,total_equity_and_liabilities,Q3_2082,980757000
+Total Equity and Liabilities,total_equity_and_liabilities,Q2_2082,994618000
+Total Equity and Liabilities,total_equity_and_liabilities,Q3_2081,938464000
+Revenue from Operations,revenue,Q3_2082,53598000
+Revenue from Operations,revenue,Q2_2082,31715000
+Revenue from Operations,revenue,Q3_2081,69640000
+Less: Direct Expenses,,Q3_2082,29722000
+Less: Direct Expenses,,Q2_2082,7157000
+Less: Direct Expenses,,Q3_2081,10057000
+Gross Profit,gross_profit,Q3_2082,23876000
+Gross Profit,gross_profit,Q2_2082,24558000
+Gross Profit,gross_profit,Q3_2081,59583000
+Other Income,,Q3_2082,10000
+Other Income,,Q2_2082,9000
+Other Income,,Q3_2081,22000
+Administrative Expenses,,Q3_2082,14276000
+Administrative Expenses,,Q2_2082,7354000
+Administrative Expenses,,Q3_2081,
+Amortization of Intangible Assets,,Q3_2082,24644000
+Amortization of Intangible Assets,,Q2_2082,16429000
+Amortization of Intangible Assets,,Q3_2081,
+Depreciation,,Q3_2082,109000
+Depreciation,,Q2_2082,109000
+Depreciation,,Q3_2081,24716000
+Finance Cost,finance_costs,Q3_2082,2897000
+Finance Cost,finance_costs,Q2_2082,2897000
+Finance Cost,finance_costs,Q3_2081,20217000
+Net Profit before Tax,profit_before_tax,Q3_2082,-18040000
+Net Profit before Tax,profit_before_tax,Q2_2082,-2222000
+Net Profit before Tax,profit_before_tax,Q3_2081,7802000
+Net Profit,net_profit,Q3_2082,-18040000
+Net Profit,net_profit,Q2_2082,-2222000
+Net Profit,net_profit,Q3_2081,7802000

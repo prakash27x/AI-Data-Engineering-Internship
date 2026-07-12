@@ -101,6 +101,26 @@ IMPORTANT_FIELDS = [
 ]
 
 
+
+
+NON_MONETARY_FIELDS = [
+    "eps",
+    "networth_per_share",
+    "liquidity_ratio",
+    "return_on_assets",
+    "market_value_per_share",
+    "maximum_share_price",
+    "minimum_share_price",
+    "closing_share_price",
+]
+
+SINGLE_VALUE_FIELDS = [
+    "market_value_per_share",
+    "maximum_share_price",
+    "minimum_share_price",
+    "closing_share_price",
+]
+
 # Mapping from PDF metric labels to clean backend field names.
 # Keep specific names above generic names because matching is top to bottom.
 
@@ -472,6 +492,48 @@ def build_default_headers(raw_text, metadata):
     ]
 
 
+
+def detect_value_scale(raw_text):
+    """
+    Detect whether report values are shown in thousands.
+    """
+    text = raw_text.lower()
+
+    thousand_markers = [
+        "npr '000",
+        "npr ‘000",
+        "npr 000",
+        "rs. '000",
+        "rs '000",
+        "amount in thousands",
+    ]
+
+    for marker in thousand_markers:
+        if marker in text:
+            return 1000
+
+    return 1
+
+
+def apply_value_scale(values, mapped_field, value_scale):
+    """
+    Apply report-level amount scale to monetary values only.
+    """
+    if value_scale == 1:
+        return values
+
+    if mapped_field in NON_MONETARY_FIELDS:
+        return values
+
+    scaled_values = []
+    for value in values:
+        if value is None:
+            scaled_values.append(None)
+        else:
+            scaled_values.append(value * value_scale)
+
+    return scaled_values
+
 def row_has_numbers(row):
     """
     Check whether a table row contains at least one real number.
@@ -567,7 +629,7 @@ def get_headers_from_table(cleaned_rows, default_headers):
     return headers
 
 
-def extract_metrics_from_table(rows, default_headers):
+def extract_metrics_from_table(rows, default_headers, value_scale):
     """
     Extract metric rows from one PDF table.
     """
@@ -600,15 +662,20 @@ def extract_metrics_from_table(rows, default_headers):
         if is_header_or_section_row(metric_name, row):
             continue
 
-        if not values_look_like_financial_numbers(value_cells, parsed_values):
-            continue
-
         mapped_field = map_metric_name(metric_name)
+
+        if not values_look_like_financial_numbers(value_cells, parsed_values) and mapped_field is None:
+            continue
 
         # Do not save legacy Preeti/Nepali labels in metrics.
         # They are usually duplicate disclosure labels or prose, not core tables.
         if looks_like_preeti_text(metric_name):
             continue
+
+        parsed_values = apply_value_scale(parsed_values, mapped_field, value_scale)
+
+        if mapped_field in SINGLE_VALUE_FIELDS and len(parsed_values) > 1:
+            parsed_values = [parsed_values[0]] + [None] * (len(parsed_values) - 1)
 
         metric_data = {
             "metric": metric_name,
@@ -662,6 +729,7 @@ def extract_financial_data(pdf_path, metadata=None):
         metadata = {}
 
     default_headers = build_default_headers(raw_text, metadata)
+    value_scale = detect_value_scale(raw_text)
     headers = []
     metrics = []
 
@@ -671,7 +739,7 @@ def extract_financial_data(pdf_path, metadata=None):
         if not table_looks_financial(rows):
             continue
 
-        table_headers, table_metrics = extract_metrics_from_table(rows, default_headers)
+        table_headers, table_metrics = extract_metrics_from_table(rows, default_headers, value_scale)
 
         if len(headers) == 0 and len(table_headers) > 0:
             headers = table_headers
@@ -682,6 +750,7 @@ def extract_financial_data(pdf_path, metadata=None):
         "source_pdf": str(Path(pdf_path)),
         "extracted_at": datetime.now().isoformat(timespec="seconds"),
         "important_metric_count": count_important_fields(metrics),
+        "value_scale": value_scale,
     }
     result_metadata.update(metadata)
 

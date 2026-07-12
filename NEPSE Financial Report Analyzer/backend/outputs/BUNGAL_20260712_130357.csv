@@ -35,6 +35,9 @@ Total Equity,total_equity,Q3_2081,497929698
 Secured Loans,secured_loans,Q3_2082,2027470741
 Secured Loans,secured_loans,Q2_2082,2004196353
 Secured Loans,secured_loans,Q3_2081,2104401000
+Unsecured Loans,secured_loans,Q3_2082,
+Unsecured Loans,secured_loans,Q2_2082,
+Unsecured Loans,secured_loans,Q3_2081,
 Total Non-Current Liabilities,,Q3_2082,2027470741
 Total Non-Current Liabilities,,Q2_2082,2004196353
 Total Non-Current Liabilities,,Q3_2081,2104401000
@@ -93,14 +96,14 @@ Return of Assets - Rs.,return_on_assets,Q3_2082,360.84
 Return of Assets - Rs.,return_on_assets,Q2_2082,367.19
 Return of Assets - Rs.,return_on_assets,Q3_2081,579.13
 Market Value of Shares - Rs.,market_value_per_share,Q3_2082,615.0
-Market Value of Shares - Rs.,market_value_per_share,Q2_2082,637.2
+Market Value of Shares - Rs.,market_value_per_share,Q2_2082,
 Market Value of Shares - Rs.,market_value_per_share,Q3_2081,
 Maximum Price,maximum_share_price,Q3_2082,822.0
 Maximum Price,maximum_share_price,Q2_2082,
-Maximum Price,maximum_share_price,Q3_2081,53
+Maximum Price,maximum_share_price,Q3_2081,
 Minimum Price,minimum_share_price,Q3_2082,555.1
 Minimum Price,minimum_share_price,Q2_2082,
-Minimum Price,minimum_share_price,Q3_2081,2143903
+Minimum Price,minimum_share_price,Q3_2081,
 Closing Price,closing_share_price,Q3_2082,615.0
 Closing Price,closing_share_price,Q2_2082,
-Closing Price,closing_share_price,Q3_2081,32882
+Closing Price,closing_share_price,Q3_2081,

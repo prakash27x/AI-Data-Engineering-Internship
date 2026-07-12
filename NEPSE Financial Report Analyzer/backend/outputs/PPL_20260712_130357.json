@@ -1,8 +1,9 @@
 {
   "metadata": {
     "source_pdf": "PPL.pdf",
-    "extracted_at": "2026-07-10T14:07:01",
-    "important_metric_count": 13,
+    "extracted_at": "2026-07-12T13:03:57",
+    "important_metric_count": 17,
+    "value_scale": 1000,
     "company": "PPL",
     "sector": "hydropower",
     "report_type": "quarterly",
@@ -19,17 +20,17 @@
       "metric": "Properties, Plant & Equipments",
       "field": null,
       "values": [
-        108,
-        116,
-        906598
+        108000,
+        116000,
+        906598000
       ]
     },
     {
       "metric": "Intangible Assets under IFRIC 12",
       "field": null,
       "values": [
-        873486,
-        881701,
+        873486000,
+        881701000,
         null
       ]
     },
@@ -37,89 +38,89 @@
       "metric": "Deferred Tax Assets",
       "field": null,
       "values": [
-        13,
-        13,
-        7
+        13000,
+        13000,
+        7000
       ]
     },
     {
       "metric": "Total Non-Current Assets",
       "field": null,
       "values": [
-        873608,
-        881831,
-        906606
+        873608000,
+        881831000,
+        906606000
       ]
     },
     {
       "metric": "Deposits",
       "field": null,
       "values": [
-        667,
-        667,
-        1205
+        667000,
+        667000,
+        1205000
       ]
     },
     {
       "metric": "Sundry Debtors & other Current Assets",
       "field": null,
       "values": [
-        25385,
-        14449,
-        10275
+        25385000,
+        14449000,
+        10275000
       ]
     },
     {
       "metric": "Cash & Bank Balance",
       "field": "cash_and_cash_equivalents",
       "values": [
-        81097,
-        90724,
-        15098
+        81097000,
+        90724000,
+        15098000
       ]
     },
     {
       "metric": "Total Current Assets",
       "field": "total_current_assets",
       "values": [
-        107149,
-        112787,
-        31858
+        107149000,
+        112787000,
+        31858000
       ]
     },
     {
       "metric": "Total Assets",
       "field": "total_assets",
       "values": [
-        980757,
-        994618,
-        938464
+        980757000,
+        994618000,
+        938464000
       ]
     },
     {
       "metric": "Share Capital",
       "field": "share_capital",
       "values": [
-        948900,
-        948900,
-        632600
+        948900000,
+        948900000,
+        632600000
       ]
     },
     {
       "metric": "Reserve and Surplus",
       "field": "reserves_and_surplus",
       "values": [
-        -37208,
-        -21390,
-        -12518
+        -37208000,
+        -21390000,
+        -12518000
       ]
     },
     {
       "metric": "Share Premium",
       "field": null,
       "values": [
-        65476,
-        65476,
+        65476000,
+        65476000,
         null
       ]
     },
@@ -127,26 +128,62 @@
       "metric": "Total Equity",
       "field": "total_equity",
       "values": [
-        977168,
-        992986,
-        620082
+        977168000,
+        992986000,
+        620082000
+      ]
+    },
+    {
+      "metric": "Long Term Borrowings",
+      "field": "long_term_borrowings",
+      "values": [
+        null,
+        null,
+        318024000
+      ]
+    },
+    {
+      "metric": "Unsecured Loans",
+      "field": "secured_loans",
+      "values": [
+        null,
+        null,
+        null
       ]
     },
     {
       "metric": "Trade and Other Payables",
       "field": null,
       "values": [
-        3474,
-        1517,
-        358
+        3474000,
+        1517000,
+        358000
       ]
     },
     {
       "metric": "Provision",
       "field": null,
       "values": [
-        115,
-        115,
+        115000,
+        115000,
+        null
+      ]
+    },
+    {
+      "metric": "Current portion of Long Term Borrowings",
+      "field": "long_term_borrowings",
+      "values": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "metric": "Bridge Gap Loan",
+      "field": "short_term_borrowings",
+      "values": [
+        null,
+        null,
         null
       ]
     },
@@ -154,71 +191,71 @@
       "metric": "Total Current Liabilities",
       "field": "total_current_liabilities",
       "values": [
-        3589,
-        1631,
-        358
+        3589000,
+        1631000,
+        358000
       ]
     },
     {
       "metric": "Total Liabilities",
       "field": "total_liabilities",
       "values": [
-        3589,
-        1631,
-        318382
+        3589000,
+        1631000,
+        318382000
       ]
     },
     {
       "metric": "Total Equity and Liabilities",
       "field": "total_equity_and_liabilities",
       "values": [
-        980757,
-        994618,
-        938464
+        980757000,
+        994618000,
+        938464000
       ]
     },
     {
       "metric": "Revenue from Operations",
       "field": "revenue",
       "values": [
-        53598,
-        31715,
-        69640
+        53598000,
+        31715000,
+        69640000
       ]
     },
     {
       "metric": "Less: Direct Expenses",
       "field": null,
       "values": [
-        29722,
-        7157,
-        10057
+        29722000,
+        7157000,
+        10057000
       ]
     },
     {
       "metric": "Gross Profit",
       "field": "gross_profit",
       "values": [
-        23876,
-        24558,
-        59583
+        23876000,
+        24558000,
+        59583000
       ]
     },
     {
       "metric": "Other Income",
       "field": null,
       "values": [
-        10,
-        9,
-        22
+        10000,
+        9000,
+        22000
       ]
     },
     {
       "metric": "Administrative Expenses",
       "field": null,
       "values": [
-        14276,
-        7354,
+        14276000,
+        7354000,
         null
       ]
     },
@@ -226,8 +263,8 @@
       "metric": "Amortization of Intangible Assets",
       "field": null,
       "values": [
-        24644,
-        16429,
+        24644000,
+        16429000,
         null
       ]
     },
@@ -235,36 +272,36 @@
       "metric": "Depreciation",
       "field": null,
       "values": [
-        109,
-        109,
-        24716
+        109000,
+        109000,
+        24716000
       ]
     },
     {
       "metric": "Finance Cost",
       "field": "finance_costs",
       "values": [
-        2897,
-        2897,
-        20217
+        2897000,
+        2897000,
+        20217000
       ]
     },
     {
       "metric": "Net Profit before Tax",
       "field": "profit_before_tax",
       "values": [
-        -18040,
-        -2222,
-        7802
+        -18040000,
+        -2222000,
+        7802000
       ]
     },
     {
       "metric": "Net Profit",
       "field": "net_profit",
       "values": [
-        -18040,
-        -2222,
-        7802
+        -18040000,
+        -2222000,
+        7802000
       ]
     }
   ],
