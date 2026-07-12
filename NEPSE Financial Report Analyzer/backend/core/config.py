@@ -1,14 +1,12 @@
 """
-Centralized configuration for the NEPSE Financial Report Analyzer.
-Follows clean architecture principles and supports easy extension.
+Centralized configuration - MySQL focused
 """
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import List
 
 
 class Settings(BaseSettings):
-    """Application settings loaded from environment variables."""
+    """Application settings - MySQL as main database."""
 
     # Application
     APP_NAME: str = "NEPSE Financial Report Analyzer"
@@ -21,23 +19,18 @@ class Settings(BaseSettings):
     OUTPUT_DIR: Path = BASE_DIR / "outputs"
     LOG_DIR: Path = BASE_DIR / "logs"
 
-    # Database
-    DATABASE_URL: str = "mysql+pymysql://user:password@localhost:3306/nepse_analyzer"
+    # MySQL Database (Main)
+    DATABASE_URL: str = "mysql+pymysql://username:password@localhost:3306/nepse_analyzer"
 
     # File upload limits
     MAX_UPLOAD_SIZE_MB: int = 50
-    ALLOWED_EXTENSIONS: List[str] = [".pdf"]
 
     # Extraction settings
     DEFAULT_SECTOR: str = "hydropower"
     EXTRACTOR_VERSION: str = "1.0.0"
 
-    # Supported sectors (for future expansion)
-    SUPPORTED_SECTORS: List[str] = ["hydropower"]  # Add "commercial_bank", etc. later
-
-    # AI (future)
-    LLM_PROVIDER: str = "openai"  # or "groq", etc.
-    OPENAI_API_KEY: str | None = None
+    # Supported sectors
+    SUPPORTED_SECTORS: list = ["hydropower"]
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -51,6 +44,6 @@ class Settings(BaseSettings):
             directory.mkdir(parents=True, exist_ok=True)
 
 
-# Global settings instance
+# Global settings
 settings = Settings()
 settings.create_directories()
