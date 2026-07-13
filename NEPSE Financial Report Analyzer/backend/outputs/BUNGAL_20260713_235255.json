@@ -1,13 +1,13 @@
 {
   "metadata": {
-    "source_pdf": "Bungal.pdf",
-    "extracted_at": "2026-07-12T13:03:57",
-    "important_metric_count": 23,
+    "source_pdf": "bungal.pdf",
+    "extracted_at": "2026-07-13T23:52:55",
+    "important_metric_count": 16,
     "value_scale": 1,
     "company": "BUNGAL",
     "sector": "hydropower",
     "report_type": "quarterly",
-    "fiscal_year": "2082/83",
+    "fiscal_year": "2081/82",
     "quarter": "Q3"
   },
   "headers": [
@@ -171,7 +171,7 @@
     },
     {
       "metric": "Total Equity and Liabilities",
-      "field": "total_equity_and_liabilities",
+      "field": "total_equity",
       "values": [
         2994993727,
         3047693565,
@@ -180,7 +180,7 @@
     },
     {
       "metric": "Revenue from Operations",
-      "field": "revenue",
+      "field": "revenue_from_sale_of_energy",
       "values": [
         236641648,
         185259565,
@@ -270,7 +270,7 @@
     },
     {
       "metric": "Earning Per Shares (EPS) - Rs.",
-      "field": "eps",
+      "field": null,
       "values": [
         -0.59,
         3.34,
@@ -279,7 +279,7 @@
     },
     {
       "metric": "Networth Per Shares - Rs.",
-      "field": "networth_per_share",
+      "field": null,
       "values": [
         84.68,
         88.61,
@@ -288,7 +288,7 @@
     },
     {
       "metric": "Liquity Ratio",
-      "field": "liquidity_ratio",
+      "field": null,
       "values": [
         0.2,
         0.24,
@@ -297,7 +297,7 @@
     },
     {
       "metric": "Return of Assets - Rs.",
-      "field": "return_on_assets",
+      "field": null,
       "values": [
         360.84,
         367.19,
@@ -306,38 +306,38 @@
     },
     {
       "metric": "Market Value of Shares - Rs.",
-      "field": "market_value_per_share",
+      "field": null,
       "values": [
         615.0,
-        null,
+        637.2,
         null
       ]
     },
     {
       "metric": "Maximum Price",
-      "field": "maximum_share_price",
+      "field": null,
       "values": [
         822.0,
         null,
-        null
+        53
       ]
     },
     {
       "metric": "Minimum Price",
-      "field": "minimum_share_price",
+      "field": null,
       "values": [
         555.1,
         null,
-        null
+        2143903
       ]
     },
     {
       "metric": "Closing Price",
-      "field": "closing_share_price",
+      "field": null,
       "values": [
         615.0,
         null,
-        null
+        32882
       ]
     }
   ],

@@ -50,12 +50,12 @@ Total Current Liabilities,total_current_liabilities,Q3_2081,522069928
 Total Liabilities,total_liabilities,Q3_2082,2292174783
 Total Liabilities,total_liabilities,Q2_2082,2312245262
 Total Liabilities,total_liabilities,Q3_2081,2626470928
-Total Equity and Liabilities,total_equity_and_liabilities,Q3_2082,2994993727
-Total Equity and Liabilities,total_equity_and_liabilities,Q2_2082,3047693565
-Total Equity and Liabilities,total_equity_and_liabilities,Q3_2081,3124400626
-Revenue from Operations,revenue,Q3_2082,236641648
-Revenue from Operations,revenue,Q2_2082,185259565
-Revenue from Operations,revenue,Q3_2081,221215216
+Total Equity and Liabilities,total_equity,Q3_2082,2994993727
+Total Equity and Liabilities,total_equity,Q2_2082,3047693565
+Total Equity and Liabilities,total_equity,Q3_2081,3124400626
+Revenue from Operations,revenue_from_sale_of_energy,Q3_2082,236641648
+Revenue from Operations,revenue_from_sale_of_energy,Q2_2082,185259565
+Revenue from Operations,revenue_from_sale_of_energy,Q3_2081,221215216
 Less: Direct Expenses,,Q3_2082,10917195
 Less: Direct Expenses,,Q2_2082,8781024
 Less: Direct Expenses,,Q3_2081,12601510
@@ -83,27 +83,27 @@ Net Profit before Tax,profit_before_tax,Q3_2081,-47052962
 Net Profit,net_profit,Q3_2082,-4889998
 Net Profit,net_profit,Q2_2082,27739362
 Net Profit,net_profit,Q3_2081,-47052962
-Earning Per Shares (EPS) - Rs.,eps,Q3_2082,-0.59
-Earning Per Shares (EPS) - Rs.,eps,Q2_2082,3.34
-Earning Per Shares (EPS) - Rs.,eps,Q3_2081,-8.72
-Networth Per Shares - Rs.,networth_per_share,Q3_2082,84.68
-Networth Per Shares - Rs.,networth_per_share,Q2_2082,88.61
-Networth Per Shares - Rs.,networth_per_share,Q3_2081,92.29
-Liquity Ratio,liquidity_ratio,Q3_2082,0.2
-Liquity Ratio,liquidity_ratio,Q2_2082,0.24
-Liquity Ratio,liquidity_ratio,Q3_2081,0.12
-Return of Assets - Rs.,return_on_assets,Q3_2082,360.84
-Return of Assets - Rs.,return_on_assets,Q2_2082,367.19
-Return of Assets - Rs.,return_on_assets,Q3_2081,579.13
-Market Value of Shares - Rs.,market_value_per_share,Q3_2082,615.0
-Market Value of Shares - Rs.,market_value_per_share,Q2_2082,
-Market Value of Shares - Rs.,market_value_per_share,Q3_2081,
-Maximum Price,maximum_share_price,Q3_2082,822.0
-Maximum Price,maximum_share_price,Q2_2082,
-Maximum Price,maximum_share_price,Q3_2081,
-Minimum Price,minimum_share_price,Q3_2082,555.1
-Minimum Price,minimum_share_price,Q2_2082,
-Minimum Price,minimum_share_price,Q3_2081,
-Closing Price,closing_share_price,Q3_2082,615.0
-Closing Price,closing_share_price,Q2_2082,
-Closing Price,closing_share_price,Q3_2081,
+Earning Per Shares (EPS) - Rs.,,Q3_2082,-0.59
+Earning Per Shares (EPS) - Rs.,,Q2_2082,3.34
+Earning Per Shares (EPS) - Rs.,,Q3_2081,-8.72
+Networth Per Shares - Rs.,,Q3_2082,84.68
+Networth Per Shares - Rs.,,Q2_2082,88.61
+Networth Per Shares - Rs.,,Q3_2081,92.29
+Liquity Ratio,,Q3_2082,0.2
+Liquity Ratio,,Q2_2082,0.24
+Liquity Ratio,,Q3_2081,0.12
+Return of Assets - Rs.,,Q3_2082,360.84
+Return of Assets - Rs.,,Q2_2082,367.19
+Return of Assets - Rs.,,Q3_2081,579.13
+Market Value of Shares - Rs.,,Q3_2082,615.0
+Market Value of Shares - Rs.,,Q2_2082,637.2
+Market Value of Shares - Rs.,,Q3_2081,
+Maximum Price,,Q3_2082,822.0
+Maximum Price,,Q2_2082,
+Maximum Price,,Q3_2081,53
+Minimum Price,,Q3_2082,555.1
+Minimum Price,,Q2_2082,
+Minimum Price,,Q3_2081,2143903
+Closing Price,,Q3_2082,615.0
+Closing Price,,Q2_2082,
+Closing Price,,Q3_2081,32882

@@ -31,9 +31,12 @@ QUARTER_PATTERNS = {
 # These rows are labels/headers, not financial metrics.
 HEADER_ONLY_KEYWORDS = [
     "statement of financial position",
+    "statement of financial performance",
+    "condensed statement",
     "statement of profit",
     "statement of profit or loss",
     "statement of comprehensive income",
+    "statement of income",
     "balance sheet",
     "profit loss accounts",
     "income statement",
@@ -57,6 +60,7 @@ HEADER_ONLY_KEYWORDS = [
 SECTION_LABELS = [
     "assets",
     "current assets",
+    "current asset               ",
     "non current assets",
     "non-current assets",
     "equity",
@@ -67,131 +71,109 @@ SECTION_LABELS = [
     "equity and liabilities",
     "direct income",
     "notes",
+    "income",
+    "expenses",
+    "operating expenses",
+    "finance cost",
+    "other income",
 ]
 
 
 # These are the fields we care about most for investor comparison.
 IMPORTANT_FIELDS = [
-    "revenue",
+    "total_assets",
+    "total_current_assets",
+    "cash_and_cash_equivalents",
+
+    "share_capital",
+    "reserves_and_surplus",
+    "total_equity",
+
+    "long_term_borrowings",
+    "short_term_borrowings",
+    "secured_loans",
+
+    "total_current_liabilities",
+    "total_liabilities",
+
+    "revenue_from_sale_of_energy",
     "gross_profit",
     "total_income",
     "finance_costs",
     "profit_before_tax",
     "net_profit",
     "total_comprehensive_income",
-    "eps",
-    "networth_per_share",
-    "liquidity_ratio",
-    "return_on_assets",
-    "market_value_per_share",
-    "maximum_share_price",
-    "minimum_share_price",
-    "closing_share_price",
-    "total_assets",
-    "total_equity",
-    "total_liabilities",
-    "long_term_borrowings",
-    "short_term_borrowings",
-    "secured_loans",
-    "cash_and_cash_equivalents",
-    "total_current_assets",
-    "total_current_liabilities",
-    "share_capital",
-    "reserves_and_surplus",
 ]
-
-
-
-
-NON_MONETARY_FIELDS = [
-    "eps",
-    "networth_per_share",
-    "liquidity_ratio",
-    "return_on_assets",
-    "market_value_per_share",
-    "maximum_share_price",
-    "minimum_share_price",
-    "closing_share_price",
-]
-
-SINGLE_VALUE_FIELDS = [
-    "market_value_per_share",
-    "maximum_share_price",
-    "minimum_share_price",
-    "closing_share_price",
-]
-
-# Mapping from PDF metric labels to clean backend field names.
-# Keep specific names above generic names because matching is top to bottom.
-
-FIELD_DISPLAY_NAMES = {
-    "eps": "Earnings Per Share",
-    "networth_per_share": "Net Worth Per Share",
-    "liquidity_ratio": "Liquidity Ratio",
-    "market_value_per_share": "Market Value Per Share",
-    "maximum_share_price": "Maximum Share Price",
-    "minimum_share_price": "Minimum Share Price",
-    "closing_share_price": "Closing Share Price",
-}
 
 HYDROPOWER_MAPPING = {
-    # Balance sheet - important investor fields
+    # Balance Sheet
     "equity share capital": "share_capital",
     "share capital": "share_capital",
+    "property plant and equipment": "property_plant_equipment",
+
     "reserve and surplus": "reserves_and_surplus",
+    "reserves and surplus": "reserves_and_surplus",
     "retained earnings": "reserves_and_surplus",
-    "total equity and liabilities": "total_equity_and_liabilities",
+
     "total equity": "total_equity",
+    "net assets": "total_equity",
+
     "long term borrowings": "long_term_borrowings",
-    "secured loans": "secured_loans",
+    "long-term borrowings": "long_term_borrowings",
+
     "short term loans borrowings": "short_term_borrowings",
     "short term loans and borrowings": "short_term_borrowings",
+    "short-term borrowings": "short_term_borrowings",
     "current portion of long term borrowings": "short_term_borrowings",
     "bridge gap loan": "short_term_borrowings",
+
+    "secured loans": "secured_loans",
+
     "total current liabilities": "total_current_liabilities",
     "total liabilities": "total_liabilities",
+
     "cash and cash equivalent": "cash_and_cash_equivalents",
+    "cash and cash equivalents": "cash_and_cash_equivalents",
     "cash bank balance": "cash_and_cash_equivalents",
     "cash and bank balance": "cash_and_cash_equivalents",
+    "net cash and cash equivalents": "cash_and_cash_equivalents",
+
     "total current assets": "total_current_assets",
     "total assets": "total_assets",
 
-    # Income statement - important investor fields
-    "revenue from sale of energy": "revenue",
-    "revenue from operations": "revenue",
+    # Income Statement
+    "revenue from sale of energy": "revenue_from_sale_of_energy",
+    "revenue from operations": "revenue_from_sale_of_energy",
+    "sale of energy": "revenue_from_sale_of_energy",
+    "energy sales": "revenue_from_sale_of_energy",
+
     "gross profit loss": "gross_profit",
     "gross profit": "gross_profit",
+
     "total income": "total_income",
+    "operating profit": "operating_profit",
+
     "finance cost": "finance_costs",
-    "financial expenses": "finance_costs",
+    "financial cost": "finance_costs",
     "financial costs": "finance_costs",
+    "financial expenses": "finance_costs",
+
     "earning before tax": "profit_before_tax",
+    "earnings before tax": "profit_before_tax",
+    "profit before tax": "profit_before_tax",
     "net profit before tax": "profit_before_tax",
-    "earning after tax eat": "net_profit",
+    "profit before income tax": "profit_before_tax",
+
+
     "earning after tax": "net_profit",
+    "earnings after tax": "net_profit",
+    "earning after tax eat": "net_profit",
     "net profit": "net_profit",
+    "profit after tax": "net_profit",
     "profit for the period": "net_profit",
+
     "total comprehensive income": "total_comprehensive_income",
-
-    # Ratios and market data
-    "earnings per share": "eps",
-    "earning per shares": "eps",
-    "earning per share": "eps",
-    "basic earnings per share": "eps",
-    "eps": "eps",
-    "networth per shares": "networth_per_share",
-    "net worth per share": "networth_per_share",
-    "liquity ratio": "liquidity_ratio",
-    "liquidity ratio": "liquidity_ratio",
-    "return of assets": "return_on_assets",
-    "return on assets": "return_on_assets",
-    "market value of shares": "market_value_per_share",
-    "maximum price": "maximum_share_price",
-    "minimum price": "minimum_share_price",
-    "closing price": "closing_share_price",
-
-    # Generic fallback. Keep near the bottom.
-    "revenue": "revenue",
+    "comprehensive income": "total_comprehensive_income",
 }
 
 
@@ -290,16 +272,6 @@ def looks_like_preeti_text(text):
     return False
 
 
-def get_display_metric_name(metric_name, mapped_field):
-    """
-    Use English names for known Preeti encoded metric labels.
-    """
-    if looks_like_preeti_text(metric_name) and mapped_field in FIELD_DISPLAY_NAMES:
-        return FIELD_DISPLAY_NAMES[mapped_field]
-
-    return metric_name
-
-
 def build_raw_text_preview(raw_text):
     """
     Keep preview useful and remove legacy Preeti encoded lines.
@@ -322,37 +294,8 @@ def build_raw_text_preview(raw_text):
     preview = "\n".join(useful_lines)
     return preview[:3000]
 
-def map_nepali_ratio_label(metric_name):
-    """
-    Handle romanized Nepali ratio labels that appear in some reports.
-    """
-    original_text = clean_cell(metric_name).lower()
-    normalized_metric = normalize_text(metric_name)
-
-    if "eps" in normalized_metric:
-        return "eps"
-    if "g 6jy" in normalized_metric:
-        return "networth_per_share"
-    if "clwstd" in normalized_metric:
-        return "maximum_share_price"
-    if "go gtd" in normalized_metric:
-        return "minimum_share_price"
-    if "clgtd" in normalized_metric:
-        return "closing_share_price"
-    if "t ntf" in normalized_metric or "t/ntf" in original_text:
-        return "liquidity_ratio"
-
-    return None
-
 
 def map_metric_name(metric_name):
-    """
-    Map extracted report labels to simple backend field names.
-    """
-    nepali_ratio_field = map_nepali_ratio_label(metric_name)
-    if nepali_ratio_field is not None:
-        return nepali_ratio_field
-
     normalized_metric = normalize_text(metric_name)
 
     for source_name, field_name in HYDROPOWER_MAPPING.items():
@@ -432,20 +375,34 @@ def get_year_from_metadata(metadata):
 
 def detect_report_year(raw_text, metadata):
     """
-    Detect the Nepali year for the current reporting quarter.
+    Detect the report year from the PDF.
+    Falls back to metadata if no year is found.
     """
     text = raw_text[:2000]
 
     year_patterns = [
+        # Common report phrases
         r"ended[^\n]{0,80}?(20\d{2}|208\d|207\d)",
         r"as\s+on[^\n]{0,80}?(20\d{2}|208\d|207\d)",
+
+        # Nepali month names
+        r"ashadh[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+        r"ashad[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+        r"asar[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+
         r"chaitra[^\n]{0,40}?(20\d{2}|208\d|207\d)",
         r"poush[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+        r"push[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+
+        r"mangsir[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+        r"kartik[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+        r"magh[^\n]{0,40}?(20\d{2}|208\d|207\d)",
+        r"falgun[^\n]{0,40}?(20\d{2}|208\d|207\d)",
     ]
 
     for pattern in year_patterns:
         match = re.search(pattern, text, flags=re.IGNORECASE)
-        if match is not None:
+        if match:
             return int(match.group(1))
 
     return get_year_from_metadata(metadata)
@@ -515,24 +472,15 @@ def detect_value_scale(raw_text):
     return 1
 
 
-def apply_value_scale(values, mapped_field, value_scale):
-    """
-    Apply report-level amount scale to monetary values only.
-    """
+def apply_value_scale(values, value_scale):
     if value_scale == 1:
         return values
 
-    if mapped_field in NON_MONETARY_FIELDS:
-        return values
+    return [
+        value * value_scale if value is not None else None
+        for value in values
+    ]
 
-    scaled_values = []
-    for value in values:
-        if value is None:
-            scaled_values.append(None)
-        else:
-            scaled_values.append(value * value_scale)
-
-    return scaled_values
 
 def row_has_numbers(row):
     """
@@ -608,22 +556,24 @@ def get_headers_from_table(cleaned_rows, default_headers):
     """
     Create period headers for the table.
     """
+    if not cleaned_rows:
+        return default_headers
+
     top_rows = cleaned_rows[:4]
+
+    # Choose the row with the most columns as the header row.
     header_row = max(top_rows, key=len)
 
     headers = []
     for index, cell in enumerate(header_row[1:], start=1):
         headers.append(detect_quarter(cell, index))
 
-    if len(headers) == 0:
+    if not headers:
         return default_headers
 
-    has_only_generic_headers = True
-    for header in headers:
-        if not header.startswith("col_"):
-            has_only_generic_headers = False
-
-    if has_only_generic_headers and len(default_headers) >= len(headers):
+    # If all detected headers are generic (col_1, col_2, ...),
+    # use the automatically generated default headers instead.
+    if all(header.startswith("col_") for header in headers):
         return default_headers[:len(headers)]
 
     return headers
@@ -672,10 +622,7 @@ def extract_metrics_from_table(rows, default_headers, value_scale):
         if looks_like_preeti_text(metric_name):
             continue
 
-        parsed_values = apply_value_scale(parsed_values, mapped_field, value_scale)
-
-        if mapped_field in SINGLE_VALUE_FIELDS and len(parsed_values) > 1:
-            parsed_values = [parsed_values[0]] + [None] * (len(parsed_values) - 1)
+        parsed_values = apply_value_scale(parsed_values, value_scale)
 
         metric_data = {
             "metric": metric_name,
@@ -692,16 +639,17 @@ def add_new_metrics(existing_metrics, new_metrics):
     """
     Add metrics without duplicating the same metric name.
     """
-    existing_names = []
-    for metric in existing_metrics:
-        existing_names.append(normalize_text(metric["metric"]))
+    existing_names = {
+        normalize_text(metric["metric"])
+        for metric in existing_metrics
+    }
 
     for metric in new_metrics:
         metric_name = normalize_text(metric["metric"])
+
         if metric_name not in existing_names:
             existing_metrics.append(metric)
-            existing_names.append(metric_name)
-
+            existing_names.add(metric_name)
 
 def count_important_fields(metrics):
     """
