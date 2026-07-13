@@ -7,16 +7,7 @@ Creates:
 
 import mysql.connector
 from mysql.connector import Error
-
-# ====================================================
-# Database Configuration
-# ====================================================
-
-HOST = "localhost"
-USER = "root"
-PASSWORD = "root"
-DATABASE = "nepse_analyzer"
-
+from backend.core.config import settings
 
 # ====================================================
 # Create Database
@@ -27,28 +18,25 @@ def create_database():
     try:
 
         connection = mysql.connector.connect(
-            host=HOST,
-            user=USER,
-            password=PASSWORD
+            host=settings.DB_HOST,
+            port=settings.DB_PORT,
+            user=settings.DB_USER,
+            password=settings.DB_PASSWORD
         )
-
         cursor = connection.cursor()
 
-        cursor.execute(
-            f"""
-            CREATE DATABASE IF NOT EXISTS {DATABASE}
+        cursor.execute(f"""
+            CREATE DATABASE IF NOT EXISTS {settings.DB_NAME}
             CHARACTER SET utf8mb4
             COLLATE utf8mb4_unicode_ci
-            """
-        )
-
-        print(f"✅ Database '{DATABASE}' is ready.")
+        """)
+        print(f"✅ Database '{settings.DB_NAME}' is ready.")
 
         cursor.close()
         connection.close()
 
     except Error as e:
-        print(e)
+        print(f"MySQL Error: {e}")
 
 
 # ====================================================
@@ -56,14 +44,14 @@ def create_database():
 # ====================================================
 
 def connect_database():
-
-    return mysql.connector.connect(
-        host=HOST,
-        user=USER,
-        password=PASSWORD,
-        database=DATABASE,
-        charset="utf8mb4"
-    )
+        return mysql.connector.connect(
+            host=settings.DB_HOST,
+            port=settings.DB_PORT,
+            user=settings.DB_USER,
+            password=settings.DB_PASSWORD,
+            database=settings.DB_NAME,
+            charset="utf8mb4"
+        )
 
 
 # ====================================================
@@ -73,6 +61,9 @@ def connect_database():
 def create_tables():
 
     connection = connect_database()
+    if connection is None:
+        print("Could not connect to database.")
+        return
 
     cursor = connection.cursor()
 
