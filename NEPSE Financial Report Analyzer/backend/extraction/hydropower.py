@@ -147,6 +147,7 @@ HYDROPOWER_MAPPING = {
 
     # Income Statement
     "revenue from sale of energy": "revenue_from_sale_of_energy",
+    "Revenue ":"revenue_from_sale_of_energy",
     "revenue from operations": "revenue_from_sale_of_energy",
     "sale of energy": "revenue_from_sale_of_energy",
     "energy sales": "revenue_from_sale_of_energy",
