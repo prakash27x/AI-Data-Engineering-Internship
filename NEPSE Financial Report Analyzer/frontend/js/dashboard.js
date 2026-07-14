@@ -1,119 +1,402 @@
-// Toggle Dark/Light Theme
-function toggleTheme() {
-    const html = document.documentElement;
-    html.classList.toggle('dark');
-    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+// =====================================
+// CONFIG
+// =====================================
+
+const API = "http://127.0.0.1:8000/dashboard";
+
+let currentCompany = "BUNGAL";
+let companies = [];
+
+let revenueChart = null;
+let profitChart = null;
+
+
+// =====================================
+// UTILITIES
+// =====================================
+
+function formatCurrency(value) {
+
+    if (value == null) return "-";
+
+    return "NPR " + Number(value).toLocaleString();
+
 }
 
-// Toggle Sidebar Navigation (Mobile)
-function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar) {
-        sidebar.classList.toggle('hidden');
-        sidebar.classList.toggle('flex');
+function setGrowth(id, growth) {
+
+    const el = document.getElementById(id);
+
+    if (!growth) {
+
+        el.innerText = "-";
+        return;
+
     }
+
+    el.innerText =
+        `${growth.direction === "up" ? "▲" : "▼"} ${growth.value}%`;
+
+    el.className =
+        growth.direction === "up"
+            ? "text-green-600 font-bold"
+            : "text-red-600 font-bold";
+
 }
 
-// Display Keyboard Shortcuts Alert
-function showKeyboardShortcuts() {
-    const shortcuts = `
-⌨️ KEYBOARD SHORTCUTS
-═══════════════════════════════════════
-• U         → Go to Upload
-• D         → Go to Dashboard
-• C         → Go to Comparison
-• /         → Search
-• T         → Toggle Theme
-• ?         → Show This Help
 
-📚 TIPS
-═══════════════════════════════════════
-✓ Upload PDF reports to auto-extract financial data
-✓ Compare multiple companies side-by-side
-✓ All data is public and freely accessible
-✓ No login required - share with anyone
-    `;
-    alert(shortcuts);
+// =====================================
+// LOAD DASHBOARD
+// =====================================
+
+async function loadDashboard(symbol = currentCompany) {
+
+    try {
+
+        const response =
+            await fetch(`${API}/${symbol}`);
+
+        const data = await response.json();
+
+        currentCompany = symbol;
+
+        document.getElementById("company-name").innerText =
+            data.company.name;
+
+        document.getElementById("company-info").innerText =
+            `${data.company.symbol} | ${data.company.sector} | FY ${data.company.fiscal_year} ${data.company.quarter}`;
+
+        document.getElementById("company-avatar").innerText =
+            data.company.symbol.charAt(0);
+
+        document.getElementById("revenue").innerText =
+            formatCurrency(data.metrics.revenue);
+
+        document.getElementById("net-profit").innerText =
+            formatCurrency(data.metrics.net_profit);
+
+        document.getElementById("assets").innerText =
+            formatCurrency(data.metrics.assets);
+
+        document.getElementById("equity").innerText =
+            formatCurrency(data.metrics.equity);
+
+        setGrowth(
+            "revenue-growth",
+            data.metrics.revenue_growth
+        );
+
+        setGrowth(
+            "profit-growth",
+            data.metrics.profit_growth
+        );
+
+        setGrowth(
+            "asset-growth",
+            data.metrics.asset_growth
+        );
+
+        setGrowth(
+            "equity-growth",
+            data.metrics.equity_growth
+        );
+
+        drawRevenueChart(data.revenue_trend);
+
+        drawProfitChart(data.net_profit_trend);
+
+    }
+
+    catch (err) {
+
+        console.error(err);
+
+    }
+
 }
 
-// Event Listeners Initialization
-document.addEventListener('DOMContentLoaded', () => {
-    // Attach theme toggle buttons
-    const themeButtons = document.querySelectorAll('.theme-toggle-btn');
-    themeButtons.forEach(btn => btn.addEventListener('click', toggleTheme));
 
-    // Mobile sidebar toggle button
-    const sidebarToggleBtn = document.getElementById('sidebar-toggle');
-    if (sidebarToggleBtn) {
-        sidebarToggleBtn.addEventListener('click', toggleSidebar);
-    }
+// =====================================
+// REVENUE CHART
+// =====================================
 
-    // Keyboard shortcuts button
-    const shortcutsBtn = document.getElementById('shortcuts-btn');
-    if (shortcutsBtn) {
-        shortcutsBtn.addEventListener('click', showKeyboardShortcuts);
-    }
+function drawRevenueChart(data) {
 
-    // Feedback button
-    const feedbackBtn = document.getElementById('feedback-btn');
-    if (feedbackBtn) {
-        feedbackBtn.addEventListener('click', () => {
-            alert('Visit GitHub or Documentation for support.');
-        });
-    }
+    if (revenueChart)
+        revenueChart.destroy();
 
-    // Switch company placeholder action
-    const switchCompanyBtn = document.getElementById('switch-company-btn');
-    if (switchCompanyBtn) {
-        switchCompanyBtn.addEventListener('click', () => {
-            alert('Company switching feature coming soon!');
-        });
-    }
+    revenueChart = new Chart(
+        document.getElementById("revenueChart"),
+        {
 
-    // Keyboard Shortcuts
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'u' && !e.ctrlKey) window.location.href = 'upload_file.html';
-        if (e.key === 'd' && !e.ctrlKey) window.location.href = 'dashboard.html';
-        if (e.key === 'c' && !e.ctrlKey) window.location.href = 'comparative_analysis.html';
-        if (e.key === 't' && !e.ctrlKey) toggleTheme();
-        if (e.key === '?') showKeyboardShortcuts();
-    });
+            type: "bar",
 
-    // Load Saved Theme
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-    }
+            data: {
 
-    // Mobile Sidebar Responsive Adjustments
-    const sidebar = document.getElementById('sidebar');
-    if (sidebar && window.innerWidth < 768) {
-        sidebar.classList.add('hidden');
-    }
+                labels: data.map(x => x.quarter),
 
-    window.addEventListener('resize', () => {
-        if (sidebar && window.innerWidth >= 768) {
-            sidebar.classList.remove('hidden');
-            sidebar.classList.add('flex');
+                datasets: [{
+
+                    data: data.map(x => x.value),
+
+                    backgroundColor: "#47607e",
+
+                    borderRadius: 8
+
+                }]
+
+            },
+
+            options: {
+
+                plugins: {
+
+                    legend: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
         }
+
+    );
+
+}
+
+
+// =====================================
+// PROFIT CHART
+// =====================================
+
+function drawProfitChart(data) {
+
+    if (profitChart)
+        profitChart.destroy();
+
+    profitChart = new Chart(
+
+        document.getElementById("profitChart"),
+
+        {
+
+            type: "line",
+
+            data: {
+
+                labels: data.map(x => x.quarter),
+
+                datasets: [{
+
+                    data: data.map(x => x.value),
+
+                    fill: true,
+
+                    tension: .4
+
+                }]
+
+            },
+
+            options: {
+
+                plugins: {
+
+                    legend: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    );
+
+}
+
+
+// =====================================
+// COMPANY LIST
+// =====================================
+
+async function loadCompanies() {
+
+    const response =
+        await fetch(`${API}/companies`);
+
+    companies = await response.json();
+
+    renderCompanies(companies);
+
+}
+
+
+function renderCompanies(list) {
+
+    const companyList =
+        document.getElementById("company-list");
+
+    companyList.innerHTML = "";
+
+    list.forEach(company => {
+
+        companyList.innerHTML += `
+
+        <div
+            class="company-item p-3 border rounded cursor-pointer hover:bg-gray-100"
+            data-symbol="${company.company_symbol}">
+
+            <div class="font-bold">
+
+                ${company.company_symbol}
+
+            </div>
+
+            <div class="text-sm text-gray-500">
+
+                ${company.company_name}
+
+            </div>
+
+        </div>
+
+        `;
+
     });
 
-    // Interactive Hover Effect for Bar Charts
-    const bars = document.querySelectorAll('.chart-bar');
-    bars.forEach(bar => {
-        bar.addEventListener('mouseenter', () => bar.classList.add('bg-primary'));
-        bar.addEventListener('mouseleave', () => bar.classList.remove('bg-primary'));
-    });
+}
 
-    // Smooth Fade-in Animation for Cards
-    const cards = document.querySelectorAll('.glass-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(10px)';
-        setTimeout(() => {
-            card.style.transition = 'all 0.4s ease-out';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
+
+// =====================================
+// MODAL
+// =====================================
+
+function openCompanyModal() {
+
+    document
+        .getElementById("company-modal")
+        .classList
+        .replace("hidden", "flex");
+
+}
+
+
+function closeCompanyModal() {
+
+    document
+        .getElementById("company-modal")
+        .classList
+        .replace("flex", "hidden");
+
+}
+
+
+// =====================================
+// SEARCH IN MODAL
+// =====================================
+
+function searchCompanies() {
+
+    const keyword =
+        document
+            .getElementById("company-search")
+            .value
+            .toLowerCase();
+
+    const filtered = companies.filter(c =>
+
+        c.company_symbol
+            .toLowerCase()
+            .includes(keyword)
+
+        ||
+
+        c.company_name
+            .toLowerCase()
+            .includes(keyword)
+
+    );
+
+    renderCompanies(filtered);
+
+}
+
+
+// =====================================
+// TOP SEARCH BAR
+// =====================================
+
+function topSearch() {
+
+    const symbol =
+        document
+            .getElementById("top-company-search")
+            .value
+            .trim()
+            .toUpperCase();
+
+    if (!symbol) return;
+
+    loadDashboard(symbol);
+
+}
+
+
+// =====================================
+// EVENTS
+// =====================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    loadCompanies();
+
+    loadDashboard();
+
+    document
+        .getElementById("switch-company-btn")
+        .addEventListener("click", openCompanyModal);
+
+    document
+        .getElementById("close-company-modal")
+        .addEventListener("click", closeCompanyModal);
+
+    document
+        .getElementById("company-search")
+        .addEventListener("input", searchCompanies);
+
+    document
+        .getElementById("top-search-btn")
+        .addEventListener("click", topSearch);
+
+    document
+        .getElementById("top-company-search")
+        .addEventListener("keypress", e => {
+
+            if (e.key === "Enter")
+                topSearch();
+
+        });
+
+    document
+        .getElementById("company-list")
+        .addEventListener("click", e => {
+
+            const item =
+                e.target.closest(".company-item");
+
+            if (!item) return;
+
+            closeCompanyModal();
+
+            loadDashboard(item.dataset.symbol);
+
+        });
+
 });

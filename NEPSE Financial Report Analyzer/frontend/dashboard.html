@@ -10,7 +10,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="css/dashboard.css">
     <script id="tailwind-config">
@@ -109,69 +110,93 @@
 
 <body class="bg-surface text-on-surface flex flex-col min-h-screen">
 
-    <header class="fixed top-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg py-sm">
+    <header
+        class="fixed top-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg py-sm">
         <div class="flex items-center gap-md">
             <button class="md:hidden p-base text-on-surface" id="sidebar-toggle">
                 <span class="material-symbols-outlined">menu</span>
             </button>
-            <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">NEPSE Financial Analyzer</span>
+            <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">NEPSE
+                Financial Analyzer</span>
         </div>
         <div class="flex items-center gap-md">
-            <div class="bg-surface-container-low rounded-full px-md py-xs hidden lg:flex items-center gap-sm border border-outline-variant">
-                <span class="material-symbols-outlined text-outline">search</span>
-                <input class="bg-transparent border-none focus:ring-0 text-body-md w-48" placeholder="Search ticker (e.g. ADBL)" type="text">
+            <div
+                class="bg-surface-container-low rounded-full px-md py-xs hidden lg:flex items-center gap-sm border border-outline-variant">
+                <span id="top-search-btn" class="material-symbols-outlined text-outline cursor-pointer">
+                    search
+                </span>
+                <input id="top-company-search" class="bg-transparent border-none focus:ring-0 text-body-md w-48"
+                    placeholder="Search (e.g. DHCL)" type="text">
             </div>
-            <button class="p-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer theme-toggle-btn" title="Toggle Dark/Light Mode">
+            <button
+                class="p-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer theme-toggle-btn"
+                title="Toggle Dark/Light Mode">
                 <span class="material-symbols-outlined">light_mode</span>
             </button>
-            <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</button>
+            <button
+                class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</button>
         </div>
     </header>
 
-    <aside class="fixed left-0 top-0 h-full w-[260px] hidden md:flex flex-col bg-surface dark:bg-surface border-r border-outline-variant z-40 pt-24" id="sidebar">
+    <aside
+        class="fixed left-0 top-0 h-full w-[260px] hidden md:flex flex-col bg-surface dark:bg-surface border-r border-outline-variant z-40 pt-24"
+        id="sidebar">
         <div class="px-md mb-xl">
             <div class="flex items-center gap-sm p-sm">
-                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary font-bold">N</div>
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary font-bold">N
+                </div>
                 <div>
-                    <h2 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed leading-tight">NEPSE Analyzer</h2>
+                    <h2
+                        class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed leading-tight">
+                        NEPSE Analyzer</h2>
                     <p class="font-label-md text-label-md text-on-surface-variant">Market Intelligence</p>
                 </div>
             </div>
         </div>
         <div class="flex flex-col gap-base px-md flex-grow">
-            <a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold rounded-full transition-all duration-200 ease-in-out" href="dashboard.html">
+            <a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold rounded-full transition-all duration-200 ease-in-out"
+                href="dashboard.html">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-label-md text-label-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="upload_file.html">
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out"
+                href="upload_file.html">
                 <span class="material-symbols-outlined">cloud_upload</span>
                 <span class="font-label-md text-label-md">Report Upload</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="dashboard.html">
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out"
+                href="dashboard.html">
                 <span class="material-symbols-outlined">pie_chart</span>
                 <span class="font-label-md text-label-md">Sector Analysis</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out" href="comparative_analysis.html">
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out"
+                href="comparative_analysis.html">
                 <span class="material-symbols-outlined">compare_arrows</span>
                 <span class="font-label-md text-label-md">Comparative Analysis</span>
             </a>
             <div class="mt-xl">
-                <a href="upload_file.html" class="w-full py-md bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
+                <a href="upload_file.html"
+                    class="w-full py-md bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
                     <span class="material-symbols-outlined">add</span>
                     <span>New Analysis</span>
                 </a>
             </div>
         </div>
         <div class="p-md mt-auto flex flex-col gap-base border-t border-outline-variant">
-            <button class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left theme-toggle-btn">
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left theme-toggle-btn">
                 <span class="material-symbols-outlined">light_mode</span>
                 <span class="font-label-md text-label-md">Toggle Theme</span>
             </button>
-            <button class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left" id="shortcuts-btn">
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left"
+                id="shortcuts-btn">
                 <span class="material-symbols-outlined">help</span>
                 <span class="font-label-md text-label-md">Keyboard Shortcuts</span>
             </button>
-            <button class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left" id="feedback-btn">
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left"
+                id="feedback-btn">
                 <span class="material-symbols-outlined">feedback</span>
                 <span class="font-label-md text-label-md">Feedback</span>
             </button>
@@ -179,84 +204,87 @@
     </aside>
 
     <main class="ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen">
-        <section class="mb-xl">
-            <div class="flex justify-between items-end mb-md">
-                <div>
-                    <h1 class="font-display-lg text-display-lg text-primary">Market Overview</h1>
-                    <p class="text-on-surface-variant font-body-md">Live NEPSE Index performance and key indicators.</p>
-                </div>
-                <div class="text-right">
-                    <div class="inline-flex items-center gap-xs px-sm py-xs bg-emerald-100 text-emerald-800 rounded-full font-bold text-label-md">
-                        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-                        MARKET OPEN
-                    </div>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
-                <div class="glass-card p-md rounded-xl shadow-sm">
-                    <p class="font-label-md text-label-md text-on-surface-variant">NEPSE INDEX</p>
-                    <div class="flex items-baseline gap-sm">
-                        <span class="font-headline-md text-headline-md text-primary">2,045.18</span>
-                        <span class="text-emerald-600 font-bold text-label-md">+1.24%</span>
-                    </div>
-                </div>
-                <div class="glass-card p-md rounded-xl shadow-sm">
-                    <p class="font-label-md text-label-md text-on-surface-variant">SENSITIVE INDEX</p>
-                    <div class="flex items-baseline gap-sm">
-                        <span class="font-headline-md text-headline-md text-primary">388.42</span>
-                        <span class="text-emerald-600 font-bold text-label-md">+0.85%</span>
-                    </div>
-                </div>
-                <div class="glass-card p-md rounded-xl shadow-sm">
-                    <p class="font-label-md text-label-md text-on-surface-variant">FLOAT INDEX</p>
-                    <div class="flex items-baseline gap-sm">
-                        <span class="font-headline-md text-headline-md text-primary">141.67</span>
-                        <span class="text-emerald-600 font-bold text-label-md">+1.12%</span>
-                    </div>
-                </div>
-                <div class="glass-card p-md rounded-xl shadow-sm">
-                    <p class="font-label-md text-label-md text-on-surface-variant">TOTAL TURNOVER (NPR)</p>
-                    <div class="flex items-baseline gap-sm">
-                        <span class="font-headline-md text-headline-md text-primary">4.52B</span>
-                        <span class="text-on-surface-variant font-bold text-label-md">High Vol</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <div class="grid grid-cols-12 gap-gutter">
             <div class="col-span-12 lg:col-span-9 space-y-gutter">
                 <div class="glass-card p-lg rounded-xl shadow-sm">
                     <div class="flex justify-between items-center mb-md">
                         <div class="flex items-center gap-sm">
-                            <div class="w-10 h-10 bg-secondary-fixed rounded-lg flex items-center justify-center font-bold text-on-secondary-fixed">A</div>
+                            <div id="company-avatar"
+                                class="px-3 h-10 bg-secondary-fixed rounded-lg flex items-center justify-center font-bold text-on-secondary-fixed">
+                                BUNGAL
+                            </div>
+
                             <div>
-                                <h3 class="font-headline-sm text-headline-sm text-primary">Agricultural Development Bank (ADBL)</h3>
-                                <p class="text-label-md text-on-surface-variant">Commercial Banking | FY 2080/81 Q4</p>
+                                <h3 id="company-name" class="font-headline-sm text-headline-sm text-primary">
+                                    Loading...
+                                </h3>
+                                <p id="company-info" class="text-label-md text-on-surface-variant"> Loading...</p>
                             </div>
                         </div>
-                        <button class="bg-surface-container-high px-md py-xs rounded-lg text-label-md font-bold hover:bg-outline-variant transition-colors" id="switch-company-btn">Switch Company</button>
+                        <button
+                            class="bg-surface-container-high px-md py-xs rounded-lg text-label-md font-bold hover:bg-outline-variant transition-colors"
+                            id="switch-company-btn">Switch Company</button>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+
+                        <!-- Revenue -->
                         <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
-                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">REVENUE</p>
-                            <p class="font-headline-sm text-headline-sm text-primary">NPR 18.4B</p>
-                            <p class="text-emerald-600 text-label-md font-bold">↑ 8.2% YoY</p>
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                REVENUE
+                            </p>
+
+                            <p id="revenue" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="revenue-growth" class="text-label-md font-bold">
+                                -
+                            </p>
                         </div>
+
+                        <!-- Net Profit -->
                         <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
-                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">NET PROFIT</p>
-                            <p class="font-headline-sm text-headline-sm text-primary">NPR 3.12B</p>
-                            <p class="text-emerald-600 text-label-md font-bold">↑ 12.5% YoY</p>
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                NET PROFIT
+                            </p>
+
+                            <p id="net-profit" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="profit-growth" class="text-label-md font-bold">
+                                -
+                            </p>
                         </div>
+
+                        <!-- Total Assets -->
                         <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
-                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">EPS (ANNUALIZED)</p>
-                            <p class="font-headline-sm text-headline-sm text-primary">NPR 24.15</p>
-                            <p class="text-error text-label-md font-bold">↓ 2.1% QoQ</p>
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                TOTAL ASSETS
+                            </p>
+
+                            <p id="assets" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="asset-growth" class="text-label-md font-bold">
+                                -
+                            </p>
                         </div>
+
+                        <!-- Equity -->
                         <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
-                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">TOTAL ASSETS</p>
-                            <p class="font-headline-sm text-headline-sm text-primary">NPR 245.8B</p>
-                            <p class="text-on-surface-variant text-label-md font-bold">Stable</p>
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                TOTAL EQUITY
+                            </p>
+
+                            <p id="equity" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="equity-growth" class="text-label-md font-bold">
+                                -
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -264,62 +292,40 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
                     <div class="glass-card p-lg rounded-xl shadow-sm">
                         <div class="flex justify-between items-center mb-lg">
-                            <h4 class="font-headline-sm text-headline-sm text-primary">Revenue Trend</h4>
-                            <span class="text-label-md text-on-surface-variant">Last 5 Quarters</span>
+                            <h4 class="font-headline-sm text-headline-sm text-primary">
+                                Revenue Trend
+                            </h4>
+
+                            <span class="text-label-md text-on-surface-variant">
+                                Last Quarters
+                            </span>
                         </div>
-                        <div class="h-64 flex items-end justify-between gap-sm px-md pb-md">
-                            <div class="w-full bg-primary-fixed-dim rounded-t h-[40%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
-                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">12.4B</span>
-                            </div>
-                            <div class="w-full bg-primary-fixed-dim rounded-t h-[55%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
-                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">14.1B</span>
-                            </div>
-                            <div class="w-full bg-primary-fixed-dim rounded-t h-[65%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
-                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">15.8B</span>
-                            </div>
-                            <div class="w-full bg-primary-fixed-dim rounded-t h-[85%] hover:bg-primary transition-colors cursor-pointer group relative chart-bar">
-                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100">17.9B</span>
-                            </div>
-                            <div class="w-full bg-primary rounded-t h-[100%] cursor-pointer group relative">
-                                <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold opacity-100">18.4B</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between mt-sm text-label-md text-on-surface-variant px-md">
-                            <span>Q4 '79</span><span>Q1 '80</span><span>Q2 '80</span><span>Q3 '80</span><span>Q4 '80</span>
-                        </div>
+
+                        <canvas id="revenueChart" height="250"></canvas>
                     </div>
+
                     <div class="glass-card p-lg rounded-xl shadow-sm">
                         <div class="flex justify-between items-center mb-lg">
-                            <h4 class="font-headline-sm text-headline-sm text-primary">Net Profit Trend</h4>
-                            <span class="text-label-md text-on-surface-variant">Annualized Growth</span>
+                            <h4 class="font-headline-sm text-headline-sm text-primary">
+                                Net Profit Trend
+                            </h4>
+
+                            <span class="text-label-md text-on-surface-variant">
+                                Last Quarters
+                            </span>
                         </div>
-                        <div class="h-64 relative overflow-hidden flex items-center">
-                            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 200">
-                                <defs>
-                                    <linearGradient id="gradient" x1="0%" x2="0%" y1="0%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#47607e;stop-opacity:0.2"></stop>
-                                        <stop offset="100%" style="stop-color:#47607e;stop-opacity:0"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <path d="M 0 160 Q 50 140 100 150 T 200 100 T 300 80 T 400 50" fill="none" stroke="#47607e" stroke-width="3"></path>
-                                <path d="M 0 160 Q 50 140 100 150 T 200 100 T 300 80 T 400 50 V 200 H 0 Z" fill="url(#gradient)"></path>
-                                <circle cx="0" cy="160" fill="#051125" r="4"></circle>
-                                <circle cx="100" cy="150" fill="#051125" r="4"></circle>
-                                <circle cx="200" cy="100" fill="#051125" r="4"></circle>
-                                <circle cx="300" cy="80" fill="#051125" r="4"></circle>
-                                <circle cx="400" cy="50" fill="#051125" r="4"></circle>
-                            </svg>
-                        </div>
-                        <div class="flex justify-between mt-sm text-label-md text-on-surface-variant px-md">
-                            <span>2077</span><span>2078</span><span>2079</span><span>2080</span><span>2081</span>
-                        </div>
+
+                        <canvas id="profitChart" height="250"></canvas>
                     </div>
+
                 </div>
             </div>
 
             <div class="col-span-12 lg:col-span-3 space-y-gutter">
-                <div class="bg-primary-container text-on-primary rounded-xl shadow-lg p-lg relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-lg opacity-10 scale-150 transform -rotate-12 group-hover:rotate-0 transition-transform">
+                <div
+                    class="bg-primary-container text-on-primary rounded-xl shadow-lg p-lg relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 p-lg opacity-10 scale-150 transform -rotate-12 group-hover:rotate-0 transition-transform">
                         <span class="material-symbols-outlined text-[80px]">psychology</span>
                     </div>
                     <div class="relative z-10">
@@ -328,69 +334,80 @@
                             <h4 class="font-headline-sm text-headline-sm">AI Performance Summary</h4>
                         </div>
                         <p class="font-body-md mb-lg leading-relaxed text-on-primary-container/90">
-                            ADBL shows strong <span class="text-tertiary-fixed-dim font-bold">operational efficiency</span> with a 12.5% YoY profit surge. While EPS dipped slightly this quarter, the overall balance sheet expansion suggests robust long-term solvency. Market positioning remains favorable within the commercial banking tier.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas veniam saepe dolores
+                            aspernatur alias officiis, id impedit consequatur provident mollitia recusandae velit magni
+                            ab tempore eius similique facilis ipsa dolor.
                         </p>
-                        <button class="w-full py-sm bg-tertiary-fixed text-on-tertiary-fixed rounded-lg font-bold text-label-md hover:bg-tertiary-fixed-dim transition-colors">Download Detailed Report</button>
+                        <button
+                            class="w-full py-sm bg-tertiary-fixed text-on-tertiary-fixed rounded-lg font-bold text-label-md hover:bg-tertiary-fixed-dim transition-colors">Download
+                            Detailed Report</button>
                     </div>
                 </div>
 
+                <!-- Sector Watch
                 <div class="glass-card rounded-xl shadow-sm flex flex-col h-full overflow-hidden">
                     <div class="p-lg border-b border-outline-variant">
                         <h4 class="font-headline-sm text-headline-sm text-primary">Sector Watch</h4>
                         <p class="text-label-md text-on-surface-variant">Top Performers Today</p>
                     </div>
-                    <div class="flex-grow">
-                        <div class="px-lg py-md">
-                            <div class="flex items-center justify-between mb-sm">
-                                <span class="font-label-md text-label-md font-bold text-secondary">Hydropower</span>
-                                <span class="text-label-md text-emerald-600 font-bold">+2.41%</span>
-                            </div>
-                            <div class="space-y-base">
-                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
-                                    <span class="font-body-md text-primary">UPPER</span>
-                                    <span class="text-emerald-600 font-bold text-label-md">▲ 4.5%</span>
-                                </div>
-                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
-                                    <span class="font-body-md text-primary">SHPC</span>
-                                    <span class="text-emerald-600 font-bold text-label-md">▲ 3.2%</span>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="border-outline-variant mx-lg">
-                        <div class="px-lg py-md">
-                            <div class="flex items-center justify-between mb-sm">
-                                <span class="font-label-md text-label-md font-bold text-secondary">Commercial Banking</span>
-                                <span class="text-label-md text-emerald-600 font-bold">+1.08%</span>
-                            </div>
-                            <div class="space-y-base">
-                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
-                                    <span class="font-body-md text-primary">NABIL</span>
-                                    <span class="text-emerald-600 font-bold text-label-md">▲ 1.8%</span>
-                                </div>
-                                <div class="flex justify-between items-center p-sm hover:bg-surface-container rounded-lg transition-colors cursor-pointer">
-                                    <span class="font-body-md text-primary">GBIME</span>
-                                    <span class="text-error font-bold text-label-md">▼ 0.4%</span>
-                                </div>
-                            </div>
+                    <div id="sector-watch" class="flex-grow">
+                        <div class="p-6 text-center text-gray-500">
+                            Loading sector performance...
                         </div>
                     </div>
-                    <a class="p-md text-center text-label-md font-bold text-primary hover:underline bg-surface-container-low" href="#">View All Sectors</a>
-                </div>
+                    <a class="p-md text-center text-label-md font-bold text-primary hover:underline bg-surface-container-low"
+                        href="#">View All Sectors</a>
+                </div> -->
             </div>
         </div>
     </main>
 
-    <footer class="bg-surface-dim dark:bg-surface-dim text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md">
+
+    <!-- =================================================================================== -->
+    <!-- Company Selection Modal -->
+    <!-- ================================================================================== -->
+
+    <div id="company-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+        <div class="bg-white rounded-xl shadow-xl w-[500px] max-h-[600px] overflow-hidden">
+
+            <div class="p-4 border-b flex justify-between items-center">
+                <h2 class="text-xl font-bold">
+                    Select Company
+                </h2>
+
+                <button id="close-company-modal" class="text-gray-500 text-2xl">
+                    ×
+                </button>
+            </div>
+
+            <div class="p-4">
+
+                <input id="company-search" type="text" placeholder="Search company..."
+                    class="w-full border rounded-lg p-2 mb-4">
+
+                <div id="company-list" class="max-h-[400px] overflow-y-auto space-y-2">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer
+        class="bg-surface-dim dark:bg-surface-dim text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md">
         <div>
-            <span class="font-label-md text-label-md font-bold">© 2026 NEPSE Financial Analyzer | Data source: Nepal Stock Exchange</span>
+            <span class="font-label-md text-label-md font-bold">© 2026 NEPSE Financial Analyzer | Data source: Nepal
+                Stock Exchange</span>
         </div>
         <div class="flex gap-xl">
-            <span class="text-emerald-600 font-bold">System Status: Operational</span>
             <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Privacy Policy</a>
             <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">API Docs</a>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
 

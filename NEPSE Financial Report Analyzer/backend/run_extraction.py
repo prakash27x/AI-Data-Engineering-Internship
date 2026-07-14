@@ -93,8 +93,6 @@ def run_extraction():
         metadata=metadata,
     )
 
-    save_extraction(result)
-
     saved = save_extraction(result)
 
     print("\n✅ Extraction completed successfully.")
