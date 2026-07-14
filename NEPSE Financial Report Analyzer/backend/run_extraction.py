@@ -1,41 +1,66 @@
 import argparse
-import csv
-import json
-import re
-from pathlib import Path
-from datetime import datetime
 
-from extraction.hydropower import ExtractionResult, extract_financial_data
+from backend.extraction.hydropower import extract_financial_data
+from backend.services.database_service import save_extraction
 
-OUTPUT_DIR = "outputs"
 
 def create_argument_parser():
     """
-    Create command line options for the extraction script.
+    Create command-line options for the extraction script.
     """
     parser = argparse.ArgumentParser(
-        description="Extract financial table data from a PDF into JSON and CSV."
+        description="Extract financial data from a PDF and save it to MySQL."
     )
 
-    # Required PDF file path
-    parser.add_argument("pdf", help="Path to the financial report PDF")
+    # Required PDF file
+    parser.add_argument(
+        "pdf",
+        help="Path to the financial report PDF"
+    )
 
-    # Optional report metadata
-    parser.add_argument("--company", default="report", help="Company symbol or name, e.g. PHCL")
-    parser.add_argument("--sector", default="hydropower", help="Sector name")
-    parser.add_argument("--report-type", default="quarterly", help="Report type")
-    parser.add_argument("--fiscal-year", default="", help="Fiscal year, e.g. 2082/83")
-    parser.add_argument("--quarter", default="", help="Uploaded report quarter, e.g. Q3")
+    # Report metadata
+    parser.add_argument(
+        "--company-symbol",
+        required=True,
+        help="Company symbol (e.g. BUNGAL)"
+    )
 
-    # Temporary output folder
-    parser.add_argument("--output-dir", default=OUTPUT_DIR, help=f"Folder to save extracted JSON and CSV (default: {OUTPUT_DIR})")
+    parser.add_argument(
+        "--company-name",
+        required=True,
+        help="Company name (e.g. Bungal Hydro Limited)"
+    )
+
+    parser.add_argument(
+        "--sector",
+        default="hydropower",
+        help="Company sector"
+    )
+
+    parser.add_argument(
+        "--report-type",
+        default="quarterly",
+        help="Report type (quarterly/annual)"
+    )
+
+    parser.add_argument(
+        "--fiscal-year",
+        required=True,
+        help="Fiscal year (e.g. 2082/83)"
+    )
+
+    parser.add_argument(
+        "--quarter",
+        required=True,
+        help="Report quarter (Q1, Q2, Q3, Q4)"
+    )
 
     return parser
 
 
 def get_command_line_arguments():
     """
-    Read values passed from the terminal.
+    Read command-line arguments.
     """
     parser = create_argument_parser()
     return parser.parse_args()
@@ -43,83 +68,21 @@ def get_command_line_arguments():
 
 def build_report_metadata(arguments):
     """
-    Convert command line values into report metadata.
+    Build report metadata.
     """
-    metadata = {
-        "company": arguments.company,
+    return {
+        "company_symbol": arguments.company_symbol,
+        "company_name": arguments.company_name,
         "sector": arguments.sector,
         "report_type": arguments.report_type,
         "fiscal_year": arguments.fiscal_year,
         "quarter": arguments.quarter,
     }
-    return metadata
 
-
-def print_extraction_summary(result, saved_files):
-    """
-    Show useful output after extraction is complete.
-    """
-    print("Extraction completed successfully.")
-    print("Extracted metrics:", len(result.metrics))
-    print("JSON saved to:", saved_files["json"])
-    print("CSV saved to: ", saved_files["csv"])
-
-def save_metrics_as_csv(result: ExtractionResult, csv_path: Path):
-    """
-    Save metrics in long CSV format.
-
-    Each metric value becomes one CSV row:
-    metric, mapped_field, period, value
-    """
-    with open(csv_path, "w", newline="", encoding="utf-8") as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerow(["metric", "mapped_field", "period", "value"])
-
-        for metric in result.metrics:
-            values = metric.get("values", [])
-
-            for index, value in enumerate(values):
-                period = result.headers[index] if index < len(result.headers) else f"col_{index + 1}"
-
-                writer.writerow([
-                    metric.get("metric"),
-                    metric.get("field") or "",
-                    period,
-                    value,
-                ])
-
-def save_result(result: ExtractionResult, output_dir: Path):
-    """
-    Save extracted data temporarily as JSON and CSV.
-    """
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    company = result.metadata.get("company", "report")
-    safe_company = re.sub(r"[^A-Za-z0-9_-]+", "_", company).strip("_") or "report"
-
-    base_name = f"{safe_company}_{timestamp}"
-    json_path = output_dir / f"{base_name}.json"
-    csv_path = output_dir / f"{base_name}.csv"
-
-    json_data = {
-        "metadata": result.metadata,
-        "headers": result.headers,
-        "metrics": result.metrics,
-        "raw_text_preview": result.raw_text_preview,
-    }
-
-    json_path.write_text(json.dumps(json_data, indent=2, ensure_ascii=False), encoding="utf-8")
-    save_metrics_as_csv(result, csv_path)
-
-    return {
-        "json": json_path,
-        "csv": csv_path,
-    }
 
 def run_extraction():
     """
-    Main workflow for extracting a PDF report.
+    Extract financial data from a PDF and save it to MySQL.
     """
     arguments = get_command_line_arguments()
 
@@ -130,12 +93,19 @@ def run_extraction():
         metadata=metadata,
     )
 
-    saved_files = save_result(
-        result=result,
-        output_dir=Path(arguments.output_dir)
-    )
+    save_extraction(result)
 
-    print_extraction_summary(result, saved_files)
+    saved = save_extraction(result)
+
+    print("\n✅ Extraction completed successfully.")
+    print(f"📄 PDF: {arguments.pdf}")
+    print(f"🏢 Company: {metadata['company_symbol']}")
+    print(f"📊 Metrics extracted: {len(result.metrics)}")
+
+    if saved:
+        print("💾 Data saved to MySQL.")
+    else:
+        print("❌ Data was NOT saved to MySQL.")
 
 
 if __name__ == "__main__":

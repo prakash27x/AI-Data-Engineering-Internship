@@ -5,8 +5,12 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from extraction.pdf_reader import collect_raw_text, collect_tables, read_pdf
-
+# from extraction.pdf_reader import collect_raw_text, collect_tables, read_pdf
+from backend.extraction.pdf_reader import (
+    collect_raw_text,
+    collect_tables,
+    read_pdf,
+)
 
 # Words that usually identify financial statement tables.
 STATEMENT_KEYWORDS = [
