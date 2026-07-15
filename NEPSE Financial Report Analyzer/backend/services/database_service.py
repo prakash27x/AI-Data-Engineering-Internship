@@ -143,6 +143,7 @@ def build_fiscal_year(end_year, quarter):
 def create_report(connection, company_id, result, period):
     """
     Create one report record for a specific reporting period.
+    Re-uploads for the same company/type/FY/quarter replace prior data.
     """
 
     cursor = connection.cursor()
@@ -150,6 +151,50 @@ def create_report(connection, company_id, result, period):
 
     quarter, year = period.split("_")
     fiscal_year = build_fiscal_year(int(year), quarter)
+    report_type = metadata.get("report_type", "quarterly")
+    pdf_path = metadata.get("source_pdf")
+    value_scale = metadata.get("value_scale", 1)
+
+    cursor.execute(
+        """
+        SELECT report_id
+        FROM reports
+        WHERE company_id = %s
+          AND report_type = %s
+          AND fiscal_year = %s
+          AND report_quarter = %s
+        """,
+        (company_id, report_type, fiscal_year, quarter),
+    )
+    existing = cursor.fetchone()
+
+    if existing:
+        report_id = existing[0]
+        cursor.execute(
+            "DELETE FROM hydropower_financials WHERE report_id = %s",
+            (report_id,),
+        )
+        cursor.execute(
+            "DELETE FROM extraction_logs WHERE report_id = %s",
+            (report_id,),
+        )
+        cursor.execute(
+            "DELETE FROM ai_analysis WHERE report_id = %s",
+            (report_id,),
+        )
+        cursor.execute(
+            """
+            UPDATE reports
+            SET pdf_path = %s,
+                value_scale = %s,
+                extraction_status = 'extracted',
+                uploaded_at = CURRENT_TIMESTAMP
+            WHERE report_id = %s
+            """,
+            (pdf_path, value_scale, report_id),
+        )
+        cursor.close()
+        return report_id
 
     cursor.execute(
         """
@@ -168,11 +213,11 @@ def create_report(connection, company_id, result, period):
         """,
         (
             company_id,
-            metadata.get("report_type", "quarterly"),
+            report_type,
             fiscal_year,
             quarter,
-            metadata.get("source_pdf"),
-            metadata.get("value_scale", 1),
+            pdf_path,
+            value_scale,
             "extracted",
         )
     )

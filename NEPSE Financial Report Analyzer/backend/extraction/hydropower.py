@@ -5,6 +5,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
+import os
+
 # from extraction.pdf_reader import collect_raw_text, collect_tables, read_pdf
 from backend.extraction.pdf_reader import (
     collect_raw_text,
@@ -246,7 +248,6 @@ def parse_number(value):
     if is_negative:
         return -number
     return number
-
 
 
 def looks_like_preeti_text(text):
@@ -776,3 +777,4 @@ def save_metrics_as_csv(result, csv_path):
                     period,
                     value,
                 ])
+

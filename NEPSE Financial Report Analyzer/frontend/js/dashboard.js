@@ -23,25 +23,40 @@ function formatCurrency(value) {
 
 }
 
-function setGrowth(id, growth) {
+function setGrowth(elementId, growth) {
 
-    const el = document.getElementById(id);
+    const element = document.getElementById(elementId);
 
-    if (!growth) {
-
-        el.innerText = "-";
+    if (!growth || growth.direction === "none") {
+        element.innerText = "-";
         return;
+    }
+
+    // Special cases
+    if (growth.status) {
+
+        if (growth.value === null) {
+
+            element.innerText = growth.status;
+
+        } else {
+
+            element.innerText =
+                `${growth.direction === "up" ? "▲" : "▼"} ${growth.value}% (${growth.status})`;
+
+        }
+
+    } else {
+
+        element.innerText =
+            `${growth.direction === "up" ? "▲" : "▼"} ${growth.value}%`;
 
     }
 
-    el.innerText =
-        `${growth.direction === "up" ? "▲" : "▼"} ${growth.value}%`;
-
-    el.className =
+    element.className =
         growth.direction === "up"
             ? "text-green-600 font-bold"
             : "text-red-600 font-bold";
-
 }
 
 
@@ -355,9 +370,15 @@ function topSearch() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    const params = new URLSearchParams(window.location.search);
+    const symbolFromUrl = params.get("symbol");
+    if (symbolFromUrl) {
+        currentCompany = symbolFromUrl.trim().toUpperCase();
+    }
+
     loadCompanies();
 
-    loadDashboard();
+    loadDashboard(currentCompany);
 
     document
         .getElementById("switch-company-btn")

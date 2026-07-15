@@ -1,27 +1,70 @@
-/* Custom Styles for NEPSE Financial Analyzer */
-
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  vertical-align: middle;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
-.data-table-compact td {
-  padding: 8px 12px;
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(224, 228, 232, 0.6);
 }
 
-.card-elevation-1 { 
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
-  border: 1px solid #E0E4E8;
+.field-select {
+    border-radius: 8px;
+    border: 1px solid #c5c6cd;
+    background: #ffffff;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #051125;
 }
 
-.gradient-line-green {
-  background: linear-gradient(90deg, rgba(34,197,94,0) 0%, rgba(34,197,94,0.1) 100%);
+.field-select:focus {
+    outline: none;
+    border-color: #47607e;
+    box-shadow: 0 0 0 2px rgba(71, 96, 126, 0.15);
 }
 
-.gradient-line-blue {
-  background: linear-gradient(90deg, rgba(71,96,126,0) 0%, rgba(71,96,126,0.1) 100%);
+.data-table th,
+.data-table td {
+    white-space: nowrap;
+}
+
+.chart-wrap {
+    position: relative;
+    height: 280px;
+    width: 100%;
+}
+
+#compare-status.success {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+#compare-status.error {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #991b1b;
+}
+
+#compare-status.info {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: #1e40af;
+}
+
+html.dark .glass-card {
+    background: rgba(27, 38, 59, 0.85);
+    border-color: rgba(69, 71, 77, 0.6);
+}
+
+html.dark .field-select {
+    background: #151c28;
+    border-color: #45474d;
+    color: #e8eaed;
 }
