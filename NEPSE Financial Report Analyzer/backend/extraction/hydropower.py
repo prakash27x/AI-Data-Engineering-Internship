@@ -111,6 +111,14 @@ IMPORTANT_FIELDS = [
     "total_comprehensive_income",
 ]
 
+# Row labels that must never map to a single balance-sheet total.
+# Example: "Total Equity and Liabilities" equals Total Assets, not equity.
+UNMAPPED_METRIC_PHRASES = (
+    "equity and liabilities",
+    "equity liabilities",
+    "assets and liabilities",
+)
+
 HYDROPOWER_MAPPING = {
     # Balance Sheet
     "equity share capital": "share_capital",
@@ -126,10 +134,14 @@ HYDROPOWER_MAPPING = {
 
     "long term borrowings": "long_term_borrowings",
     "long-term borrowings": "long_term_borrowings",
+    "long term borrowing": "long_term_borrowings",
+    "long-term borrowing": "long_term_borrowings",
 
     "short term loans borrowings": "short_term_borrowings",
     "short term loans and borrowings": "short_term_borrowings",
     "short-term borrowings": "short_term_borrowings",
+    "short term borrowing": "short_term_borrowings",
+    "short-term borrowing": "short_term_borrowings",
     "current portion of long term borrowings": "short_term_borrowings",
     "bridge gap loan": "short_term_borrowings",
 
@@ -149,18 +161,21 @@ HYDROPOWER_MAPPING = {
 
     # Income Statement
     "revenue from sale of energy": "revenue_from_sale_of_energy",
-    "Revenue ":"revenue_from_sale_of_energy",
     "revenue from operations": "revenue_from_sale_of_energy",
     "sale of energy": "revenue_from_sale_of_energy",
     "energy sales": "revenue_from_sale_of_energy",
+    # Many NFRS hydropower PDFs label this simply as "Revenue"
+    "revenue": "revenue_from_sale_of_energy",
 
     "gross profit loss": "gross_profit",
     "gross profit": "gross_profit",
 
     "total income": "total_income",
     "operating profit": "operating_profit",
+    "profit from operation": "operating_profit",
 
     "finance cost": "finance_costs",
+    "finance costs": "finance_costs",
     "financial cost": "finance_costs",
     "financial costs": "finance_costs",
     "financial expenses": "finance_costs",
@@ -171,7 +186,6 @@ HYDROPOWER_MAPPING = {
     "net profit before tax": "profit_before_tax",
     "profit before income tax": "profit_before_tax",
 
-
     "earning after tax": "net_profit",
     "earnings after tax": "net_profit",
     "earning after tax eat": "net_profit",
@@ -180,7 +194,9 @@ HYDROPOWER_MAPPING = {
     "profit for the period": "net_profit",
 
     "total comprehensive income": "total_comprehensive_income",
+    "total comprehensive gain": "total_comprehensive_income",
     "comprehensive income": "total_comprehensive_income",
+    "comprehensive gain": "total_comprehensive_income",
 }
 
 
@@ -302,9 +318,44 @@ def build_raw_text_preview(raw_text):
 
 
 def map_metric_name(metric_name):
-    normalized_metric = normalize_text(metric_name)
+    """
+    Map a PDF row label to a DB field.
 
-    for source_name, field_name in HYDROPOWER_MAPPING.items():
+    Matching rules:
+    1. Skip balance-sheet totals like "Total Equity and Liabilities"
+    2. Prefer exact label matches
+    3. Otherwise use longest substring match (normalized keys)
+    """
+    normalized_metric = normalize_text(metric_name)
+    if not normalized_metric:
+        return None
+
+    for phrase in UNMAPPED_METRIC_PHRASES:
+        if phrase in normalized_metric:
+            return None
+
+    normalized_map = [
+        (normalize_text(source_name), field_name)
+        for source_name, field_name in HYDROPOWER_MAPPING.items()
+    ]
+    # Longest keys first so "revenue from sale of energy" beats "revenue"
+    normalized_map.sort(key=lambda item: len(item[0]), reverse=True)
+
+    for source_name, field_name in normalized_map:
+        if source_name and normalized_metric == source_name:
+            return field_name
+
+    for source_name, field_name in normalized_map:
+        if not source_name:
+            continue
+        # Very short aliases (e.g. "revenue") must be exact / start-bound
+        if len(source_name) <= 8:
+            if (
+                normalized_metric == source_name
+                or normalized_metric.startswith(source_name + " ")
+            ):
+                return field_name
+            continue
         if source_name in normalized_metric:
             return field_name
 

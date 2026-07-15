@@ -218,14 +218,57 @@ def _build_company_payload(row, reports):
     }
 
 
-def _pick_comparison_rows(reports_a, reports_b):
+def _period_options(reports):
+    options = []
+    seen = set()
+    for r in reports:
+        key = _period_key(r["fiscal_year"], r["report_quarter"])
+        if key in seen:
+            continue
+        seen.add(key)
+        options.append(
+            {
+                "key": key,
+                "label": _period_label(r["fiscal_year"], r["report_quarter"]),
+                "fiscal_year": r["fiscal_year"],
+                "quarter": r["report_quarter"],
+            }
+        )
+    return options
+
+
+def _pick_comparison_rows(
+    reports_a,
+    reports_b,
+    fiscal_year=None,
+    quarter=None,
+):
     """
-    Prefer the most recent shared fiscal year + quarter.
+    Prefer an explicitly requested period when both companies have it.
+    Else prefer the most recent shared fiscal year + quarter.
     Fall back to each company's latest report if no overlap.
     """
     map_a = {_period_key(r["fiscal_year"], r["report_quarter"]): r for r in reports_a}
     map_b = {_period_key(r["fiscal_year"], r["report_quarter"]): r for r in reports_b}
     common = set(map_a) & set(map_b)
+
+    requested_fy = (fiscal_year or "").strip()
+    requested_q = (quarter or "").strip().upper()
+
+    if requested_fy and requested_q:
+        requested_key = _period_key(requested_fy, requested_q)
+        if requested_key in common:
+            return (
+                map_a[requested_key],
+                map_b[requested_key],
+                True,
+                _period_label(requested_fy, requested_q),
+                "selected",
+            )
+        # Requested period missing for one/both — fall through with note later
+        if requested_key in map_a and requested_key in map_b:
+            # unreachable with common check, kept for clarity
+            pass
 
     if common:
         best = max(
@@ -235,14 +278,23 @@ def _pick_comparison_rows(reports_a, reports_b):
                 _quarter_rank(map_a[k]["report_quarter"]),
             ),
         )
-        return map_a[best], map_b[best], True, _period_label(
-            map_a[best]["fiscal_year"], map_a[best]["report_quarter"]
+        return (
+            map_a[best],
+            map_b[best],
+            True,
+            _period_label(map_a[best]["fiscal_year"], map_a[best]["report_quarter"]),
+            "auto",
         )
 
-    return reports_a[0], reports_b[0], False, None
+    return reports_a[0], reports_b[0], False, None, "fallback"
 
 
-def compare_companies(symbol_a: str, symbol_b: str) -> dict:
+def compare_companies(
+    symbol_a: str,
+    symbol_b: str,
+    fiscal_year: str = None,
+    quarter: str = None,
+) -> dict:
     """
     Compare two companies using hydropower financials from MySQL.
     """
@@ -269,8 +321,16 @@ def compare_companies(symbol_a: str, symbol_b: str) -> dict:
         if not reports_b:
             return {"error": f"No financial data found for {symbol_b}"}
 
-        row_a, row_b, matched, shared_period = _pick_comparison_rows(
-            reports_a, reports_b
+        periods_a = _period_options(reports_a)
+        periods_b = _period_options(reports_b)
+        common_keys = {p["key"] for p in periods_a} & {p["key"] for p in periods_b}
+        common_periods = [p for p in periods_a if p["key"] in common_keys]
+
+        row_a, row_b, matched, shared_period, mode = _pick_comparison_rows(
+            reports_a,
+            reports_b,
+            fiscal_year=fiscal_year,
+            quarter=quarter,
         )
 
         company_a = _build_company_payload(row_a, reports_a)
@@ -293,22 +353,50 @@ def compare_companies(symbol_a: str, symbol_b: str) -> dict:
                 }
             )
 
-        note = (
-            f"Comparing matched period {shared_period}."
-            if matched
-            else (
+        period_a_label = _period_label(company_a["fiscal_year"], company_a["quarter"])
+        period_b_label = _period_label(company_b["fiscal_year"], company_b["quarter"])
+
+        if matched and mode == "selected":
+            note = f"Comparing selected period {shared_period}."
+            period_label = shared_period
+        elif matched:
+            note = f"Comparing matched period {shared_period}."
+            period_label = shared_period
+        else:
+            note = (
                 "No shared fiscal period found — showing each company's "
-                "latest available report."
+                f"selected/latest report ({period_a_label} vs {period_b_label})."
             )
-        )
+            period_label = f"{period_a_label} vs {period_b_label}"
+
+        if fiscal_year and quarter:
+            req = _period_label(fiscal_year.strip(), quarter.strip().upper())
+            if not matched or shared_period != req:
+                note = (
+                    f"Requested {req} is not available for both companies. "
+                    + note
+                )
 
         return {
             "company_a": company_a,
             "company_b": company_b,
             "matched_period": matched,
-            "period_label": shared_period
-            or f"{company_a['fiscal_year']} {company_a['quarter']} vs "
-            f"{company_b['fiscal_year']} {company_b['quarter']}",
+            "period_mode": mode,
+            "period_label": period_label,
+            "period_a": period_a_label,
+            "period_b": period_b_label,
+            "selected_period": {
+                "fiscal_year": company_a["fiscal_year"] if matched else None,
+                "quarter": company_a["quarter"] if matched else None,
+                "key": _period_key(company_a["fiscal_year"], company_a["quarter"])
+                if matched
+                else None,
+            },
+            "available_periods": {
+                "common": common_periods,
+                "company_a": periods_a,
+                "company_b": periods_b,
+            },
             "note": note,
             "rows": rows,
         }

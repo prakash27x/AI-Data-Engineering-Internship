@@ -1,6 +1,4 @@
-"""
-Comparative analysis API — side-by-side company metrics.
-"""
+from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Query
 
@@ -42,9 +40,18 @@ async def list_comparable_companies():
 async def compare(
     symbol_a: str = Query(..., description="First company symbol"),
     symbol_b: str = Query(..., description="Second company symbol"),
+    fiscal_year: Optional[str] = Query(
+        None, description="Shared fiscal year e.g. 2082/83"
+    ),
+    quarter: Optional[str] = Query(None, description="Shared quarter Q1-Q4"),
 ):
     """Compare two companies on key financial metrics."""
-    result = compare_companies(symbol_a, symbol_b)
+    result = compare_companies(
+        symbol_a,
+        symbol_b,
+        fiscal_year=fiscal_year,
+        quarter=quarter,
+    )
     if result.get("error"):
         raise HTTPException(status_code=404, detail=result["error"])
     return result

@@ -240,6 +240,11 @@ def save_hydropower_financials(connection, report_id, result, value_index):
         if field is None:
             continue
 
+        # Keep the first mapped value for each field. Later rows like
+        # "Total Equity and Liabilities" must not overwrite "Total Equity".
+        if field in financial_data and financial_data[field] is not None:
+            continue
+
         values = metric.get("values", [])
         if len(values) == 0:
             continue

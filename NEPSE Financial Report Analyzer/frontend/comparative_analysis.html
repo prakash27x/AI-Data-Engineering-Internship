@@ -208,6 +208,7 @@
                             <select id="company-a" class="field-select w-full">
                                 <option value="">Select company…</option>
                             </select>
+                            <p id="period-a-label" class="mt-sm text-xs text-on-surface-variant">Period: —</p>
                         </div>
                         <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
                             <div class="flex items-center gap-sm mb-sm">
@@ -220,6 +221,21 @@
                             <select id="company-b" class="field-select w-full">
                                 <option value="">Select company…</option>
                             </select>
+                            <p id="period-b-label" class="mt-sm text-xs text-on-surface-variant">Period: —</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-md p-md border border-outline-variant rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-end gap-md">
+                        <div class="flex-1">
+                            <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="compare-period">
+                                Comparison quarter
+                            </label>
+                            <select id="compare-period" class="field-select w-full mt-sm">
+                                <option value="">Auto (latest shared period)</option>
+                            </select>
+                            <p class="mt-sm text-xs text-on-surface-variant">
+                                Lists quarters available for both companies. Auto picks the newest match.
+                            </p>
                         </div>
                     </div>
 

@@ -9,6 +9,7 @@
 
     let profitChart = null;
     let companies = [];
+    let suppressPeriodAutoCompare = false;
 
     function escapeHtml(text) {
         return String(text ?? "")
@@ -148,6 +149,53 @@
         }
     }
 
+    function updatePeriodDropdown(data, preserveSelection) {
+        const select = document.getElementById("compare-period");
+        if (!select) return;
+
+        const previous = preserveSelection ? select.value : "";
+        const common = data?.available_periods?.common || [];
+        const selectedKey = data?.selected_period?.key || "";
+
+        select.innerHTML = '<option value="">Auto (latest shared period)</option>';
+        common.forEach((p) => {
+            const opt = document.createElement("option");
+            opt.value = p.key;
+            opt.textContent = p.label;
+            select.appendChild(opt);
+        });
+
+        if (previous && [...select.options].some((o) => o.value === previous)) {
+            select.value = previous;
+        } else if (selectedKey && [...select.options].some((o) => o.value === selectedKey)) {
+            // Keep Auto selected unless user previously chose a period
+            if (previous) select.value = previous;
+        }
+
+        if (!common.length) {
+            const opt = document.createElement("option");
+            opt.value = "";
+            opt.disabled = true;
+            opt.textContent = "No shared quarters available";
+            select.appendChild(opt);
+        }
+    }
+
+    function updatePeriodLabels(data) {
+        const aEl = document.getElementById("period-a-label");
+        const bEl = document.getElementById("period-b-label");
+        if (aEl) {
+            aEl.textContent = data?.period_a
+                ? `Period: ${data.period_a}`
+                : "Period: —";
+        }
+        if (bEl) {
+            bEl.textContent = data?.period_b
+                ? `Period: ${data.period_b}`
+                : "Period: —";
+        }
+    }
+
     function renderTable(data) {
         const tbody = document.getElementById("compare-tbody");
         const thA = document.getElementById("th-a");
@@ -160,7 +208,17 @@
         if (thB) thB.textContent = data.company_b.symbol;
         if (legendA) legendA.textContent = data.company_a.symbol;
         if (legendB) legendB.textContent = data.company_b.symbol;
-        if (badge) badge.textContent = data.period_label || "—";
+
+        if (badge) {
+            if (data.matched_period) {
+                badge.textContent = data.period_label || "—";
+            } else {
+                badge.textContent = `${data.period_a || "—"} vs ${data.period_b || "—"}`;
+            }
+        }
+
+        updatePeriodLabels(data);
+        updatePeriodDropdown(data, true);
 
         if (!tbody) return;
 
@@ -339,7 +397,21 @@
         showStatus("Loading comparison…", "info");
 
         try {
-            const url = `${COMPARE_URL}?symbol_a=${encodeURIComponent(symbolA)}&symbol_b=${encodeURIComponent(symbolB)}`;
+            const params = new URLSearchParams({
+                symbol_a: symbolA,
+                symbol_b: symbolB,
+            });
+
+            const periodValue = document.getElementById("compare-period")?.value || "";
+            if (periodValue.includes("|")) {
+                const [fy, q] = periodValue.split("|");
+                if (fy && q) {
+                    params.set("fiscal_year", fy);
+                    params.set("quarter", q);
+                }
+            }
+
+            const url = `${COMPARE_URL}?${params.toString()}`;
             const res = await fetch(url, { cache: "no-store" });
             let data = null;
             try {
@@ -396,8 +468,21 @@
         const sidebar = document.getElementById("sidebar");
         if (sidebar && window.innerWidth < 768) sidebar.classList.add("hidden");
 
-        document.getElementById("company-a")?.addEventListener("change", updateAvatars);
-        document.getElementById("company-b")?.addEventListener("change", updateAvatars);
+        document.getElementById("company-a")?.addEventListener("change", () => {
+            updateAvatars();
+            const periodSelect = document.getElementById("compare-period");
+            if (periodSelect) periodSelect.value = "";
+            runCompare();
+        });
+        document.getElementById("company-b")?.addEventListener("change", () => {
+            updateAvatars();
+            const periodSelect = document.getElementById("compare-period");
+            if (periodSelect) periodSelect.value = "";
+            runCompare();
+        });
+        document.getElementById("compare-period")?.addEventListener("change", () => {
+            if (!suppressPeriodAutoCompare) runCompare();
+        });
         document.getElementById("run-compare-btn")?.addEventListener("click", runCompare);
 
         document.addEventListener("keydown", (e) => {
