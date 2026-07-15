@@ -66,14 +66,47 @@
         if (!el) return;
         el.classList.remove("hidden");
         el.setAttribute("aria-hidden", "false");
-        document.body.classList.add("modal-open");
+        
+        if (id === "extract-modal") {
+            setTimeout(() => {
+                const card = document.getElementById("extract-popup-card");
+                if (card) {
+                    card.classList.remove("translate-y-10", "opacity-0");
+                    card.classList.add("translate-y-0", "opacity-100");
+                }
+            }, 10);
+        } else {
+            document.body.classList.add("modal-open");
+        }
     }
 
     function closeModal(id) {
         const el = document.getElementById(id);
         if (!el) return;
-        el.classList.add("hidden");
-        el.setAttribute("aria-hidden", "true");
+
+        if (id === "extract-modal") {
+            const card = document.getElementById("extract-popup-card");
+            if (card) {
+                card.classList.remove("translate-y-0", "opacity-100");
+                card.classList.add("translate-y-10", "opacity-0");
+                setTimeout(() => {
+                    el.classList.add("hidden");
+                    el.setAttribute("aria-hidden", "true");
+                    checkModalOpenClass();
+                }, 300);
+            } else {
+                el.classList.add("hidden");
+                el.setAttribute("aria-hidden", "true");
+                checkModalOpenClass();
+            }
+        } else {
+            el.classList.add("hidden");
+            el.setAttribute("aria-hidden", "true");
+            checkModalOpenClass();
+        }
+    }
+
+    function checkModalOpenClass() {
         if (
             document.getElementById("extract-modal")?.classList.contains("hidden") &&
             document.getElementById("duplicate-modal")?.classList.contains("hidden")
@@ -100,8 +133,8 @@
 
         if (icon) {
             icon.innerHTML = ok
-                ? '<span class="material-symbols-outlined text-green-600 text-5xl">check_circle</span>'
-                : '<span class="material-symbols-outlined text-red-600 text-5xl">error</span>';
+                ? '<span class="material-symbols-outlined text-green-600 text-3xl">check_circle</span>'
+                : '<span class="material-symbols-outlined text-red-600 text-3xl">error</span>';
         }
         if (titleEl) titleEl.textContent = title;
         if (msgEl) msgEl.textContent = message;

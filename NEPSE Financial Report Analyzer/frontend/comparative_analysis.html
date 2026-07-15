@@ -189,11 +189,19 @@
                                 Side-by-side metrics from uploaded hydropower filings.
                             </p>
                         </div>
-                        <button type="button" id="run-compare-btn"
-                            class="px-lg py-sm rounded-lg bg-primary text-on-primary text-sm font-bold hover:opacity-90 inline-flex items-center gap-sm shrink-0">
-                            <span class="material-symbols-outlined text-[18px]">compare_arrows</span>
-                            Compare
-                        </button>
+                        <div class="flex items-center gap-sm shrink-0">
+                            <div class="flex items-center gap-2">
+                                <label class="text-sm font-medium text-on-surface-variant" for="compare-period">Quarter:</label>
+                                <select id="compare-period" class="field-select text-sm py-1.5 pl-2 pr-8 border border-outline-variant rounded-lg bg-surface-container-low min-w-[150px]">
+                                    <option value="">Auto (latest)</option>
+                                </select>
+                            </div>
+                            <button type="button" id="run-compare-btn"
+                                class="px-lg py-sm rounded-lg bg-primary text-on-primary text-sm font-bold hover:opacity-90 inline-flex items-center gap-sm">
+                                <span class="material-symbols-outlined text-[18px]">compare_arrows</span>
+                                Compare
+                            </button>
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
@@ -222,20 +230,6 @@
                                 <option value="">Select company…</option>
                             </select>
                             <p id="period-b-label" class="mt-sm text-xs text-on-surface-variant">Period: —</p>
-                        </div>
-                    </div>
-
-                    <div class="mt-md p-md border border-outline-variant rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-end gap-md">
-                        <div class="flex-1">
-                            <label class="font-label-md text-label-md text-on-surface-variant uppercase" for="compare-period">
-                                Comparison quarter
-                            </label>
-                            <select id="compare-period" class="field-select w-full mt-sm">
-                                <option value="">Auto (latest shared period)</option>
-                            </select>
-                            <p class="mt-sm text-xs text-on-surface-variant">
-                                Lists quarters available for both companies. Auto picks the newest match.
-                            </p>
                         </div>
                     </div>
 

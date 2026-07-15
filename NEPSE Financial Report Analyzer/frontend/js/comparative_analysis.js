@@ -241,7 +241,7 @@
                           ? "row-winner-b"
                           : "";
                 return `
-                <tr class="hover:bg-surface-container-low ${winnerClass}">
+                <tr class="hover:bg-surface-container-low ${winnerClass} animate-pulse duration-[2s]">
                     <td class="px-lg py-md font-medium">${escapeHtml(row.label)}</td>
                     <td class="px-lg py-md font-data-mono text-data-mono ${row.winner === "a" ? "font-bold text-primary" : ""}">
                         ${escapeHtml(formatValue(row.a, row.format))}
@@ -472,16 +472,14 @@
             updateAvatars();
             const periodSelect = document.getElementById("compare-period");
             if (periodSelect) periodSelect.value = "";
-            runCompare();
         });
         document.getElementById("company-b")?.addEventListener("change", () => {
             updateAvatars();
             const periodSelect = document.getElementById("compare-period");
             if (periodSelect) periodSelect.value = "";
-            runCompare();
         });
         document.getElementById("compare-period")?.addEventListener("change", () => {
-            if (!suppressPeriodAutoCompare) runCompare();
+            // period change no longer auto compares
         });
         document.getElementById("run-compare-btn")?.addEventListener("click", runCompare);
 
@@ -515,8 +513,9 @@
                     document.getElementById("company-b").value = b;
                 }
             }
-            updateAvatars();
-            runCompare();
+            if (presetA || presetB) {
+                runCompare();
+            }
         });
     });
 })();
