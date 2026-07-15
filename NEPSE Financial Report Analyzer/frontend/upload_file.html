@@ -8,7 +8,8 @@
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/upload_file.css?v=4">
 
     <script id="tailwind-config">
@@ -16,98 +17,193 @@
             darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        primary: "#051125",
-                        "primary-container": "#1b263b",
-                        secondary: "#47607e",
-                        "secondary-container": "#c2dcff",
-                        "on-secondary-container": "#48617e",
+                    "colors": {
+                        "secondary-fixed": "#d1e4ff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9fa",
+                        "primary": "#051125",
+                        "secondary": "#47607e",
+                        "on-primary-container": "#828da7",
                         "tertiary-fixed-dim": "#efc062",
-                        surface: "#f8f9fa",
-                        "surface-container-low": "#f3f4f5",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-high": "#e7e8e9",
-                        "surface-container-highest": "#e1e3e4",
-                        "surface-dim": "#d9dadb",
+                        "on-secondary-container": "#48617e",
+                        "tertiary": "#191000",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#001d36",
+                        "tertiary-fixed": "#ffdea4",
+                        "on-tertiary-container": "#b0872f",
+                        "surface-tint": "#545e76",
+                        "secondary-fixed-dim": "#afc9ea",
                         "surface-variant": "#e1e3e4",
-                        "on-surface": "#191c1d",
+                        "on-background": "#191c1d",
+                        "tertiary-container": "#342300",
+                        "inverse-primary": "#bbc6e2",
+                        "on-primary-fixed": "#101b30",
+                        "surface-container": "#edeeef",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-bright": "#f8f9fa",
+                        "primary-fixed": "#d7e2ff",
                         "on-surface-variant": "#45474d",
-                        "outline-variant": "#c5c6cd",
+                        "primary-fixed-dim": "#bbc6e2",
                         "on-primary": "#ffffff",
+                        "secondary-container": "#c2dcff",
+                        "primary-container": "#1b263b",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#2f4865",
+                        "background": "#f8f9fa",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c5c6cd",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5d4200",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed": "#261900",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "outline": "#75777d",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-fixed-variant": "#3c475d"
                     },
-                    spacing: {
-                        lg: "24px",
-                        gutter: "16px",
-                        sm: "8px",
-                        base: "4px",
-                        xl: "32px",
-                        md: "16px",
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
                     },
+                    "spacing": {
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "container-margin": "24px"
+                    },
+                    "fontFamily": {
+                        "data-mono": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "data-mono": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
                 },
             },
-        };
+        }
     </script>
 </head>
 
-<body class="bg-surface text-on-surface">
-    <aside class="fixed left-0 top-0 h-full w-[260px] hidden md:flex flex-col bg-surface border-r border-outline-variant z-40 pt-24" id="sidebar">
-        <div class="px-md mb-xl">
-            <div class="flex items-center gap-sm p-sm">
-                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary font-bold">N</div>
-                <div>
-                    <h2 class="text-xl font-bold text-primary leading-tight">NEPSE Analyzer</h2>
-                    <p class="text-xs uppercase tracking-wider text-on-surface-variant font-semibold">Report Analysis</p>
-                </div>
+<body class="bg-surface text-on-surface overflow-x-hidden flex flex-col min-h-screen">
+    <header
+        class="fixed top-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg py-sm">
+        <div class="flex items-center gap-md">
+            <button class="p-base text-on-surface" id="sidebar-toggle">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="flex flex-col justify-center">
+                <span
+                    class="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md font-black text-primary dark:text-primary-fixed leading-none">NEPSE
+                    Insight</span>
+                <span
+                    class="text-[9px] md:text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">AI
+                    Market Intelligence</span>
             </div>
         </div>
-        <nav class="flex flex-col gap-base px-md flex-grow text-sm font-semibold">
-            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-full" href="dashboard.html">
-                <span class="material-symbols-outlined">dashboard</span> Dashboard
+        <div class="flex items-center gap-md">
+            <div
+                class="bg-surface-container-low rounded-full px-md py-xs hidden lg:flex items-center gap-sm border border-outline-variant">
+                <span id="top-search-btn" class="material-symbols-outlined text-outline cursor-pointer">
+                    search
+                </span>
+                <input id="top-company-search" class="bg-transparent border-none focus:ring-0 text-body-md w-48"
+                    placeholder="Search (e.g. DHCL)" type="text">
+            </div>
+            <button
+                class="p-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer theme-toggle-btn"
+                title="Toggle Dark/Light Mode">
+                <span class="material-symbols-outlined">light_mode</span>
+            </button>
+            <button
+                class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</button>
+        </div>
+    </header>
+
+    <aside
+        class="fixed left-0 top-0 h-full w-[260px] flex flex-col bg-surface dark:bg-surface border-r border-outline-variant z-40 pt-24 transform transition-transform duration-300 -translate-x-full md:translate-x-0"
+        id="sidebar">
+        <button id="sidebar-close"
+            class="absolute top-4 right-4 md:hidden p-2 text-on-surface-variant hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="mt-xl flex flex-col gap-base px-md flex-grow">
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out"
+                href="dashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-label-md text-label-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-full font-bold" href="upload_file.html">
-                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">cloud_upload</span> Report Upload
+            <a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold rounded-full transition-all duration-200 ease-in-out"
+                href="upload_file.html">
+                <span class="material-symbols-outlined">cloud_upload</span>
+                <span class="font-label-md text-label-md">Report Upload</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-full" href="comparative_analysis.html">
-                <span class="material-symbols-outlined">compare_arrows</span> Comparative Analysis
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out"
+                href="comparative_analysis.html">
+                <span class="material-symbols-outlined">compare_arrows</span>
+                <span class="font-label-md text-label-md">Comparative Analysis</span>
             </a>
             <div class="mt-xl">
-                <a href="upload_file.html" class="w-full py-md bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm hover:opacity-90">
+                <a href="upload_file.html"
+                    class="w-full py-md bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
                     <span class="material-symbols-outlined">add</span>
                     <span>New Analysis</span>
                 </a>
             </div>
-        </nav>
-        <div class="p-md mt-auto border-t border-outline-variant flex flex-col gap-base text-sm font-semibold">
-            <button type="button" class="theme-toggle-btn flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-full text-left">
-                <span class="material-symbols-outlined">light_mode</span> Toggle Theme
+        </div>
+        <div class="p-md mt-auto flex flex-col gap-base border-t border-outline-variant">
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left theme-toggle-btn">
+                <span class="material-symbols-outlined">light_mode</span>
+                <span class="font-label-md text-label-md">Toggle Theme</span>
             </button>
-            <button type="button" id="shortcuts-btn" class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-full text-left">
-                <span class="material-symbols-outlined">help</span> Shortcuts
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left"
+                id="shortcuts-btn">
+                <span class="material-symbols-outlined">help</span>
+                <span class="font-label-md text-label-md">Keyboard Shortcuts</span>
+            </button>
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left"
+                id="feedback-btn">
+                <span class="material-symbols-outlined">feedback</span>
+                <span class="font-label-md text-label-md">Feedback</span>
             </button>
         </div>
     </aside>
 
-    <header class="fixed top-0 right-0 left-0 md:left-[260px] z-50 h-16 bg-surface-container-highest border-b border-outline-variant shadow-sm flex items-center justify-between px-lg">
-        <div class="flex items-center gap-md">
-            <button type="button" class="md:hidden p-base" id="sidebar-toggle">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-            <span class="text-lg font-bold text-primary">Report Upload Portal</span>
-        </div>
-        <button type="button" class="theme-toggle-btn p-base text-on-surface-variant hover:text-primary" title="Toggle theme">
-            <span class="material-symbols-outlined">light_mode</span>
-        </button>
-    </header>
-
-    <main class="upload-main ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen">
+    <main id="main-content"
+        class="upload-main ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen transition-all duration-300">
         <div class="upload-layout space-y-gutter">
             <div class="flex flex-col lg:flex-row justify-between items-start gap-md">
                 <div class="max-w-2xl">
                     <h2 class="text-3xl font-bold text-primary">Upload Financial Report</h2>
                     <p class="text-xs text-on-surface-variant mt-1.5 leading-relaxed">
-                        Upload a quarterly or annual PDF from a NEPSE-listed hydropower company. Data is extracted with pdfplumber and saved for dashboard analysis.
+                        Upload a quarterly or annual PDF from a NEPSE-listed hydropower company.
                     </p>
-                    <div class="mt-3 flex gap-2 items-start rounded-lg border-l-4 border-tertiary-fixed-dim bg-amber-50/80 px-md py-sm">
+                    <div
+                        class="mt-3 flex gap-2 items-start rounded-lg border-l-4 border-tertiary-fixed-dim bg-amber-50/80 px-md py-sm">
                         <span class="material-symbols-outlined text-tertiary-fixed-dim text-[18px] mt-0.5">info</span>
                         <p class="text-[11px] text-on-surface-variant leading-snug">
                             <span class="font-semibold text-amber-900">Public data:</span>
@@ -115,13 +211,19 @@
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="glass-card rounded-xl p-lg border-l-4 border-l-tertiary-fixed-dim shrink-0 mt-md lg:mt-0">
                     <h4 class="text-base font-semibold text-primary mb-md">Extraction Guide</h4>
                     <ul class="space-y-sm text-sm text-on-surface-variant">
-                        <li class="flex gap-sm items-start"><span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span> PDF not password-protected</li>
-                        <li class="flex gap-sm items-start"><span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span> Text-based NFRS hydropower filing</li>
-                        <li class="flex gap-sm items-start"><span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span> Uses pdfplumber (not AI)</li>
+                        <li class="flex gap-sm items-start"><span
+                                class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span>
+                            Password-protected PDFs are not supported.</li>
+                        <li class="flex gap-sm items-start"><span
+                                class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span>
+                            Supports NFRS Hydropower financial reports</li>
+                        <li class="flex gap-sm items-start"><span
+                                class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span>
+                            Requires text-based PDFs (not scanned)</li>
                     </ul>
                 </div>
             </div>
@@ -129,49 +231,64 @@
             <div id="upload-status" class="hidden px-md py-sm rounded-lg border text-sm"></div>
 
             <div class="upload-grid">
-                <form id="upload-form" class="glass-card rounded-xl p-lg space-y-gutter" onsubmit="return false;" novalidate>
+                <form id="upload-form" class="glass-card rounded-xl p-lg space-y-gutter" onsubmit="return false;"
+                    novalidate>
                     <input type="file" id="file-input" name="file" accept=".pdf,application/pdf" class="hidden">
 
-                    <div class="upload-dashed rounded-xl p-xl flex flex-col items-center justify-center text-center cursor-pointer group" id="dropzone" role="button" tabindex="0">
-                        <div class="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center mb-md group-hover:scale-105 transition-transform">
-                            <span class="material-symbols-outlined text-on-secondary-container text-[32px]">upload_file</span>
+                    <div class="upload-dashed rounded-xl p-xl flex flex-col items-center justify-center text-center cursor-pointer group"
+                        id="dropzone" role="button" tabindex="0">
+                        <div
+                            class="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center mb-md group-hover:scale-105 transition-transform">
+                            <span
+                                class="material-symbols-outlined text-on-secondary-container text-[32px]">upload_file</span>
                         </div>
                         <h3 class="text-lg font-semibold text-primary" id="dropzone-title">Drop PDF report here</h3>
-                        <p class="text-sm text-on-surface-variant mt-sm" id="dropzone-subtitle">or click to browse from your computer</p>
-                        <span class="mt-md px-md py-xs bg-surface-variant rounded-lg text-xs font-semibold text-on-surface-variant uppercase">Maximum size: 25MB · PDF only</span>
+                        <p class="text-sm text-on-surface-variant mt-sm" id="dropzone-subtitle">or click to browse from
+                            your computer</p>
+                        <span
+                            class="mt-md px-md py-xs bg-surface-variant rounded-lg text-xs font-semibold text-on-surface-variant uppercase">Maximum
+                            size: 25MB · PDF only</span>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
                         <div class="sm:col-span-2 flex flex-col gap-sm">
-                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant" for="existing-company">Existing company</label>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+                                for="existing-company">Existing company</label>
                             <select id="existing-company" class="field-input">
                                 <option value="">— New company or select —</option>
                             </select>
                         </div>
                         <div class="flex flex-col gap-sm">
-                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant" for="company-symbol">Symbol *</label>
-                            <input id="company-symbol" type="text" placeholder="e.g. BUNGAL" class="field-input uppercase" autocomplete="off">
+                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+                                for="company-symbol">Symbol *</label>
+                            <input id="company-symbol" type="text" placeholder="e.g. BUNGAL"
+                                class="field-input uppercase" autocomplete="off">
                         </div>
                         <div class="flex flex-col gap-sm">
-                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant" for="company-name">Company name *</label>
-                            <input id="company-name" type="text" placeholder="e.g. Bungal Hydro Limited" class="field-input" autocomplete="off">
+                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+                                for="company-name">Company name *</label>
+                            <input id="company-name" type="text" placeholder="e.g. Bungal Hydro Limited"
+                                class="field-input" autocomplete="off">
                         </div>
                         <div class="flex flex-col gap-sm">
-                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant" for="sector">Sector *</label>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+                                for="sector">Sector *</label>
                             <select id="sector" class="field-input">
                                 <option value="hydropower" selected>Hydropower</option>
                                 <option value="commercial_bank" disabled>Commercial Bank (soon)</option>
                             </select>
                         </div>
                         <div class="flex flex-col gap-sm">
-                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant" for="report-type">Report type *</label>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+                                for="report-type">Report type *</label>
                             <select id="report-type" class="field-input">
                                 <option value="quarterly" selected>Quarterly Report</option>
                                 <option value="annual">Annual Report</option>
                             </select>
                         </div>
                         <div class="flex flex-col gap-sm">
-                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant" for="fiscal-year">Fiscal year *</label>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+                                for="fiscal-year">Fiscal year *</label>
                             <select id="fiscal-year" class="field-input">
                                 <option value="2082/83">2082/83</option>
                                 <option value="2081/82" selected>2081/82</option>
@@ -181,7 +298,8 @@
                             </select>
                         </div>
                         <div class="flex flex-col gap-sm">
-                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant" for="quarter">Quarter *</label>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-on-surface-variant"
+                                for="quarter">Quarter *</label>
                             <select id="quarter" class="field-input">
                                 <option value="Q1">Q1 (First Quarter)</option>
                                 <option value="Q2">Q2 (Second Quarter)</option>
@@ -192,10 +310,12 @@
                     </div>
 
                     <div class="flex justify-end gap-md pt-sm">
-                        <button type="button" id="discard-btn" class="px-xl py-sm rounded-lg border border-secondary text-secondary text-sm font-bold hover:bg-secondary-container">
+                        <button type="button" id="discard-btn"
+                            class="px-xl py-sm rounded-lg border border-secondary text-secondary text-sm font-bold hover:bg-secondary-container">
                             Discard
                         </button>
-                        <button type="button" id="extract-btn" class="px-xl py-sm rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 inline-flex items-center gap-sm">
+                        <button type="button" id="extract-btn"
+                            class="px-xl py-sm rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 inline-flex items-center gap-sm">
                             <span class="material-symbols-outlined text-[18px]">cloud_upload</span>
                             <span id="extract-btn-label">Start Extraction</span>
                         </button>
@@ -208,29 +328,39 @@
             <section class="space-y-md mt-xl">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-bold text-primary">Recent Upload Activity</h3>
-                    <button type="button" id="refresh-activity" class="text-sm text-secondary font-semibold hover:underline">Refresh</button>
+                    <button type="button" id="refresh-activity"
+                        class="text-sm text-secondary font-semibold hover:underline">Refresh</button>
                 </div>
                 <div class="glass-card rounded-xl overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm">
                             <thead>
                                 <tr class="bg-surface-container-low border-b border-outline-variant">
-                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs">Report</th>
-                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs">Uploaded</th>
-                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs">Type</th>
-                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs text-center">Status</th>
-                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs text-right">View</th>
+                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs">
+                                        Report</th>
+                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs">
+                                        Uploaded</th>
+                                    <th class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs">Type
+                                    </th>
+                                    <th
+                                        class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs text-center">
+                                        Status</th>
+                                    <th
+                                        class="px-lg py-md font-semibold text-on-surface-variant uppercase text-xs text-right">
+                                        View</th>
                                 </tr>
                             </thead>
                             <tbody id="activity-tbody" class="divide-y divide-outline-variant">
                                 <tr>
-                                    <td colspan="5" class="px-lg py-xl text-center text-on-surface-variant">Loading…</td>
+                                    <td colspan="5" class="px-lg py-xl text-center text-on-surface-variant">Loading…
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div id="view-all-wrap" class="hidden border-t border-outline-variant px-lg py-md text-center">
-                        <button type="button" id="view-all-btn" class="text-sm font-bold text-secondary hover:underline">
+                        <button type="button" id="view-all-btn"
+                            class="text-sm font-bold text-secondary hover:underline">
                             View all uploads
                         </button>
                     </div>
@@ -239,14 +369,23 @@
         </div>
     </main>
 
-    <footer class="md:ml-[260px] border-t border-outline-variant bg-surface-dim px-lg py-md text-sm text-on-surface-variant flex flex-col sm:flex-row justify-between gap-md">
-        <span class="font-semibold text-on-surface">© 2026 NEPSE Financial Analyzer</span>
-        <span>Data from company filings · Hydropower extraction via pdfplumber</span>
+    <footer id="footer-content"
+        class="bg-surface-dim dark:bg-surface-dim text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md transition-all duration-300">
+        <div>
+            <span class="font-label-md text-label-md font-bold">© 2026 NEPSE Financial Analyzer | Data source: Nepal
+                Stock Exchange</span>
+        </div>
+        <div class="flex gap-xl">
+            <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Privacy Policy</a>
+            <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">API Docs</a>
+        </div>
     </footer>
 
     <!-- Extraction progress modal / popup -->
     <div id="extract-modal" class="fixed bottom-4 right-4 z-[100] hidden" aria-hidden="true">
-        <div id="extract-popup-card" class="bg-surface border border-outline-variant rounded-xl shadow-lg p-md w-80 transform transition-all duration-300 translate-y-10 opacity-0" role="dialog" aria-modal="true" aria-labelledby="extract-modal-title">
+        <div id="extract-popup-card"
+            class="bg-surface border border-outline-variant rounded-xl shadow-lg p-md w-80 transform transition-all duration-300 translate-y-10 opacity-0"
+            role="dialog" aria-modal="true" aria-labelledby="extract-modal-title">
             <div id="extract-modal-loading" class="flex items-center gap-md py-2">
                 <div class="w-6 h-6 border-2 border-surface-variant border-t-primary rounded-full animate-spin"></div>
                 <div>
@@ -263,8 +402,10 @@
                     </div>
                 </div>
                 <div class="flex justify-end gap-2 mt-3">
-                    <button type="button" id="extract-modal-close" class="px-4 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:opacity-90">OK</button>
-                    <a id="extract-modal-dashboard" href="dashboard.html" class="hidden px-4 py-1.5 rounded-lg border border-primary text-primary text-xs font-bold hover:bg-surface-container-low">Dashboard</a>
+                    <button type="button" id="extract-modal-close"
+                        class="px-4 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:opacity-90">OK</button>
+                    <a id="extract-modal-dashboard" href="dashboard.html"
+                        class="hidden px-4 py-1.5 rounded-lg border border-primary text-primary text-xs font-bold hover:bg-surface-container-low">Dashboard</a>
                 </div>
             </div>
         </div>
@@ -282,8 +423,11 @@
             </div>
             <p class="text-sm text-on-surface mb-5">Do you want to overwrite the existing data?</p>
             <div class="flex justify-end gap-3">
-                <button type="button" id="duplicate-no" class="px-5 py-2.5 rounded-lg border border-secondary text-secondary text-sm font-bold hover:bg-secondary-container">No</button>
-                <button type="button" id="duplicate-yes" class="px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90">Yes, overwrite</button>
+                <button type="button" id="duplicate-no"
+                    class="px-5 py-2.5 rounded-lg border border-secondary text-secondary text-sm font-bold hover:bg-secondary-container">No</button>
+                <button type="button" id="duplicate-yes"
+                    class="px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90">Yes,
+                    overwrite</button>
             </div>
         </div>
     </div>

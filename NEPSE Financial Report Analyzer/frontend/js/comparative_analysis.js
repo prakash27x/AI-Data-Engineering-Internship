@@ -29,9 +29,18 @@
 
     function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
-        if (!sidebar) return;
-        sidebar.classList.toggle("hidden");
-        sidebar.classList.toggle("flex");
+        const mainContent = document.getElementById("main-content");
+        const footerContent = document.getElementById("footer-content");
+        if (window.innerWidth < 768) {
+            sidebar?.classList.toggle("-translate-x-full");
+        } else {
+            sidebar?.classList.toggle("md:translate-x-0");
+            sidebar?.classList.toggle("md:-translate-x-full");
+            mainContent?.classList.toggle("md:ml-[260px]");
+            mainContent?.classList.toggle("md:ml-0");
+            footerContent?.classList.toggle("md:ml-[260px]");
+            footerContent?.classList.toggle("md:ml-0");
+        }
     }
 
     function showStatus(message, type) {
@@ -457,6 +466,10 @@
             btn.addEventListener("click", toggleTheme);
         });
         document.getElementById("sidebar-toggle")?.addEventListener("click", toggleSidebar);
+        document.getElementById("sidebar-close")?.addEventListener("click", () => {
+            const sidebar = document.getElementById("sidebar");
+            sidebar?.classList.add("-translate-x-full");
+        });
         document.getElementById("shortcuts-btn")?.addEventListener("click", () => {
             alert("U Upload · D Dashboard · C Comparison · T Theme");
         });
@@ -466,7 +479,7 @@
         }
 
         const sidebar = document.getElementById("sidebar");
-        if (sidebar && window.innerWidth < 768) sidebar.classList.add("hidden");
+        if (sidebar && window.innerWidth < 768) sidebar.classList.add("-translate-x-full");
 
         document.getElementById("company-a")?.addEventListener("change", () => {
             updateAvatars();

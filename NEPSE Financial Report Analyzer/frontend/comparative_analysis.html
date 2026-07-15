@@ -106,49 +106,56 @@
     </script>
 </head>
 
-<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+<body class="bg-surface text-on-surface flex flex-col min-h-screen overflow-x-hidden">
 
     <header
-        class="fixed top-0 w-full z-50 bg-surface-container-highest border-b border-outline-variant shadow-sm flex justify-between items-center px-lg py-sm">
+        class="fixed top-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg py-sm">
         <div class="flex items-center gap-md">
-            <button type="button" class="md:hidden p-base text-on-surface" id="sidebar-toggle">
+            <button class="p-base text-on-surface" id="sidebar-toggle">
                 <span class="material-symbols-outlined">menu</span>
             </button>
-            <span class="font-headline-md text-headline-md font-bold text-primary">Comparative Analysis</span>
+            <div class="flex flex-col justify-center">
+                <span class="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md font-black text-primary dark:text-primary-fixed leading-none">NEPSE Insight</span>
+                <span class="text-[9px] md:text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">AI Market Intelligence</span>
+            </div>
         </div>
         <div class="flex items-center gap-md">
-            <button type="button"
-                class="p-base text-on-surface-variant hover:text-primary transition-colors theme-toggle-btn"
+            <div
+                class="bg-surface-container-low rounded-full px-md py-xs hidden lg:flex items-center gap-sm border border-outline-variant">
+                <span id="top-search-btn" class="material-symbols-outlined text-outline cursor-pointer">
+                    search
+                </span>
+                <input id="top-company-search" class="bg-transparent border-none focus:ring-0 text-body-md w-48"
+                    placeholder="Search (e.g. DHCL)" type="text">
+            </div>
+            <button
+                class="p-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer theme-toggle-btn"
                 title="Toggle Dark/Light Mode">
                 <span class="material-symbols-outlined">light_mode</span>
             </button>
+            <button
+                class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer">notifications</button>
         </div>
     </header>
 
     <aside
-        class="fixed left-0 top-0 h-full w-[260px] hidden md:flex flex-col bg-surface border-r border-outline-variant z-40 pt-24"
+        class="fixed left-0 top-0 h-full w-[260px] flex flex-col bg-surface dark:bg-surface border-r border-outline-variant z-40 pt-24 transform transition-transform duration-300 -translate-x-full md:translate-x-0"
         id="sidebar">
-        <div class="px-md mb-xl">
-            <div class="flex items-center gap-sm p-sm">
-                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary font-bold">N</div>
-                <div>
-                    <h2 class="font-headline-sm text-headline-sm font-bold text-primary leading-tight">NEPSE Analyzer</h2>
-                    <p class="font-label-md text-label-md text-on-surface-variant">Market Intelligence</p>
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-col gap-base px-md flex-grow">
-            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all"
+        <button id="sidebar-close" class="absolute top-4 right-4 md:hidden p-2 text-on-surface-variant hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="mt-xl flex flex-col gap-base px-md flex-grow">
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out"
                 href="dashboard.html">
                 <span class="material-symbols-outlined">dashboard</span>
                 <span class="font-label-md text-label-md">Dashboard</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all"
+            <a class="flex items-center gap-md px-md py-sm text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out"
                 href="upload_file.html">
                 <span class="material-symbols-outlined">cloud_upload</span>
                 <span class="font-label-md text-label-md">Report Upload</span>
             </a>
-            <a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container font-bold rounded-full transition-all"
+            <a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold rounded-full transition-all duration-200 ease-in-out"
                 href="comparative_analysis.html">
                 <span class="material-symbols-outlined">compare_arrows</span>
                 <span class="font-label-md text-label-md">Comparative Analysis</span>
@@ -162,21 +169,27 @@
             </div>
         </div>
         <div class="p-md mt-auto flex flex-col gap-base border-t border-outline-variant">
-            <button type="button"
+            <button
                 class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left theme-toggle-btn">
                 <span class="material-symbols-outlined">light_mode</span>
                 <span class="font-label-md text-label-md">Toggle Theme</span>
             </button>
-            <button type="button"
+            <button
                 class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left"
                 id="shortcuts-btn">
                 <span class="material-symbols-outlined">help</span>
                 <span class="font-label-md text-label-md">Keyboard Shortcuts</span>
             </button>
+            <button
+                class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all text-left"
+                id="feedback-btn">
+                <span class="material-symbols-outlined">feedback</span>
+                <span class="font-label-md text-label-md">Feedback</span>
+            </button>
         </div>
     </aside>
 
-    <main class="ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen">
+    <main id="main-content" class="ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen transition-all duration-300">
         <div class="grid grid-cols-12 gap-gutter">
             <div class="col-span-12 lg:col-span-9 space-y-gutter">
 
@@ -329,10 +342,16 @@
         </div>
     </main>
 
-    <footer
-        class="bg-surface-dim text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md">
-        <span class="font-label-md text-label-md font-bold">© 2026 NEPSE Financial Analyzer</span>
-        <span class="text-sm">Compare using extracted report data · Hydropower only</span>
+    <footer id="footer-content"
+        class="bg-surface-dim dark:bg-surface-dim text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md transition-all duration-300">
+        <div>
+            <span class="font-label-md text-label-md font-bold">© 2026 NEPSE Financial Analyzer | Data source: Nepal
+                Stock Exchange</span>
+        </div>
+        <div class="flex gap-xl">
+            <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">Privacy Policy</a>
+            <a class="hover:text-primary dark:hover:text-primary-fixed transition-opacity" href="#">API Docs</a>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

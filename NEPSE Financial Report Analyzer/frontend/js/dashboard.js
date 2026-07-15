@@ -120,6 +120,15 @@ async function loadDashboard(symbol = currentCompany) {
 
         drawProfitChart(data.net_profit_trend);
 
+        // Update AI Report Period
+        const periodEl = document.getElementById("ai-report-period");
+        if(periodEl) {
+            periodEl.innerText = `FY${data.company.fiscal_year} ${data.company.quarter} Report`;
+        }
+
+        // Trigger Auto AI Insight
+        triggerAutoAIInsight();
+
     }
 
     catch (err) {
@@ -170,6 +179,14 @@ function drawRevenueChart(data) {
 
                         display: false
 
+                    },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: function(context) {
+                                // Mock AI insight per bar hover
+                                return "\n✨ AI: Revenue is strongly correlated with increased generation capacity this quarter.";
+                            }
+                        }
                     }
 
                 }
@@ -224,6 +241,14 @@ function drawProfitChart(data) {
 
                         display: false
 
+                    },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: function(context) {
+                                // Mock AI insight per point hover
+                                return "\n✨ AI: Profit margin squeezed by rising finance costs in this period.";
+                            }
+                        }
                     }
 
                 }
@@ -420,4 +445,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+    const sidebar = document.getElementById("sidebar");
+    const mainContent = document.getElementById("main-content");
+    const footerContent = document.getElementById("footer-content");
+
+    document.getElementById("sidebar-toggle")?.addEventListener("click", () => {
+        if (window.innerWidth < 768) {
+            sidebar?.classList.toggle("-translate-x-full");
+        } else {
+            sidebar?.classList.toggle("md:translate-x-0");
+            sidebar?.classList.toggle("md:-translate-x-full");
+            mainContent?.classList.toggle("md:ml-[260px]");
+            mainContent?.classList.toggle("md:ml-0");
+            footerContent?.classList.toggle("md:ml-[260px]");
+            footerContent?.classList.toggle("md:ml-0");
+        }
+    });
+
+    document.getElementById("sidebar-close")?.addEventListener("click", () => {
+        sidebar?.classList.add("-translate-x-full");
+    });
+
 });
+
+// =====================================
+// AI INSIGHTS
+// =====================================
+
+function triggerAutoAIInsight() {
+    const overlay = document.getElementById("ai-loading-overlay");
+    const content = document.getElementById("ai-content-area");
+    
+    if (!overlay || !content) return;
+
+    // Show loading overlay
+    content.classList.add("opacity-0");
+    content.classList.remove("transition-opacity", "duration-500");
+    overlay.classList.remove("hidden");
+    overlay.classList.add("flex");
+
+    // Mock AI processing delay
+    setTimeout(() => {
+        overlay.classList.add("hidden");
+        overlay.classList.remove("flex");
+        
+        content.classList.remove("opacity-0");
+        content.classList.add("transition-opacity", "duration-500");
+    }, 1500);
+}

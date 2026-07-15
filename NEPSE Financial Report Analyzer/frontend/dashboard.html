@@ -108,16 +108,18 @@
     </script>
 </head>
 
-<body class="bg-surface text-on-surface flex flex-col min-h-screen">
+<body class="bg-surface text-on-surface flex flex-col min-h-screen overflow-x-hidden">
 
     <header
         class="fixed top-0 w-full z-50 bg-surface-container-highest dark:bg-surface-container-highest border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg py-sm">
         <div class="flex items-center gap-md">
-            <button class="md:hidden p-base text-on-surface" id="sidebar-toggle">
+            <button class="p-base text-on-surface" id="sidebar-toggle">
                 <span class="material-symbols-outlined">menu</span>
             </button>
-            <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">NEPSE
-                Financial Analyzer</span>
+            <div class="flex flex-col justify-center">
+                <span class="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md font-black text-primary dark:text-primary-fixed leading-none">NEPSE Insight</span>
+                <span class="text-[9px] md:text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mt-1">AI Market Intelligence</span>
+            </div>
         </div>
         <div class="flex items-center gap-md">
             <div
@@ -139,21 +141,12 @@
     </header>
 
     <aside
-        class="fixed left-0 top-0 h-full w-[260px] hidden md:flex flex-col bg-surface dark:bg-surface border-r border-outline-variant z-40 pt-24"
+        class="fixed left-0 top-0 h-full w-[260px] flex flex-col bg-surface dark:bg-surface border-r border-outline-variant z-40 pt-24 transform transition-transform duration-300 -translate-x-full md:translate-x-0"
         id="sidebar">
-        <div class="px-md mb-xl">
-            <div class="flex items-center gap-sm p-sm">
-                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary font-bold">N
-                </div>
-                <div>
-                    <h2
-                        class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed leading-tight">
-                        NEPSE Analyzer</h2>
-                    <p class="font-label-md text-label-md text-on-surface-variant">Market Intelligence</p>
-                </div>
-            </div>
-        </div>
-        <div class="flex flex-col gap-base px-md flex-grow">
+        <button id="sidebar-close" class="absolute top-4 right-4 md:hidden p-2 text-on-surface-variant hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="mt-xl flex flex-col gap-base px-md flex-grow">
             <a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container font-bold rounded-full transition-all duration-200 ease-in-out"
                 href="dashboard.html">
                 <span class="material-symbols-outlined">dashboard</span>
@@ -198,7 +191,7 @@
         </div>
     </aside>
 
-    <main class="ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen">
+    <main id="main-content" class="ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen transition-all duration-300">
         <div class="grid grid-cols-12 gap-gutter">
             <div class="col-span-12 lg:col-span-9 space-y-gutter">
                 <div class="glass-card p-lg rounded-xl shadow-sm">
@@ -285,7 +278,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                    <div class="glass-card p-lg rounded-xl shadow-sm">
+                    <div class="glass-card p-lg rounded-xl shadow-sm flex flex-col h-full">
                         <div class="flex justify-between items-center mb-lg">
                             <h4 class="font-headline-sm text-headline-sm text-primary">
                                 Revenue Trend
@@ -296,10 +289,24 @@
                             </span>
                         </div>
 
-                        <canvas id="revenueChart" height="250"></canvas>
+                        <div class="flex-grow min-h-[250px]">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+
+                        <div class="mt-md bg-green-50/50 border-l-4 border-l-green-500 border-y border-r border-outline-variant rounded-r-lg p-sm flex flex-col gap-xs dark:bg-green-900/10">
+                            <h5 class="text-xs font-bold text-primary flex items-center gap-1"><span class="material-symbols-outlined text-green-600 text-[14px]">auto_awesome</span> Key Insight</h5>
+                            <p class="text-[11px] text-on-surface-variant leading-snug">
+                                Revenue has grown <span class="font-bold text-primary">69%</span> because:
+                            </p>
+                            <ul class="text-[11px] text-on-surface-variant list-disc pl-4 space-y-0.5">
+                                <li>Increased energy generation</li>
+                                <li>Higher electricity sales</li>
+                                <li>Stable operating costs</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="glass-card p-lg rounded-xl shadow-sm">
+                    <div class="glass-card p-lg rounded-xl shadow-sm flex flex-col h-full">
                         <div class="flex justify-between items-center mb-lg">
                             <h4 class="font-headline-sm text-headline-sm text-primary">
                                 Net Profit Trend
@@ -310,32 +317,178 @@
                             </span>
                         </div>
 
-                        <canvas id="profitChart" height="250"></canvas>
+                        <div class="flex-grow min-h-[250px]">
+                            <canvas id="profitChart"></canvas>
+                        </div>
+
+                        <div class="mt-md bg-blue-50/50 border-l-4 border-l-blue-500 border-y border-r border-outline-variant rounded-r-lg p-sm flex flex-col gap-xs dark:bg-blue-900/10">
+                            <h5 class="text-xs font-bold text-primary flex items-center gap-1"><span class="material-symbols-outlined text-blue-600 text-[14px]">auto_awesome</span> Why did profit decline?</h5>
+                            <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[11px] mt-1">
+                                <div class="flex items-center gap-1 text-red-600 font-medium"><span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> Finance Cost</div>
+                                <div class="flex items-center gap-1 text-red-600 font-medium"><span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> Interest Expense</div>
+                                <div class="flex items-center gap-1 text-red-600 font-medium"><span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> Admin Cost</div>
+                                <div class="flex items-center gap-1 text-red-600 font-bold"><span class="material-symbols-outlined text-[14px]">arrow_drop_down</span> Net Profit</div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div>
 
             <div class="col-span-12 lg:col-span-3 space-y-gutter">
-                <div
-                    class="bg-primary-container text-on-primary rounded-xl shadow-lg p-lg relative overflow-hidden group">
-                    <div
-                        class="absolute top-0 right-0 p-lg opacity-10 scale-150 transform -rotate-12 group-hover:rotate-0 transition-transform">
-                        <span class="material-symbols-outlined text-[80px]">psychology</span>
-                    </div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-sm mb-md">
-                            <span class="material-symbols-outlined text-tertiary-fixed-dim">auto_awesome</span>
-                            <h4 class="font-headline-sm text-headline-sm">AI Performance Summary</h4>
+                <div class="glass-card rounded-xl shadow-sm flex flex-col h-full bg-surface">
+                    <div class="p-lg border-b border-outline-variant flex justify-between items-center">
+                        <div class="flex items-center gap-md">
+                            <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center relative shadow-sm">
+                                <span class="material-symbols-outlined text-xl" id="ai-icon-sparkle">auto_awesome</span>
+                            </div>
+                            <div>
+                                <h4 class="font-headline-sm text-headline-sm text-primary">Ask AI</h4>
+                                <p class="text-label-md text-on-surface-variant">Financial Assistant</p>
+                            </div>
                         </div>
-                        <p class="font-body-md mb-lg leading-relaxed text-on-primary-container/90">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas veniam saepe dolores
-                            aspernatur alias officiis, id impedit consequatur provident mollitia recusandae velit magni
-                            ab tempore eius similique facilis ipsa dolor.
-                        </p>
-                        <button
-                            class="w-full py-sm bg-tertiary-fixed text-on-tertiary-fixed rounded-lg font-bold text-label-md hover:bg-tertiary-fixed-dim transition-colors">Download
-                            Detailed Report</button>
+                        <div class="text-right">
+                            <p class="text-xs text-on-surface-variant">Confidence</p>
+                            <p class="text-sm font-bold text-green-600">96%</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-lg flex-grow flex flex-col gap-md relative">
+                        
+                        <div id="ai-loading-overlay" class="absolute inset-0 bg-surface/90 backdrop-blur-sm z-10 hidden flex-col items-center justify-center rounded-b-xl">
+                            <span class="material-symbols-outlined text-primary text-4xl animate-spin mb-sm">sync</span>
+                            <p class="text-sm font-bold text-primary mb-xs">✨ AI is analyzing...</p>
+                            <p class="text-xs text-on-surface-variant mb-md">Generating insights</p>
+                            <div class="w-48 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+                                <div class="h-full bg-primary w-2/3 animate-pulse rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div id="ai-content-area" class="flex flex-col gap-md">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-md">
+                                    <div class="text-center">
+                                        <p class="text-3xl font-black text-primary">82<span class="text-sm text-on-surface-variant font-normal">/100</span></p>
+                                        <p class="text-[10px] uppercase font-bold text-green-600">Excellent</p>
+                                    </div>
+                                    <div class="w-[1px] h-10 bg-outline-variant"></div>
+                                    <div>
+                                        <p class="text-sm text-yellow-500 tracking-widest">★★★★<span class="text-outline-variant">★</span></p>
+                                        <p class="text-xs font-bold text-primary">4.2 / 5</p>
+                                        <p class="text-[10px] text-on-surface-variant">Moderately Attractive</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-xs">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="w-20 text-on-surface-variant">Growth</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-green-500 w-[90%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary">90</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="w-20 text-on-surface-variant">Profitability</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-yellow-500 w-[55%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary">55</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="w-20 text-on-surface-variant">Liquidity</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-blue-500 w-[80%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary">80</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="w-20 text-on-surface-variant">Stability</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-blue-400 w-[72%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary">72</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="w-20 text-on-surface-variant">Risk</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-red-500 w-[40%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary">40</span>
+                                </div>
+                            </div>
+
+                            <div class="text-[10px] text-center text-on-surface-variant bg-surface-container-lowest py-1 rounded border border-outline-variant">
+                                Generated using <span class="font-bold" id="ai-report-period">FY2082 Q3 Report</span>
+                            </div>
+
+                            <div class="flex-col gap-sm flex">
+                                <details class="bg-surface-container-lowest border-l-4 border-l-purple-500 border-y border-r border-outline-variant rounded-r-lg group shadow-sm" open>
+                                    <summary class="font-bold text-sm text-primary px-md py-sm cursor-pointer list-none flex justify-between items-center select-none">
+                                        Executive Summary
+                                        <span class="material-symbols-outlined group-open:-rotate-180 transition-transform text-on-surface-variant">expand_more</span>
+                                    </summary>
+                                    <div class="px-md pb-sm text-sm text-on-surface-variant">
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Revenue increased <span class="font-bold text-green-600">69%</span>.</li>
+                                            <li>Assets remained stable.</li>
+                                            <li>Net profit turned <span class="font-bold text-red-600">negative</span>.</li>
+                                            <li>Equity declined slightly.</li>
+                                            <li>Overall financial health is moderate.</li>
+                                        </ul>
+                                    </div>
+                                </details>
+
+                                <details class="bg-surface-container-lowest border-l-4 border-l-orange-500 border-y border-r border-outline-variant rounded-r-lg group shadow-sm">
+                                    <summary class="font-bold text-sm text-primary px-md py-sm cursor-pointer list-none flex justify-between items-center select-none">
+                                        Risks
+                                        <span class="material-symbols-outlined group-open:-rotate-180 transition-transform text-on-surface-variant">expand_more</span>
+                                    </summary>
+                                    <div class="px-md pb-sm text-sm text-on-surface-variant">
+                                        <ul class="list-disc pl-5 space-y-1">
+                                            <li>Declining net profitability</li>
+                                            <li>High debt-to-equity ratio</li>
+                                            <li>Interest rate vulnerability</li>
+                                        </ul>
+                                    </div>
+                                </details>
+                            </div>
+
+                            <div class="mt-xs">
+                                <div class="flex items-center gap-sm bg-surface-container-lowest px-md py-sm rounded-lg border border-outline-variant mb-xs focus-within:border-primary transition-colors shadow-sm">
+                                    <span class="material-symbols-outlined text-on-surface-variant text-sm">chat</span>
+                                    <input type="text" placeholder="Ask AI..." class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 text-primary">
+                                    <button class="text-primary hover:bg-surface-container-highest p-1 rounded-full flex items-center justify-center transition-colors">
+                                        <span class="material-symbols-outlined text-sm">send</span>
+                                    </button>
+                                </div>
+                                <div class="text-[10px] text-on-surface-variant px-sm flex flex-wrap gap-x-2 gap-y-1">
+                                    <span class="font-bold">Examples:</span>
+                                    <button class="hover:text-primary hover:underline">Why did profit fall?</button>
+                                    <button class="hover:text-primary hover:underline">Explain revenue growth</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-lg border-t border-outline-variant bg-surface-container-lowest mt-auto rounded-b-xl">
+                        <div class="flex justify-between items-center mb-sm">
+                            <p class="text-[10px] uppercase font-bold text-on-surface-variant">AI Suggestions</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Explain Revenue</button>
+                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Explain Profit</button>
+                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Investment Risk</button>
+                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Growth Potential</button>
+                        </div>
+
+                        <div class="mt-md border-t border-outline-variant pt-md">
+                            <p class="text-[10px] uppercase font-bold text-on-surface-variant mb-sm">AI Forecast (Next Quarter)</p>
+                            <div class="grid grid-cols-3 gap-sm text-center">
+                                <div>
+                                    <p class="text-[10px] text-on-surface-variant">Revenue</p>
+                                    <p class="text-xs font-bold text-green-600 flex items-center justify-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Increase</p>
+                                </div>
+                                <div class="border-l border-r border-outline-variant">
+                                    <p class="text-[10px] text-on-surface-variant">Net Profit</p>
+                                    <p class="text-xs font-bold text-green-600 flex items-center justify-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Recovery</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-on-surface-variant">Risk</p>
+                                    <p class="text-xs font-bold text-yellow-600">Medium</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -390,8 +543,8 @@
         </div>
     </div>
 
-    <footer
-        class="bg-surface-dim dark:bg-surface-dim text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md">
+    <footer id="footer-content"
+        class="bg-surface-dim dark:bg-surface-dim text-on-surface-variant dark:text-on-surface-variant font-body-md text-body-md w-full mt-auto border-t border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center px-lg py-md ml-0 md:ml-[260px] gap-md transition-all duration-300">
         <div>
             <span class="font-label-md text-label-md font-bold">© 2026 NEPSE Financial Analyzer | Data source: Nepal
                 Stock Exchange</span>
