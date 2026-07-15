@@ -35,8 +35,12 @@ async def get_companies():
 # Dashboard for a company
 # ----------------------------
 @router.get("/{symbol}")
-def get_dashboard(symbol: str):
-    data = get_dashboard_data(symbol)
+def get_dashboard(
+    symbol: str,
+    fiscal_year: str = None,
+    quarter: str = None
+):
+    data = get_dashboard_data(symbol, fiscal_year, quarter)
 
     if data is None:
         raise HTTPException(status_code=404, detail="Company not found")

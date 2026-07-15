@@ -8,7 +8,7 @@
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
@@ -164,8 +164,8 @@
             </a>
             <div class="mt-xl">
                 <a href="upload_file.html"
-                    class="w-full py-md bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
-                    <span class="material-symbols-outlined">add</span>
+                    class="w-full py-sm px-md bg-primary text-on-primary rounded-lg text-sm font-bold flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
+                    <span class="material-symbols-outlined text-[18px]">add</span>
                     <span>New Analysis</span>
                 </a>
             </div>
@@ -195,7 +195,7 @@
         <div class="grid grid-cols-12 gap-gutter">
             <div class="col-span-12 lg:col-span-9 space-y-gutter">
                 <div class="glass-card p-lg rounded-xl shadow-sm">
-                    <div class="flex justify-between items-center mb-md">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-md mb-md">
                         <div class="flex items-center gap-sm">
                             <div id="company-avatar"
                                 class="px-3 h-10 bg-secondary-fixed rounded-lg flex items-center justify-center font-bold text-on-secondary-fixed">
@@ -209,9 +209,21 @@
                                 <p id="company-info" class="text-label-md text-on-surface-variant"> Loading...</p>
                             </div>
                         </div>
-                        <button
-                            class="bg-surface-container-high px-md py-xs rounded-lg text-label-md font-bold hover:bg-outline-variant transition-colors"
-                            id="switch-company-btn">Switch Company</button>
+                        <div class="flex items-center gap-sm shrink-0">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-on-surface-variant text-[18px]">event</span>
+                                <select id="quarter-select"
+                                    class="text-sm py-1.5 pl-3 pr-8 border border-outline-variant rounded-lg bg-surface-container-low min-w-[150px] text-primary font-medium cursor-pointer focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+                                    <option value="">Latest Quarter</option>
+                                </select>
+                            </div>
+                            <button
+                                class="inline-flex items-center gap-sm bg-primary text-on-primary px-md py-sm rounded-lg text-label-md font-bold hover:opacity-90 transition-opacity shadow-sm"
+                                id="switch-company-btn">
+                                <span class="material-symbols-outlined text-[18px]">swap_horiz</span>
+                                Switch Company
+                            </button>
+                        </div>
                     </div>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-md">
 
@@ -336,8 +348,9 @@
             </div>
 
             <div class="col-span-12 lg:col-span-3 space-y-gutter">
-                <div class="glass-card rounded-xl shadow-sm flex flex-col h-full bg-surface">
-                    <div class="p-lg border-b border-outline-variant flex justify-between items-center">
+                <div class="glass-card rounded-xl shadow-md flex flex-col h-full bg-surface border-2 border-primary/30 ring-4 ring-primary/5 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-tertiary-fixed-dim to-primary"></div>
+                    <div class="p-lg border-b-2 border-primary/20 flex justify-between items-center mt-1">
                         <div class="flex items-center gap-md">
                             <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center relative shadow-sm">
                                 <span class="material-symbols-outlined text-xl" id="ai-icon-sparkle">auto_awesome</span>

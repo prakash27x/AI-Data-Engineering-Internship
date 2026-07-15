@@ -5,6 +5,7 @@
 const API = "http://127.0.0.1:8000/dashboard";
 
 let currentCompany = "BUNGAL";
+let currentPeriod = null;
 let companies = [];
 
 let revenueChart = null;
@@ -64,16 +65,24 @@ function setGrowth(elementId, growth) {
 // LOAD DASHBOARD
 // =====================================
 
-async function loadDashboard(symbol = currentCompany) {
+async function loadDashboard(symbol = currentCompany, period = null) {
 
     try {
 
+        let url = `${API}/${symbol}`;
+
+        if (period && period.fiscal_year && period.quarter) {
+            url += `?fiscal_year=${encodeURIComponent(period.fiscal_year)}`
+                 + `&quarter=${encodeURIComponent(period.quarter)}`;
+        }
+
         const response =
-            await fetch(`${API}/${symbol}`);
+            await fetch(url);
 
         const data = await response.json();
 
         currentCompany = symbol;
+        currentPeriod = data.current_period || null;
 
         document.getElementById("company-name").innerText =
             data.company.name;
@@ -125,6 +134,9 @@ async function loadDashboard(symbol = currentCompany) {
         if(periodEl) {
             periodEl.innerText = `FY${data.company.fiscal_year} ${data.company.quarter} Report`;
         }
+
+        // Populate company quarter selector
+        populateQuarterSelect(data.available_periods, data.current_period);
 
         // Trigger Auto AI Insight
         triggerAutoAIInsight();
@@ -258,6 +270,42 @@ function drawProfitChart(data) {
         }
 
     );
+
+}
+
+
+// =====================================
+// QUARTER SELECT
+// =====================================
+
+function populateQuarterSelect(periods, current) {
+
+    const select = document.getElementById("quarter-select");
+
+    if (!select || !periods) return;
+
+    select.innerHTML = "";
+
+    const latest = document.createElement("option");
+    latest.value = "";
+    latest.textContent = "Latest Quarter";
+    select.appendChild(latest);
+
+    periods.forEach(p => {
+
+        const opt = document.createElement("option");
+        opt.value = `${p.fiscal_year}|${p.quarter}`;
+        opt.textContent = `FY ${p.fiscal_year} · ${p.quarter}`;
+
+        if (current
+            && p.fiscal_year === current.fiscal_year
+            && p.quarter === current.quarter) {
+            opt.selected = true;
+        }
+
+        select.appendChild(opt);
+
+    });
 
 }
 
@@ -408,6 +456,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document
         .getElementById("switch-company-btn")
         .addEventListener("click", openCompanyModal);
+
+    document
+        .getElementById("quarter-select")
+        .addEventListener("change", e => {
+
+            const value = e.target.value;
+
+            if (!value) {
+                loadDashboard(currentCompany, null);
+                return;
+            }
+
+            const [fy, q] = value.split("|");
+            loadDashboard(currentCompany, { fiscal_year: fy, quarter: q });
+
+        });
 
     document
         .getElementById("close-company-modal")

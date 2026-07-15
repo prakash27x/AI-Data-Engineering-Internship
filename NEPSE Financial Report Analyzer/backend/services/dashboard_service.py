@@ -117,7 +117,7 @@ def profit_growth_info(current, previous):
 # ==========================================
 # Dashboard Data
 # ==========================================
-def get_dashboard_data(symbol):
+def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
 
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
@@ -142,8 +142,21 @@ def get_dashboard_data(symbol):
         if not reports:
             return None
 
-        current = reports[0]
-        previous = reports[1] if len(reports) > 1 else None
+        if fiscal_year and quarter:
+            selected = next(
+                (r for r in reports
+                 if r["fiscal_year"] == fiscal_year
+                 and r["report_quarter"] == quarter),
+                None
+            )
+            if selected is None:
+                return None
+            idx = reports.index(selected)
+            current = selected
+            previous = reports[idx + 1] if idx + 1 < len(reports) else None
+        else:
+            current = reports[0]
+            previous = reports[1] if len(reports) > 1 else None
 
         # -------------------------
         # Growth Calculations
@@ -220,7 +233,20 @@ def get_dashboard_data(symbol):
             },
 
             "revenue_trend": revenue_trend,
-            "net_profit_trend": net_profit_trend
+            "net_profit_trend": net_profit_trend,
+
+            "current_period": {
+                "fiscal_year": current["fiscal_year"],
+                "quarter": current["report_quarter"]
+            },
+
+            "available_periods": [
+                {
+                    "fiscal_year": r["fiscal_year"],
+                    "quarter": r["report_quarter"]
+                }
+                for r in reports
+            ]
 
         }
 

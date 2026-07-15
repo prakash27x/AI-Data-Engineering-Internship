@@ -9,7 +9,6 @@
 
     let profitChart = null;
     let companies = [];
-    let suppressPeriodAutoCompare = false;
 
     function escapeHtml(text) {
         return String(text ?? "")
@@ -492,7 +491,7 @@
             if (periodSelect) periodSelect.value = "";
         });
         document.getElementById("compare-period")?.addEventListener("change", () => {
-            // period change no longer auto compares
+            runCompare();
         });
         document.getElementById("run-compare-btn")?.addEventListener("click", runCompare);
 
