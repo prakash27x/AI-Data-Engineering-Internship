@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from backend.api.upload import router as upload_router
 from backend.api.dashboard import router as dashboard_router
 from backend.api.comparison import router as comparison_router
-# from backend.api.ai import router as ai_router
+from backend.api.ai import router as ai_router
 
 app = FastAPI(title="NEPSE Financial Report Analyzer")
 
@@ -28,5 +28,5 @@ app.add_middleware(
 app.include_router(upload_router)
 app.include_router(dashboard_router)
 app.include_router(comparison_router)
-# app.include_router(ai_router)
+app.include_router(ai_router)
 

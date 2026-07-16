@@ -1,4 +1,5 @@
 from backend.database.connection import get_db_connection, close_connection
+from backend.services.ai_service import generate_dashboard_insights
 
 
 # ==========================================
@@ -202,20 +203,34 @@ def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
             })
 
         # -------------------------
+        # AI Insights
+        # -------------------------
+        company_data = {
+            "symbol": current["company_symbol"],
+            "name": current["company_name"],
+            "sector": current["sector"],
+            "fiscal_year": current["fiscal_year"],
+            "quarter": current["report_quarter"]
+        }
+
+        metrics_data = {
+            "revenue": current["revenue_from_sale_of_energy"],
+            "net_profit": current["net_profit"],
+            "assets": current["total_assets"],
+            "equity": current["total_equity"],
+            "revenue_growth": revenue_growth,
+            "profit_growth": profit_growth
+        }
+
+        ai_insights = generate_dashboard_insights(company_data, metrics_data)
+
+        # -------------------------
         # Return Dashboard
         # -------------------------
 
         return {
 
-            "company": {
-
-                "symbol": current["company_symbol"],
-                "name": current["company_name"],
-                "sector": current["sector"],
-                "fiscal_year": current["fiscal_year"],
-                "quarter": current["report_quarter"]
-
-            },
+            "company": company_data,
 
             "metrics": {
 
@@ -246,7 +261,9 @@ def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
                     "quarter": r["report_quarter"]
                 }
                 for r in reports
-            ]
+            ],
+            
+            "ai_insights": ai_insights
 
         }
 

@@ -438,11 +438,12 @@
             }
 
             renderTable(data);
-            drawProfitChart(data);
-            showStatus(data.note || "Comparison ready.", "success");
-        } catch (err) {
-            console.error(err);
-            showStatus(err.message || "Comparison failed.", "error");
+        drawProfitChart(data);
+        updateComparativeAIInsights(data.ai_insights);
+        showStatus(data.note || "Comparison ready.", "success");
+    } catch (err) {
+        console.error(err);
+        showStatus(err.message || "Comparison failed.", "error");
             const tbody = document.getElementById("compare-tbody");
             if (tbody) {
                 tbody.innerHTML = `
@@ -458,9 +459,34 @@
                 btn.classList.remove("opacity-70");
             }
         }
-    }
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
+function updateComparativeAIInsights(insights) {
+    if (!insights) return;
+    
+    const aiContainer = document.querySelector('.bg-primary-container');
+    if (!aiContainer) return;
+    
+    // Find the paragraphs and update them
+    const paragraphs = aiContainer.querySelectorAll('p');
+    if (paragraphs.length >= 2) {
+        paragraphs[0].innerHTML = insights.risk_perspective || "AI-generated comparative insights will appear here once the suggestion engine is connected.";
+        paragraphs[1].innerHTML = insights.growth_trajectory || "For now, use the metric table and trend chart to evaluate relative strength.";
+    }
+    
+    // Update the smaller sections
+    const sections = aiContainer.querySelectorAll('.bg-white\\/10');
+    if (sections.length >= 2) {
+        if (sections[0].querySelector('p')) {
+            sections[0].querySelector('p').innerHTML = insights.risk_perspective || "Coming soon — leverage, liquidity, and earning-quality notes.";
+        }
+        if (sections[1].querySelector('p')) {
+            sections[1].querySelector('p').innerHTML = insights.growth_trajectory || "Coming soon — revenue and profit momentum summary.";
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".theme-toggle-btn").forEach((btn) => {
             btn.addEventListener("click", toggleTheme);
         });

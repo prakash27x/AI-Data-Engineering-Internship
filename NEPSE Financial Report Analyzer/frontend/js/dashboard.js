@@ -3,9 +3,11 @@
 // =====================================
 
 const API = "http://127.0.0.1:8000/dashboard";
+const AI_API = "http://127.0.0.1:8000/ai";
 
 let currentCompany = "BUNGAL";
 let currentPeriod = null;
+let currentDashboardData = null;
 let companies = [];
 
 let revenueChart = null;
@@ -80,6 +82,8 @@ async function loadDashboard(symbol = currentCompany, period = null) {
             await fetch(url);
 
         const data = await response.json();
+        
+        currentDashboardData = data;
 
         currentCompany = symbol;
         currentPeriod = data.current_period || null;
@@ -138,7 +142,10 @@ async function loadDashboard(symbol = currentCompany, period = null) {
         // Populate company quarter selector
         populateQuarterSelect(data.available_periods, data.current_period);
 
-        // Trigger Auto AI Insight
+        // Update AI Insights
+        updateAIInsights(data.ai_insights);
+
+        // Trigger Auto AI Insight (show loading and then reveal)
         triggerAutoAIInsight();
 
     }
@@ -529,12 +536,82 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("sidebar-close")?.addEventListener("click", () => {
         sidebar?.classList.add("-translate-x-full");
     });
+    
+    initChat();
 
 });
 
 // =====================================
 // AI INSIGHTS
 // =====================================
+
+function updateAIInsights(insights) {
+    if (!insights) return;
+
+    const contentArea = document.getElementById("ai-content-area");
+    if (!contentArea) return;
+
+    // Update Score
+    const scoreEl = contentArea.querySelector("p.text-3xl");
+    if (scoreEl) {
+        scoreEl.innerHTML = `${insights.score || 0}<span class="text-sm text-on-surface-variant font-normal">/100</span>`;
+    }
+
+    // Update Growth Score
+    const growthScoreEl = contentArea.querySelector('span.w-20');
+    if (growthScoreEl && insights.growth_score !== undefined) {
+        const growthBar = growthScoreEl.nextElementSibling;
+        const growthValEl = growthBar.nextElementSibling;
+        if (growthBar) {
+            const innerBar = growthBar.querySelector('div');
+            if (innerBar) {
+                innerBar.style.width = `${insights.growth_score}%`;
+            }
+        }
+        if (growthValEl) {
+            growthValEl.textContent = insights.growth_score;
+        }
+    }
+
+    // Update other scores
+    const scoreItems = contentArea.querySelectorAll('.space-y-xs > div');
+    const scoreKeys = ['growth_score', 'profitability_score', 'liquidity_score', 'stability_score', 'risk_score'];
+    const colors = ['bg-green-500', 'bg-yellow-500', 'bg-blue-500', 'bg-blue-400', 'bg-red-500'];
+
+    scoreItems.forEach((item, index) => {
+        if (index < scoreKeys.length && insights[scoreKeys[index]] !== undefined) {
+            const barEl = item.querySelector('.h-full');
+            const valEl = item.querySelector('span.w-6');
+            if (barEl) {
+                // Reset color classes and apply correct one
+                colors.forEach(c => barEl.classList.remove(c));
+                barEl.classList.add(colors[index]);
+                barEl.style.width = `${insights[scoreKeys[index]]}%`;
+            }
+            if (valEl) {
+                valEl.textContent = insights[scoreKeys[index]];
+            }
+        }
+    });
+
+    // Update Executive Summary
+    const summaryDetails = contentArea.querySelectorAll('details')[0];
+    if (summaryDetails && insights.summary && Array.isArray(insights.summary)) {
+        const summaryUl = summaryDetails.querySelector('ul');
+        if (summaryUl) {
+            summaryUl.innerHTML = insights.summary.map(item => `<li>${item}</li>`).join('');
+        }
+    }
+
+    // Update Risks
+    const risksDetails = contentArea.querySelectorAll('details')[1];
+    if (risksDetails && insights.risks && Array.isArray(insights.risks)) {
+        const risksUl = risksDetails.querySelector('ul');
+        if (risksUl) {
+            risksUl.innerHTML = insights.risks.map(item => `<li>${item}</li>`).join('');
+        }
+    }
+}
 
 function triggerAutoAIInsight() {
     const overlay = document.getElementById("ai-loading-overlay");
@@ -556,4 +633,89 @@ function triggerAutoAIInsight() {
         content.classList.remove("opacity-0");
         content.classList.add("transition-opacity", "duration-500");
     }, 1500);
+}
+
+function addChatMessage(text, isUser = false) {
+    const chatMessages = document.getElementById("chat-messages");
+    if (!chatMessages) return;
+    
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `text-xs ${isUser ? "text-right" : ""}`;
+    
+    const bubble = document.createElement("div");
+    bubble.className = isUser 
+        ? "inline-block bg-primary text-on-primary px-3 py-1.5 rounded-lg" 
+        : "inline-block bg-surface-container-low border border-outline-variant px-3 py-1.5 rounded-lg";
+    bubble.textContent = text;
+    
+    messageDiv.appendChild(bubble);
+    chatMessages.appendChild(messageDiv);
+    
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+async function sendMessage(question) {
+    if (!question.trim() || !currentDashboardData) return;
+    
+    const chatInput = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("chat-send-btn");
+    
+    addChatMessage(question, true);
+    
+    if (chatInput) chatInput.value = "";
+    if (sendBtn) sendBtn.disabled = true;
+    
+    try {
+        const response = await fetch(`${AI_API}/chat`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                question: question,
+                company_symbol: currentCompany,
+                fiscal_year: currentDashboardData.current_period?.fiscal_year,
+                quarter: currentDashboardData.current_period?.quarter
+            })
+        });
+        
+        const result = await response.json();
+        addChatMessage(result.answer, false);
+    } catch (err) {
+        console.error(err);
+        addChatMessage("Sorry, I couldn't connect to the server.", false);
+    } finally {
+        if (sendBtn) sendBtn.disabled = false;
+    }
+}
+
+function initChat() {
+    const chatInput = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("chat-send-btn");
+    const exampleBtns = document.querySelectorAll(".example-question");
+    
+    if (sendBtn) {
+        sendBtn.addEventListener("click", () => {
+            if (chatInput) {
+                sendMessage(chatInput.value);
+            }
+        });
+    }
+    
+    if (chatInput) {
+        chatInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                sendMessage(chatInput.value);
+            }
+        });
+    }
+    
+    exampleBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const question = btn.getAttribute("data-question");
+            if (question) {
+                sendMessage(question);
+            }
+        });
+    });
 }

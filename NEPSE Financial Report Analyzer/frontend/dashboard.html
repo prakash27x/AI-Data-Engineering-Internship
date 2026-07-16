@@ -458,17 +458,18 @@
                             </div>
 
                             <div class="mt-xs">
+                                <div id="chat-messages" class="mb-sm max-h-32 overflow-y-auto space-y-2"></div>
                                 <div class="flex items-center gap-sm bg-surface-container-lowest px-md py-sm rounded-lg border border-outline-variant mb-xs focus-within:border-primary transition-colors shadow-sm">
                                     <span class="material-symbols-outlined text-on-surface-variant text-sm">chat</span>
-                                    <input type="text" placeholder="Ask AI..." class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 text-primary">
-                                    <button class="text-primary hover:bg-surface-container-highest p-1 rounded-full flex items-center justify-center transition-colors">
+                                    <input id="chat-input" type="text" placeholder="Ask AI..." class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 text-primary">
+                                    <button id="chat-send-btn" class="text-primary hover:bg-surface-container-highest p-1 rounded-full flex items-center justify-center transition-colors">
                                         <span class="material-symbols-outlined text-sm">send</span>
                                     </button>
                                 </div>
                                 <div class="text-[10px] text-on-surface-variant px-sm flex flex-wrap gap-x-2 gap-y-1">
                                     <span class="font-bold">Examples:</span>
-                                    <button class="hover:text-primary hover:underline">Why did profit fall?</button>
-                                    <button class="hover:text-primary hover:underline">Explain revenue growth</button>
+                                    <button class="hover:text-primary hover:underline example-question" data-question="Why did profit fall?">Why did profit fall?</button>
+                                    <button class="hover:text-primary hover:underline example-question" data-question="Explain revenue growth">Explain revenue growth</button>
                                 </div>
                             </div>
                         </div>

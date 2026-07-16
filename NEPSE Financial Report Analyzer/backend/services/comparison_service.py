@@ -3,6 +3,7 @@ Side-by-side comparison of two companies' financial metrics.
 """
 
 from backend.database.connection import get_db_connection, close_connection
+from backend.services.ai_service import generate_comparison_insights
 
 
 COMPARE_METRICS = [
@@ -376,6 +377,13 @@ def compare_companies(
                     f"Requested {req} is not available for both companies. "
                     + note
                 )
+        
+        # Generate AI Insights
+        ai_insights = generate_comparison_insights(
+            company_a, 
+            company_b, 
+            rows
+        )
 
         return {
             "company_a": company_a,
@@ -399,6 +407,7 @@ def compare_companies(
             },
             "note": note,
             "rows": rows,
+            "ai_insights": ai_insights
         }
     finally:
         cursor.close()

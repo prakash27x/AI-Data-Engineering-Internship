@@ -1,4 +1,9 @@
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
 
 class Settings:
     """
@@ -17,6 +22,9 @@ class Settings:
     DB_USER = "root"
     DB_PASSWORD = "root"
     DB_NAME = "nepse_analyzer"
+
+    # Google AI Studio API Key
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 
 settings = Settings()
