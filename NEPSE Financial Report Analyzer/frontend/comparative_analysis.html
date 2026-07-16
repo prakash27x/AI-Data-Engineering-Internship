@@ -313,24 +313,37 @@
             <div id="ai-insights-section" class="col-span-12 lg:col-span-3 space-y-gutter hidden">
                 <div class="glass-card rounded-xl shadow-md p-lg bg-surface border border-outline-variant relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-tertiary-fixed-dim to-primary"></div>
-                    <div class="flex items-center gap-md mb-md">
-                        <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center shadow-sm">
-                            <span class="material-symbols-outlined text-xl">insights</span>
-                        </div>
-                        <div>
-                            <h4 class="font-headline-sm text-headline-sm text-primary">AI Comparative Insights</h4>
-                            <p class="text-label-md text-on-surface-variant">Compare companies</p>
+
+                    <!-- AI Loading Overlay -->
+                    <div id="ai-loading-overlay" class="absolute inset-0 bg-surface/90 backdrop-blur-sm z-10 flex-col items-center justify-center hidden">
+                        <span class="material-symbols-outlined text-primary text-4xl animate-spin mb-sm">sync</span>
+                        <p class="text-sm font-bold text-primary mb-xs">Generating insights</p>
+                        <p class="text-xs text-on-surface-variant mb-md">Please wait...</p>
+                        <div class="w-48 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-2/3 animate-pulse rounded-full"></div>
                         </div>
                     </div>
 
-                    <div class="bg-surface-container-low border border-outline-variant rounded-lg p-md">
-                        <p class="font-semibold text-sm text-primary mb-xs flex items-center gap-1">
-                            <span class="material-symbols-outlined text-lg">analytics</span>
-                            Comparative Summary
-                        </p>
-                        <ul id="ai-insights-list" class="list-disc pl-5 space-y-1 text-sm text-on-surface-variant">
-                            <!-- Dynamically populated -->
-                        </ul>
+                    <div id="ai-content-wrapper">
+                        <div class="flex items-center gap-md mb-md">
+                            <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center shadow-sm">
+                                <span class="material-symbols-outlined text-xl">insights</span>
+                            </div>
+                            <div>
+                                <h4 class="font-headline-sm text-headline-sm text-primary">AI Comparative Insights</h4>
+                                <p class="text-label-md text-on-surface-variant">Compare companies</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-surface-container-low border border-outline-variant rounded-lg p-md">
+                            <p class="font-semibold text-sm text-primary mb-xs flex items-center gap-1">
+                                <span class="material-symbols-outlined text-lg">analytics</span>
+                                Comparative Summary
+                            </p>
+                            <ul id="ai-insights-list" class="list-disc pl-5 space-y-1 text-sm text-on-surface-variant">
+                                <!-- Dynamically populated -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

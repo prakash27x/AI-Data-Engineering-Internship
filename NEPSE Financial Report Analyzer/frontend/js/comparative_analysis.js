@@ -50,6 +50,20 @@
         if (type) el.classList.add(type);
     }
 
+    function setAISummaryLoading(isLoading) {
+        const overlay = document.getElementById("ai-loading-overlay");
+        const contentWrapper = document.getElementById("ai-content-wrapper");
+
+        if (overlay) {
+            overlay.classList.toggle("hidden", !isLoading);
+            overlay.classList.toggle("flex", isLoading);
+        }
+
+        if (contentWrapper) {
+            contentWrapper.classList.toggle("opacity-40", isLoading);
+        }
+    }
+
     function formatValue(value, format) {
         if (value == null || value === "") return "—";
         const num = Number(value);
@@ -249,7 +263,7 @@
                           ? "row-winner-b"
                           : "";
                 return `
-                <tr class="hover:bg-surface-container-low ${winnerClass} animate-pulse duration-[2s]">
+                <tr class="hover:bg-surface-container-low ${winnerClass}">
                     <td class="px-lg py-md font-medium">${escapeHtml(row.label)}</td>
                     <td class="px-lg py-md font-data-mono text-data-mono ${row.winner === "a" ? "font-bold text-primary" : ""}">
                         ${escapeHtml(formatValue(row.a, row.format))}
@@ -407,6 +421,7 @@
         }
 
         showStatus("Loading comparison…", "info");
+        setAISummaryLoading(true);
 
         try {
             const params = new URLSearchParams({
@@ -452,6 +467,7 @@
             drawProfitChart(data);
             updateComparativeAIInsights(data.ai_insights);
             showStatus(data.note || "Comparison ready.", "success");
+            setAISummaryLoading(false);
     } catch (err) {
         console.error(err);
         showStatus(err.message || "Comparison failed.", "error");
@@ -465,6 +481,7 @@
                     </tr>`;
             }
         } finally {
+            setAISummaryLoading(false);
             if (btn) {
                 btn.disabled = false;
                 btn.classList.remove("opacity-70");
