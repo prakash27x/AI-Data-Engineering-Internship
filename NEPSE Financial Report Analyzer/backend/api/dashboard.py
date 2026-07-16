@@ -40,7 +40,12 @@ def get_dashboard(
     fiscal_year: str = None,
     quarter: str = None
 ):
-    data = get_dashboard_data(symbol, fiscal_year, quarter)
+    data = get_dashboard_data(
+        symbol,
+        fiscal_year,
+        quarter,
+        include_ai_insights=False
+    )
 
     if data is None:
         raise HTTPException(status_code=404, detail="Company not found")

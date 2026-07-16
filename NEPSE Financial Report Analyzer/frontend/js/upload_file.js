@@ -665,9 +665,7 @@
         });
 
         document.getElementById("report-type")?.addEventListener("change", (e) => {
-            if (e.target.value === "annual") {
-                document.getElementById("quarter").value = "Q4";
-            }
+            document.getElementById("quarter").value = "";
         });
 
         document.getElementById("extract-btn")?.addEventListener("click", (e) => {

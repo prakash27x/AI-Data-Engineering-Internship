@@ -330,20 +330,24 @@
                     {
                         label: data.company_a.symbol,
                         data: aligned.seriesA,
-                        borderColor: "#051125",
-                        backgroundColor: "rgba(5, 17, 37, 0.08)",
+                        borderColor: "#2563eb", // Bright blue
+                        backgroundColor: "rgba(37, 99, 235, 0.1)",
+                        borderWidth: 3,
                         tension: 0.25,
                         spanGaps: true,
-                        pointRadius: 3,
+                        pointRadius: 4,
+                        pointBackgroundColor: "#2563eb",
                     },
                     {
                         label: data.company_b.symbol,
                         data: aligned.seriesB,
-                        borderColor: "#47607e",
-                        backgroundColor: "rgba(71, 96, 126, 0.08)",
+                        borderColor: "#16a34a", // Bright green
+                        backgroundColor: "rgba(22, 163, 74, 0.1)",
+                        borderWidth: 3,
                         tension: 0.25,
                         spanGaps: true,
-                        pointRadius: 3,
+                        pointRadius: 4,
+                        pointBackgroundColor: "#16a34a",
                     },
                 ],
             },
@@ -437,10 +441,17 @@
                 );
             }
 
+            currentComparisonData = data;
+            
+            // Show the sections
+            document.getElementById("metric-comparison-section").classList.remove("hidden");
+            document.getElementById("net-profit-trend-section").classList.remove("hidden");
+            document.getElementById("ai-insights-section").classList.remove("hidden");
+            
             renderTable(data);
-        drawProfitChart(data);
-        updateComparativeAIInsights(data.ai_insights);
-        showStatus(data.note || "Comparison ready.", "success");
+            drawProfitChart(data);
+            updateComparativeAIInsights(data.ai_insights);
+            showStatus(data.note || "Comparison ready.", "success");
     } catch (err) {
         console.error(err);
         showStatus(err.message || "Comparison failed.", "error");
@@ -461,28 +472,194 @@
         }
 }
 
+let currentComparisonData = null;
+
 function updateComparativeAIInsights(insights) {
     if (!insights) return;
     
-    const aiContainer = document.querySelector('.bg-primary-container');
-    if (!aiContainer) return;
+    // Update AI insights list
+    const insightsList = document.getElementById('ai-insights-list');
+    if (insightsList && insights.summary && Array.isArray(insights.summary)) {
+        insightsList.innerHTML = insights.summary.map(item => `<li>${item}</li>`).join('');
+    }
+}
+
+function convertMarkdownToHtml(text) {
+    if (!text) return "";
+    // Convert **bold**
+    let html = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    // Convert *italic*
+    html = html.replace(/\*(.*?)\*/g, "<em>$1</em>");
+    // Convert - or * at start of line to list items
+    let lines = html.split(/\r?\n/);
+    let inList = false;
+    let result = [];
+    for (let line of lines) {
+        if (line.trim().startsWith("* ") || line.trim().startsWith("- ")) {
+            if (!inList) {
+                result.push("<ul class=\"list-disc pl-5 my-2\">");
+                inList = true;
+            }
+            // Remove the list marker
+            let listItem = line.trim().replace(/^[\*\-]\s*/, "");
+            result.push(`<li class="my-1">${listItem}</li>`);
+        } else {
+            if (inList) {
+                result.push("</ul>");
+                inList = false;
+            }
+            if (line.trim()) {
+                result.push(`<p class="my-1">${line}</p>`);
+            } else {
+                result.push("<br>");
+            }
+        }
+    }
+    if (inList) {
+        result.push("</ul>");
+    }
+    return result.join("");
+}
+
+function addChatMessage(text, isUser = false) {
+    const chatMessages = document.getElementById('chat-messages');
+    if (!chatMessages) return;
     
-    // Find the paragraphs and update them
-    const paragraphs = aiContainer.querySelectorAll('p');
-    if (paragraphs.length >= 2) {
-        paragraphs[0].innerHTML = insights.risk_perspective || "AI-generated comparative insights will appear here once the suggestion engine is connected.";
-        paragraphs[1].innerHTML = insights.growth_trajectory || "For now, use the metric table and trend chart to evaluate relative strength.";
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
+    
+    const avatarDiv = document.createElement('div');
+    if (!isUser) {
+        avatarDiv.className = 'w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center mr-2 flex-shrink-0';
+        avatarDiv.innerHTML = '<span class="material-symbols-outlined text-sm">robot_2</span>';
+    }
+
+    const bubble = document.createElement('div');
+    if (isUser) {
+        bubble.className = 'bg-primary text-on-primary px-4 py-2 rounded-2xl rounded-br-sm max-w-[80%] text-sm shadow-sm';
+    } else {
+        bubble.className = 'bg-surface-container-low border border-outline-variant px-4 py-2 rounded-2xl rounded-bl-sm max-w-[80%] text-sm shadow-sm text-on-surface-variant';
     }
     
-    // Update the smaller sections
-    const sections = aiContainer.querySelectorAll('.bg-white\\/10');
-    if (sections.length >= 2) {
-        if (sections[0].querySelector('p')) {
-            sections[0].querySelector('p').innerHTML = insights.risk_perspective || "Coming soon — leverage, liquidity, and earning-quality notes.";
+    // Render Markdown for AI messages, plain text for user messages
+    if (isUser) {
+        bubble.textContent = text;
+    } else {
+        bubble.innerHTML = convertMarkdownToHtml(text);
+    }
+
+    if (!isUser) {
+        messageDiv.appendChild(avatarDiv);
+    }
+    messageDiv.appendChild(bubble);
+    if (isUser) {
+        const userAvatar = document.createElement('div');
+        userAvatar.className = 'w-8 h-8 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center ml-2 flex-shrink-0';
+        userAvatar.innerHTML = '<span class="material-symbols-outlined text-sm">person</span>';
+        messageDiv.appendChild(userAvatar);
+    }
+    
+    chatMessages.appendChild(messageDiv);
+    
+    // Scroll the chat messages container to the bottom
+    const chatMessagesContainer = document.getElementById('chat-messages-container');
+    if (chatMessagesContainer) {
+        chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+    }
+}
+
+function toggleChatWindow() {
+    const chatWindow = document.getElementById('chat-window');
+    const floatingChatBtn = document.getElementById('floating-chat-btn');
+    
+    if (!chatWindow || !floatingChatBtn) return;
+    
+    const isHidden = chatWindow.classList.contains('hidden');
+    
+    if (isHidden) {
+        chatWindow.classList.remove('hidden');
+        floatingChatBtn.classList.add('is-open');
+    } else {
+        chatWindow.classList.add('hidden');
+        floatingChatBtn.classList.remove('is-open');
+    }
+}
+
+function closeChatWindow() {
+    const chatWindow = document.getElementById('chat-window');
+    const floatingChatBtn = document.getElementById('floating-chat-btn');
+    
+    if (!chatWindow || !floatingChatBtn) return;
+    
+    chatWindow.classList.add('hidden');
+    floatingChatBtn.classList.remove('is-open');
+}
+
+async function sendMessage(question) {
+    if (!question.trim() || !currentComparisonData) return;
+    
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('chat-send-btn');
+    
+    addChatMessage(question, true);
+    
+    if (chatInput) chatInput.value = '';
+    if (sendBtn) sendBtn.disabled = true;
+
+    // Add typing indicator
+    const chatMessages = document.getElementById('chat-messages');
+    const typingDiv = document.createElement('div');
+    typingDiv.id = 'typing-indicator';
+    typingDiv.className = 'flex justify-start';
+    const typingAvatar = document.createElement('div');
+    typingAvatar.className = 'w-8 h-8 rounded-full bg-primary-fixed text-primary flex items-center justify-center mr-2 flex-shrink-0';
+    typingAvatar.innerHTML = '<span class="material-symbols-outlined text-sm">robot_2</span>';
+    const typingBubble = document.createElement('div');
+    typingBubble.className = 'bg-surface-container-low border border-outline-variant px-4 py-2 rounded-2xl rounded-bl-sm flex gap-1';
+    typingBubble.innerHTML = `
+        <span class="w-2 h-2 bg-on-surface-variant rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+        <span class="w-2 h-2 bg-on-surface-variant rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+        <span class="w-2 h-2 bg-on-surface-variant rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+    `;
+    typingDiv.appendChild(typingAvatar);
+    typingDiv.appendChild(typingBubble);
+    chatMessages.appendChild(typingDiv);
+    
+    const chatMessagesContainer = document.getElementById('chat-messages-container');
+    if (chatMessagesContainer) {
+        chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+    }
+    
+    try {
+        const response = await fetch(`${API_BASE}/ai/chat-comparative`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                question: question,
+                symbol_a: currentComparisonData.company_a.symbol,
+                symbol_b: currentComparisonData.company_b.symbol,
+                fiscal_year: currentComparisonData.selected_period?.fiscal_year,
+                quarter: currentComparisonData.selected_period?.quarter
+            })
+        });
+        
+        const result = await response.json();
+        // Remove typing indicator
+        if (typingDiv.parentNode) {
+            typingDiv.parentNode.removeChild(typingDiv);
         }
-        if (sections[1].querySelector('p')) {
-            sections[1].querySelector('p').innerHTML = insights.growth_trajectory || "Coming soon — revenue and profit momentum summary.";
+        addChatMessage(result.answer, false);
+    } catch (err) {
+        console.error(err);
+        // Remove typing indicator
+        if (typingDiv.parentNode) {
+            typingDiv.parentNode.removeChild(typingDiv);
         }
+        addChatMessage("Sorry, I couldn't connect to the server.", false);
+    } finally {
+        if (sendBtn) sendBtn.disabled = false;
     }
 }
 
@@ -535,6 +712,46 @@ document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const presetA = params.get("a");
         const presetB = params.get("b");
+
+        // Chat event listeners
+        const floatingChatBtn = document.getElementById('floating-chat-btn');
+        const closeChatBtn = document.getElementById('close-chat-btn');
+        const chatSendBtn = document.getElementById('chat-send-btn');
+        const chatInput = document.getElementById('chat-input');
+        const exampleQuestions = document.querySelectorAll('.example-question');
+
+        if (floatingChatBtn) {
+            floatingChatBtn.addEventListener('click', toggleChatWindow);
+        }
+
+        if (closeChatBtn) {
+            closeChatBtn.addEventListener('click', closeChatWindow);
+        }
+
+        if (chatSendBtn) {
+            chatSendBtn.addEventListener('click', () => {
+                const question = chatInput?.value || '';
+                sendMessage(question);
+            });
+        }
+
+        if (chatInput) {
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const question = chatInput.value || '';
+                    sendMessage(question);
+                }
+            });
+        }
+
+        if (exampleQuestions && exampleQuestions.length > 0) {
+            exampleQuestions.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const question = btn.getAttribute('data-question') || '';
+                    sendMessage(question);
+                });
+            });
+        }
 
         loadCompanies().then((ready) => {
             if (!ready) return;

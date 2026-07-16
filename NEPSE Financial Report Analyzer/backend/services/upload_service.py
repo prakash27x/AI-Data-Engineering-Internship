@@ -20,7 +20,7 @@ from backend.database.connection import get_db_connection, close_connection
 MAX_PDF_BYTES = 25 * 1024 * 1024  # 25 MB
 
 ALLOWED_SECTORS = {"hydropower", "commercial_bank"}
-ALLOWED_REPORT_TYPES = {"quarterly", "annual"}
+ALLOWED_REPORT_TYPES = {"quarterly"}
 ALLOWED_QUARTERS = {"Q1", "Q2", "Q3", "Q4"}
 
 
@@ -46,7 +46,7 @@ def _normalize_metadata(
     quarter = (quarter or "").strip().upper()
 
     if report_type not in ALLOWED_REPORT_TYPES:
-        raise HTTPException(status_code=400, detail="report_type must be quarterly or annual")
+        raise HTTPException(status_code=400, detail="report_type must be quarterly")
 
     if sector not in ALLOWED_SECTORS:
         raise HTTPException(status_code=400, detail="sector must be hydropower or commercial_bank")
@@ -63,10 +63,6 @@ def _normalize_metadata(
     if report_type == "quarterly":
         if quarter not in ALLOWED_QUARTERS:
             raise HTTPException(status_code=400, detail="quarter must be Q1, Q2, Q3, or Q4")
-    else:
-        # Annual reports: use Q4 as the period bucket for schema compatibility
-        if quarter not in ALLOWED_QUARTERS:
-            quarter = "Q4"
 
     return {
         "company_symbol": symbol,
@@ -341,7 +337,7 @@ def get_form_options() -> dict:
             "companies": [],
             "fiscal_years": _default_fiscal_years(),
             "quarters": ["Q1", "Q2", "Q3", "Q4"],
-            "report_types": ["quarterly", "annual"],
+            "report_types": ["quarterly"],
             "sectors": [{"value": "hydropower", "label": "Hydropower", "enabled": True}],
             "engine": {"status": "offline", "message": "Database unavailable"},
         }
@@ -390,7 +386,6 @@ def get_form_options() -> dict:
         ],
         "report_types": [
             {"value": "quarterly", "label": "Quarterly Report"},
-            {"value": "annual", "label": "Annual Report"},
         ],
         "sectors": [
             {"value": "hydropower", "label": "Hydropower", "enabled": True},

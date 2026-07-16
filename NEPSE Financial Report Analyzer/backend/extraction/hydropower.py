@@ -30,7 +30,7 @@ QUARTER_PATTERNS = {
     "Q1": ["shrawan", "saun", "bhadra", "bhadau", "ashoj", "asoj", "first quarter", "q1"],
     "Q2": ["kartik", "mangsir", "poush", "push", "second quarter", "q2"],
     "Q3": ["magh", "falgun", "chaitra", "chait", "third quarter", "3rd quarter", "q3"],
-    "Q4": ["baishakh", "baisakh", "jestha", "jeth", "ashadh", "ashad", "asar", "fourth quarter", "q4", "annual"],
+    "Q4": ["baishakh", "baisakh", "jestha", "jeth", "ashadh", "ashad", "asar", "fourth quarter", "q4"],
 }
 
 
@@ -389,7 +389,7 @@ def detect_report_quarter(raw_text, metadata):
         "Q1": ["first quarter", "1st quarter"],
         "Q2": ["second quarter", "2nd quarter"],
         "Q3": ["third quarter", "3rd quarter"],
-        "Q4": ["fourth quarter", "4th quarter", "annual"],
+        "Q4": ["fourth quarter", "4th quarter"],
     }
 
     for quarter, phrases in explicit_quarter_phrases.items():

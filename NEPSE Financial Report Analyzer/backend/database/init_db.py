@@ -102,7 +102,7 @@ def create_tables():
 
             report_id INT AUTO_INCREMENT PRIMARY KEY,
             company_id INT NOT NULL,
-            report_type ENUM('quarterly','annual') DEFAULT 'quarterly',
+            report_type ENUM('quarterly') DEFAULT 'quarterly',
             fiscal_year VARCHAR(20) NOT NULL,
             report_quarter ENUM('Q1','Q2','Q3','Q4'),
             report_end_date DATE,

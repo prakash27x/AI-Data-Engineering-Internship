@@ -142,8 +142,8 @@ def generate_comparison_insights(company_a, company_b, comparison_rows):
     """
     if not client:
         return {
-            "risk_perspective": "AI insights disabled - API key not configured",
-            "growth_trajectory": "AI insights disabled - API key not configured"
+            "summary": ["AI insights disabled - API key not configured"],
+            "score": 50
         }
 
     company_a_clean = convert_decimal(company_a)
@@ -161,13 +161,11 @@ Metrics Comparison:
 {comparison_rows_clean}
 
 Please provide:
-1. Risk Perspective - analyze leverage, liquidity, and earning-quality notes (1 paragraph)
-2. Growth Trajectory - revenue and profit momentum summary (1 paragraph)
+1. A concise comparative summary (max 5 bullet points) covering both growth and risk
 
 Return ONLY as valid JSON, no extra text, with exact keys:
 {{
-    "risk_perspective": "text here",
-    "growth_trajectory": "text here"
+    "summary": ["bullet1", "bullet2", "bullet3", "bullet4", "bullet5"]
 }}
 """
 
@@ -178,9 +176,104 @@ Return ONLY as valid JSON, no extra text, with exact keys:
     except Exception as e:
         print(f"Error generating comparison insights: {e}")
         return {
-            "risk_perspective": f"Could not generate AI insights at this time. Error: {str(e)}",
-            "growth_trajectory": "Check API key configuration and internet connection"
+            "summary": [f"Could not generate AI insights at this time. Error: {str(e)}"]
         }
+
+
+def generate_comparative_chat_response(question, company_a, company_b, comparison_rows):
+    """
+    Generate chat response for comparative analysis
+    """
+    if not client:
+        return "AI insights are currently disabled. Please configure your API key in the .env file."
+    
+    company_a_clean = convert_decimal(company_a)
+    company_b_clean = convert_decimal(company_b)
+    comparison_rows_clean = convert_decimal(comparison_rows)
+
+    q = (question or "").strip()
+    if not q:
+        return "Please ask a question about comparing these two companies' financial metrics."
+
+    q_lower = q.lower()
+    
+    # Check for platform/identity questions
+    identity_keywords = ["who are you", "what are you", "what is this", "what do you do", "what is this platform"]
+    if any(k in q_lower for k in identity_keywords):
+        return (
+            "I'm the AI assistant for the NEPSE Financial Report Analyzer platform! "
+            "This platform helps you analyze and compare the financial performance of Nepalese hydropower companies listed on the Nepal Stock Exchange (NEPSE). "
+            "I can help you with comparing financial metrics of two companies, analyzing trends, and answering questions about their financial data."
+        )
+        
+    allowed_keywords = [
+        "compare",
+        "comparison",
+        "which",
+        "better",
+        "worse",
+        "risk",
+        "revenue",
+        "sale",
+        "profit",
+        "loss",
+        "income",
+        "expense",
+        "margin",
+        "growth",
+        "trend",
+        "assets",
+        "asset",
+        "equity",
+        "liability",
+        "debt",
+        "cash",
+        "liquidity",
+        "solvency",
+        "ratio",
+        "quarter",
+        "fiscal",
+        "nepse",
+        "hydro",
+        company_a_clean.get("symbol", "").lower(),
+        company_a_clean.get("name", "").lower(),
+        company_b_clean.get("symbol", "").lower(),
+        company_b_clean.get("name", "").lower(),
+    ]
+
+    if not any(k and k in q_lower for k in allowed_keywords):
+        return (
+            "I can only answer questions about comparing these two companies' NEPSE financial metrics "
+            "(e.g., revenue, profit, assets, equity, growth, liquidity, risk)."
+        )
+
+    comparison_json = json.dumps(comparison_rows_clean, ensure_ascii=False, indent=2)
+    
+    system_prompt = f"""
+You are a financial assistant specializing only in comparing Nepalese hydropower companies listed on NEPSE.
+You can only answer questions related to comparing the financial metrics and performance of:
+- {company_a_clean['name']} ({company_a_clean['symbol']})
+- {company_b_clean['name']} ({company_b_clean['symbol']})
+
+Here is the comparative data for context:
+Company A: {company_a_clean['name']} ({company_a_clean['symbol']}) - Period: {company_a_clean['fiscal_year']} {company_a_clean['quarter']}
+Company B: {company_b_clean['name']} ({company_b_clean['symbol']}) - Period: {company_b_clean['fiscal_year']} {company_b_clean['quarter']}
+
+Metrics Comparison:
+{comparison_json}
+
+IMPORTANT RULES:
+1. If the question is NOT related to comparing these companies' financial performance, metrics, hydropower sector, or NEPSE, politely decline and say you can only help with questions about comparing these two companies' financial data.
+2. Always base your answers on the provided financial data.
+3. Keep answers concise and professional.
+4. Do not make up information not present in the data.
+"""
+
+    try:
+        return _generate_text(f"{system_prompt}\n\nUser Question: {q}")
+    except Exception as e:
+        print(f"Error generating comparative chat response: {e}")
+        return f"Sorry, I'm having trouble answering that right now. Error: {str(e)}"
 
 def generate_chat_response(question, dashboard_data):
     """
@@ -196,6 +289,16 @@ def generate_chat_response(question, dashboard_data):
         return "Please ask a question about the selected company's financial metrics for the selected quarter."
 
     q_lower = q.lower()
+    
+    # Check for platform/identity questions
+    identity_keywords = ["who are you", "what are you", "what is this", "what do you do", "what is this platform"]
+    if any(k in q_lower for k in identity_keywords):
+        return (
+            "I'm the AI assistant for the NEPSE Financial Report Analyzer platform! "
+            "This platform helps you analyze and compare the financial performance of Nepalese hydropower companies listed on the Nepal Stock Exchange (NEPSE). "
+            "I can help you with analyzing a company's financial metrics, trends, and answering questions about their financial data."
+        )
+        
     allowed_keywords = [
         "risk",
         "revenue",

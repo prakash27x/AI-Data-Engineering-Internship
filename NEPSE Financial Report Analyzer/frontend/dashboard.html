@@ -194,7 +194,7 @@
     <main id="main-content" class="ml-0 md:ml-[260px] pt-24 pb-12 px-lg min-h-screen transition-all duration-300">
         <div class="grid grid-cols-12 gap-gutter">
             <div class="col-span-12 lg:col-span-9 space-y-gutter">
-                <div class="glass-card p-lg rounded-xl shadow-sm">
+                <div id="dashboard-metrics-card" class="glass-card p-lg rounded-xl shadow-sm">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-md mb-md">
                         <div class="flex items-center gap-sm">
                             <div id="company-avatar"
@@ -287,10 +287,156 @@
                             </p>
                         </div>
                     </div>
+
+                    <!-- Additional Metrics -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-md mt-md">
+
+                        <!-- Gross Profit -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                GROSS PROFIT
+                            </p>
+
+                            <p id="gross-profit" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="gross-profit-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+
+                        <!-- Profit Before Tax -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                PROFIT BEFORE TAX
+                            </p>
+
+                            <p id="profit-before-tax" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="profit-before-tax-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+
+                        <!-- Finance Costs -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                FINANCE COSTS
+                            </p>
+
+                            <p id="finance-costs" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="finance-costs-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+
+                        <!-- Total Current Assets -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                CURRENT ASSETS
+                            </p>
+
+                            <p id="total-current-assets" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="total-current-assets-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- More Additional Metrics -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-md mt-md">
+
+                        <!-- Cash and Cash Equivalents -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                CASH & CASH EQ.
+                            </p>
+
+                            <p id="cash-and-cash-equivalents" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="cash-and-cash-equivalents-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+
+                        <!-- Total Current Liabilities -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                CURRENT LIABILITIES
+                            </p>
+
+                            <p id="total-current-liabilities" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="total-current-liabilities-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+
+                        <!-- Total Liabilities -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                TOTAL LIABILITIES
+                            </p>
+
+                            <p id="total-liabilities" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="total-liabilities-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+
+                        <!-- Share Capital -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                SHARE CAPITAL
+                            </p>
+
+                            <p id="share-capital" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="share-capital-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Last Additional Metric -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-md mt-md">
+                        <!-- Reserves and Surplus -->
+                        <div class="p-md border border-outline-variant rounded-lg bg-surface-container-low">
+                            <p class="font-label-md text-label-md text-on-surface-variant mb-xs">
+                                RESERVES & SURPLUS
+                            </p>
+
+                            <p id="reserves-and-surplus" class="font-headline-sm text-headline-sm text-primary">
+                                -
+                            </p>
+
+                            <p id="reserves-and-surplus-growth" class="text-label-md font-bold">
+                                -
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                    <div class="glass-card p-lg rounded-xl shadow-sm flex flex-col h-full">
+                    <div id="revenue-trend-card" class="glass-card p-lg rounded-xl shadow-sm flex flex-col h-full">
                         <div class="flex justify-between items-center mb-lg">
                             <h4 class="font-headline-sm text-headline-sm text-primary">
                                 Revenue Trend
@@ -305,20 +451,33 @@
                             <canvas id="revenueChart"></canvas>
                         </div>
 
-                        <div class="mt-md bg-green-50/50 border-l-4 border-l-green-500 border-y border-r border-outline-variant rounded-r-lg p-sm flex flex-col gap-xs dark:bg-green-900/10">
-                            <h5 class="text-xs font-bold text-primary flex items-center gap-1"><span class="material-symbols-outlined text-green-600 text-[14px]">auto_awesome</span> Key Insight</h5>
-                            <p class="text-[11px] text-on-surface-variant leading-snug">
-                                Revenue has grown <span class="font-bold text-primary">69%</span> because:
-                            </p>
-                            <ul class="text-[11px] text-on-surface-variant list-disc pl-4 space-y-0.5">
-                                <li>Increased energy generation</li>
-                                <li>Higher electricity sales</li>
-                                <li>Stable operating costs</li>
-                            </ul>
+                        <div class="mt-md border border-outline-variant rounded-lg bg-surface-container-low p-md">
+                            <div class="flex items-center justify-between gap-sm mb-xs">
+                                <div class="flex items-center gap-1 text-xs font-bold text-primary">
+                                    <span class="material-symbols-outlined text-[16px] text-primary">insights</span>
+                                    <span>Revenue Insight</span>
+                                </div>
+                                <span id="revenue-trend-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant">-</span>
+                            </div>
+                            <p id="revenue-trend-text" class="text-[11px] text-on-surface-variant leading-snug">-</p>
+                            <div class="mt-sm grid grid-cols-3 gap-sm text-[11px]">
+                                <div class="p-sm rounded-lg bg-surface-container-highest border border-outline-variant">
+                                    <p class="text-[10px] text-on-surface-variant">Latest</p>
+                                    <p id="revenue-trend-latest" class="font-bold text-primary">-</p>
+                                </div>
+                                <div class="p-sm rounded-lg bg-surface-container-highest border border-outline-variant">
+                                    <p class="text-[10px] text-on-surface-variant">QoQ</p>
+                                    <p id="revenue-trend-qoq" class="font-bold text-on-surface-variant">-</p>
+                                </div>
+                                <div class="p-sm rounded-lg bg-surface-container-highest border border-outline-variant">
+                                    <p class="text-[10px] text-on-surface-variant">Best</p>
+                                    <p id="revenue-trend-best" class="font-bold text-primary">-</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="glass-card p-lg rounded-xl shadow-sm flex flex-col h-full">
+                    <div id="profit-trend-card" class="glass-card p-lg rounded-xl shadow-sm flex flex-col h-full">
                         <div class="flex justify-between items-center mb-lg">
                             <h4 class="font-headline-sm text-headline-sm text-primary">
                                 Net Profit Trend
@@ -333,13 +492,28 @@
                             <canvas id="profitChart"></canvas>
                         </div>
 
-                        <div class="mt-md bg-blue-50/50 border-l-4 border-l-blue-500 border-y border-r border-outline-variant rounded-r-lg p-sm flex flex-col gap-xs dark:bg-blue-900/10">
-                            <h5 class="text-xs font-bold text-primary flex items-center gap-1"><span class="material-symbols-outlined text-blue-600 text-[14px]">auto_awesome</span> Why did profit decline?</h5>
-                            <div class="grid grid-cols-2 gap-x-2 gap-y-1 text-[11px] mt-1">
-                                <div class="flex items-center gap-1 text-red-600 font-medium"><span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> Finance Cost</div>
-                                <div class="flex items-center gap-1 text-red-600 font-medium"><span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> Interest Expense</div>
-                                <div class="flex items-center gap-1 text-red-600 font-medium"><span class="material-symbols-outlined text-[14px]">arrow_drop_up</span> Admin Cost</div>
-                                <div class="flex items-center gap-1 text-red-600 font-bold"><span class="material-symbols-outlined text-[14px]">arrow_drop_down</span> Net Profit</div>
+                        <div class="mt-md border border-outline-variant rounded-lg bg-surface-container-low p-md">
+                            <div class="flex items-center justify-between gap-sm mb-xs">
+                                <div class="flex items-center gap-1 text-xs font-bold text-primary">
+                                    <span class="material-symbols-outlined text-[16px] text-primary">insights</span>
+                                    <span>Net Profit Insight</span>
+                                </div>
+                                <span id="profit-trend-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant">-</span>
+                            </div>
+                            <p id="profit-trend-text" class="text-[11px] text-on-surface-variant leading-snug">-</p>
+                            <div class="mt-sm grid grid-cols-3 gap-sm text-[11px]">
+                                <div class="p-sm rounded-lg bg-surface-container-highest border border-outline-variant">
+                                    <p class="text-[10px] text-on-surface-variant">Latest</p>
+                                    <p id="profit-trend-latest" class="font-bold text-primary">-</p>
+                                </div>
+                                <div class="p-sm rounded-lg bg-surface-container-highest border border-outline-variant">
+                                    <p class="text-[10px] text-on-surface-variant">QoQ</p>
+                                    <p id="profit-trend-qoq" class="font-bold text-on-surface-variant">-</p>
+                                </div>
+                                <div class="p-sm rounded-lg bg-surface-container-highest border border-outline-variant">
+                                    <p class="text-[10px] text-on-surface-variant">Best</p>
+                                    <p id="profit-trend-best" class="font-bold text-primary">-</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -348,178 +522,89 @@
             </div>
 
             <div class="col-span-12 lg:col-span-3 space-y-gutter">
-                <div class="glass-card rounded-xl shadow-md flex flex-col h-full bg-surface border-2 border-primary/30 ring-4 ring-primary/5 relative overflow-hidden">
+                <div id="ai-insights-card" class="glass-card rounded-xl shadow-md p-lg bg-surface border border-outline-variant relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-tertiary-fixed-dim to-primary"></div>
-                    <div class="p-lg border-b-2 border-primary/20 flex justify-between items-center mt-1">
-                        <div class="flex items-center gap-md">
-                            <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center relative shadow-sm">
-                                <span class="material-symbols-outlined text-xl" id="ai-icon-sparkle">auto_awesome</span>
-                            </div>
-                            <div>
-                                <h4 class="font-headline-sm text-headline-sm text-primary">Ask AI</h4>
-                                <p class="text-label-md text-on-surface-variant">Financial Assistant</p>
-                            </div>
+                    <div class="flex items-center gap-md mb-md">
+                        <div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center shadow-sm">
+                            <span class="material-symbols-outlined text-xl">insights</span>
                         </div>
-                        <div class="text-right">
-                            <p class="text-xs text-on-surface-variant">Confidence</p>
-                            <p class="text-sm font-bold text-green-600">96%</p>
+                        <div>
+                            <h4 class="font-headline-sm text-headline-sm text-primary">AI Insights</h4>
+                            <p class="text-label-md text-on-surface-variant">Financial Analysis</p>
                         </div>
                     </div>
                     
-                    <div class="p-lg flex-grow flex flex-col gap-md relative">
-                        
-                        <div id="ai-loading-overlay" class="absolute inset-0 bg-surface/90 backdrop-blur-sm z-10 hidden flex-col items-center justify-center rounded-b-xl">
-                            <span class="material-symbols-outlined text-primary text-4xl animate-spin mb-sm">sync</span>
-                            <p class="text-sm font-bold text-primary mb-xs">✨ AI is analyzing...</p>
-                            <p class="text-xs text-on-surface-variant mb-md">Generating insights</p>
-                            <div class="w-48 h-2 bg-surface-container-highest rounded-full overflow-hidden">
-                                <div class="h-full bg-primary w-2/3 animate-pulse rounded-full"></div>
-                            </div>
+                    <!-- AI Loading Overlay -->
+                    <div id="ai-loading-overlay" class="absolute inset-0 bg-surface/90 backdrop-blur-sm z-10 flex-col items-center justify-center hidden">
+                        <span class="material-symbols-outlined text-primary text-4xl animate-spin mb-sm">sync</span>
+                        <p class="text-sm font-bold text-primary mb-xs">Generating summary</p>
+                        <p class="text-xs text-on-surface-variant mb-md">Please wait...</p>
+                        <div class="w-48 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+                            <div class="h-full bg-primary w-2/3 animate-pulse rounded-full"></div>
                         </div>
+                    </div>
 
-                        <div id="ai-content-area" class="flex flex-col gap-md">
-                            <div class="flex items-center justify-between">
+                    <div id="ai-content-wrapper">
+                        <div class="mb-md">
+                            <div class="flex items-center justify-between mb-md">
                                 <div class="flex items-center gap-md">
                                     <div class="text-center">
-                                        <p class="text-3xl font-black text-primary">82<span class="text-sm text-on-surface-variant font-normal">/100</span></p>
-                                        <p class="text-[10px] uppercase font-bold text-green-600">Excellent</p>
+                                        <p class="text-3xl font-black text-primary"><span id="ai-score">82</span><span class="text-sm text-on-surface-variant font-normal">/100</span></p>
+                                        <p class="text-[10px] uppercase font-bold text-green-600" id="ai-score-label">Excellent</p>
                                     </div>
                                     <div class="w-[1px] h-10 bg-outline-variant"></div>
                                     <div>
-                                        <p class="text-sm text-yellow-500 tracking-widest">★★★★<span class="text-outline-variant">★</span></p>
-                                        <p class="text-xs font-bold text-primary">4.2 / 5</p>
-                                        <p class="text-[10px] text-on-surface-variant">Moderately Attractive</p>
+                                        <p class="text-sm text-yellow-500 tracking-widest" id="ai-rating">★★★★<span class="text-outline-variant">★</span></p>
+                                        <p class="text-xs font-bold text-primary"><span id="ai-rating-num">4.2</span> / 5</p>
+                                        <p class="text-[10px] text-on-surface-variant" id="ai-rating-desc">Moderately Attractive</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="space-y-xs">
+                            <div class="space-y-xs mb-md">
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="w-20 text-on-surface-variant">Growth</span>
-                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-green-500 w-[90%]"></div></div>
-                                    <span class="w-6 text-right font-bold text-primary">90</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div id="ai-growth-bar" class="h-full bg-green-500 w-[90%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary" id="ai-growth-score">90</span>
                                 </div>
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="w-20 text-on-surface-variant">Profitability</span>
-                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-yellow-500 w-[55%]"></div></div>
-                                    <span class="w-6 text-right font-bold text-primary">55</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div id="ai-profitability-bar" class="h-full bg-yellow-500 w-[55%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary" id="ai-profitability-score">55</span>
                                 </div>
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="w-20 text-on-surface-variant">Liquidity</span>
-                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-blue-500 w-[80%]"></div></div>
-                                    <span class="w-6 text-right font-bold text-primary">80</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div id="ai-liquidity-bar" class="h-full bg-blue-500 w-[80%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary" id="ai-liquidity-score">80</span>
                                 </div>
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="w-20 text-on-surface-variant">Stability</span>
-                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-blue-400 w-[72%]"></div></div>
-                                    <span class="w-6 text-right font-bold text-primary">72</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div id="ai-stability-bar" class="h-full bg-blue-400 w-[72%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary" id="ai-stability-score">72</span>
                                 </div>
                                 <div class="flex items-center justify-between text-xs">
                                     <span class="w-20 text-on-surface-variant">Risk</span>
-                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div class="h-full bg-red-500 w-[40%]"></div></div>
-                                    <span class="w-6 text-right font-bold text-primary">40</span>
+                                    <div class="flex-grow mx-sm h-1.5 bg-surface-container-highest rounded-full overflow-hidden"><div id="ai-risk-bar" class="h-full bg-red-500 w-[40%]"></div></div>
+                                    <span class="w-6 text-right font-bold text-primary" id="ai-risk-score">40</span>
                                 </div>
                             </div>
 
-                            <div class="text-[10px] text-center text-on-surface-variant bg-surface-container-lowest py-1 rounded border border-outline-variant">
+                            <div class="text-[10px] text-center text-on-surface-variant bg-surface-container-lowest py-1 rounded border border-outline-variant mb-md">
                                 Generated using <span class="font-bold" id="ai-report-period">FY2082 Q3 Report</span>
                             </div>
-
-                            <div class="flex-col gap-sm flex">
-                                <details class="bg-surface-container-lowest border-l-4 border-l-purple-500 border-y border-r border-outline-variant rounded-r-lg group shadow-sm" open>
-                                    <summary class="font-bold text-sm text-primary px-md py-sm cursor-pointer list-none flex justify-between items-center select-none">
-                                        Executive Summary
-                                        <span class="material-symbols-outlined group-open:-rotate-180 transition-transform text-on-surface-variant">expand_more</span>
-                                    </summary>
-                                    <div class="px-md pb-sm text-sm text-on-surface-variant">
-                                        <ul class="list-disc pl-5 space-y-1">
-                                            <li>Revenue increased <span class="font-bold text-green-600">69%</span>.</li>
-                                            <li>Assets remained stable.</li>
-                                            <li>Net profit turned <span class="font-bold text-red-600">negative</span>.</li>
-                                            <li>Equity declined slightly.</li>
-                                            <li>Overall financial health is moderate.</li>
-                                        </ul>
-                                    </div>
-                                </details>
-
-                                <details class="bg-surface-container-lowest border-l-4 border-l-orange-500 border-y border-r border-outline-variant rounded-r-lg group shadow-sm">
-                                    <summary class="font-bold text-sm text-primary px-md py-sm cursor-pointer list-none flex justify-between items-center select-none">
-                                        Risks
-                                        <span class="material-symbols-outlined group-open:-rotate-180 transition-transform text-on-surface-variant">expand_more</span>
-                                    </summary>
-                                    <div class="px-md pb-sm text-sm text-on-surface-variant">
-                                        <ul class="list-disc pl-5 space-y-1">
-                                            <li>Declining net profitability</li>
-                                            <li>High debt-to-equity ratio</li>
-                                            <li>Interest rate vulnerability</li>
-                                        </ul>
-                                    </div>
-                                </details>
-                            </div>
-
-                            <div class="mt-xs">
-                                <div id="chat-messages" class="mb-sm max-h-32 overflow-y-auto space-y-2"></div>
-                                <div class="flex items-center gap-sm bg-surface-container-lowest px-md py-sm rounded-lg border border-outline-variant mb-xs focus-within:border-primary transition-colors shadow-sm">
-                                    <span class="material-symbols-outlined text-on-surface-variant text-sm">chat</span>
-                                    <input id="chat-input" type="text" placeholder="Ask AI..." class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 text-primary">
-                                    <button id="chat-send-btn" class="text-primary hover:bg-surface-container-highest p-1 rounded-full flex items-center justify-center transition-colors">
-                                        <span class="material-symbols-outlined text-sm">send</span>
-                                    </button>
-                                </div>
-                                <div class="text-[10px] text-on-surface-variant px-sm flex flex-wrap gap-x-2 gap-y-1">
-                                    <span class="font-bold">Examples:</span>
-                                    <button class="hover:text-primary hover:underline example-question" data-question="Why did profit fall?">Why did profit fall?</button>
-                                    <button class="hover:text-primary hover:underline example-question" data-question="Explain revenue growth">Explain revenue growth</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="p-lg border-t border-outline-variant bg-surface-container-lowest mt-auto rounded-b-xl">
-                        <div class="flex justify-between items-center mb-sm">
-                            <p class="text-[10px] uppercase font-bold text-on-surface-variant">AI Suggestions</p>
-                        </div>
-                        <div class="flex flex-wrap gap-2 text-xs">
-                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Explain Revenue</button>
-                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Explain Profit</button>
-                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Investment Risk</button>
-                            <button class="bg-surface border border-outline-variant hover:bg-surface-container-low text-primary px-3 py-1.5 rounded-full transition-colors shadow-sm">Growth Potential</button>
                         </div>
 
-                        <div class="mt-md border-t border-outline-variant pt-md">
-                            <p class="text-[10px] uppercase font-bold text-on-surface-variant mb-sm">AI Forecast (Next Quarter)</p>
-                            <div class="grid grid-cols-3 gap-sm text-center">
-                                <div>
-                                    <p class="text-[10px] text-on-surface-variant">Revenue</p>
-                                    <p class="text-xs font-bold text-green-600 flex items-center justify-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Increase</p>
-                                </div>
-                                <div class="border-l border-r border-outline-variant">
-                                    <p class="text-[10px] text-on-surface-variant">Net Profit</p>
-                                    <p class="text-xs font-bold text-green-600 flex items-center justify-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Recovery</p>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-on-surface-variant">Risk</p>
-                                    <p class="text-xs font-bold text-yellow-600">Medium</p>
-                                </div>
-                            </div>
+                        <div class="bg-surface-container-low border border-outline-variant rounded-lg p-md">
+                            <p class="font-semibold text-sm text-primary mb-xs flex items-center gap-1">
+                                <span class="material-symbols-outlined text-lg">analytics</span>
+                                Summary
+                            </p>
+                            <ul id="ai-insights-list" class="list-disc pl-5 space-y-1 text-sm text-on-surface-variant">
+                                <!-- Dynamically populated -->
+                            </ul>
                         </div>
                     </div>
                 </div>
-
-                <!-- Sector Watch
-                <div class="glass-card rounded-xl shadow-sm flex flex-col h-full overflow-hidden">
-                    <div class="p-lg border-b border-outline-variant">
-                        <h4 class="font-headline-sm text-headline-sm text-primary">Sector Watch</h4>
-                        <p class="text-label-md text-on-surface-variant">Top Performers Today</p>
-                    </div>
-                    <div id="sector-watch" class="flex-grow">
-                        <div class="p-6 text-center text-gray-500">
-                            Loading sector performance...
-                        </div>
-                    </div>
-                    <a class="p-md text-center text-label-md font-bold text-primary hover:underline bg-surface-container-low"
-                        href="#">View All Sectors</a>
-                </div> -->
             </div>
         </div>
     </main>
@@ -571,6 +656,108 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/dashboard.js"></script>
+
+    <style>
+        /* ===== Enhanced Chatbot UI ===== */
+        #chat-window {
+            background: #ffffff;
+            animation: chat-pop 0.28s ease;
+        }
+        @keyframes chat-pop {
+            from { opacity: 0; transform: translateY(16px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .chat-launch {
+            background: linear-gradient(135deg, #051125 0%, #1b3555 100%);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .chat-launch:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 18px 36px rgba(5, 17, 37, 0.45);
+        }
+        .chat-launch .icon-close { display: none; }
+        .chat-launch.is-open .icon-open { display: none; }
+        .chat-launch.is-open .icon-close { display: inline-flex; }
+        .chat-msg-bot {
+            background: #f3f4f5;
+            border: 1px solid #e1e3e4;
+            color: #191c1d;
+        }
+        .chat-msg-user {
+            background: #051125;
+            color: #ffffff;
+        }
+        .chat-chip {
+            background: #eef2ff;
+            color: #1e3a8a;
+            border: 1px solid #dbeafe;
+            transition: all 0.2s ease;
+        }
+        .chat-chip:hover {
+            background: #dbeafe;
+            transform: translateY(-1px);
+        }
+        .chat-input-wrap:focus-within {
+            border-color: #051125;
+        }
+        .chat-send-btn {
+            background: #051125;
+            transition: opacity 0.2s ease;
+        }
+        .chat-send-btn:hover { opacity: 0.9; }
+    </style>
+
+    <!-- Floating Chat Button -->
+    <button id="floating-chat-btn" class="chat-launch fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full text-white shadow-lg flex items-center justify-center transition-all duration-200">
+        <span class="material-symbols-outlined text-3xl icon-open">robot_2</span>
+        <span class="material-symbols-outlined text-3xl icon-close">close</span>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="fixed bottom-24 right-6 z-50 w-96 max-w-[calc(100vw-32px)] h-[580px] max-h-[calc(100vh-120px)] rounded-2xl shadow-2xl border border-outline-variant flex flex-col overflow-hidden hidden">
+        <!-- Chat Header -->
+        <div class="bg-gradient-to-r from-primary to-primary-container text-on-primary p-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-2xl">robot_2</span>
+                </div>
+                <div>
+                    <p class="font-semibold text-sm">NEPSE AI Assistant</p>
+                    <p class="text-xs text-on-primary/80 flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+                        Financial Analysis
+                    </p>
+                </div>
+            </div>
+            <button id="close-chat-btn" class="text-on-primary hover:bg-white/15 rounded-lg w-9 h-9 flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages-container" class="flex-grow overflow-y-auto p-4 space-y-3 bg-surface-container-lowest custom-scrollbar">
+            <div id="chat-messages" class="space-y-3">
+                <!-- Chat messages will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t border-outline-variant bg-surface">
+            <div class="chat-input-wrap flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant mb-3 focus-within:border-primary transition-colors shadow-sm">
+                <span class="material-symbols-outlined text-on-surface-variant text-sm">chat</span>
+                <input id="chat-input" type="text" placeholder="Ask me about the financials..." class="bg-transparent border-none focus:ring-0 text-sm w-full p-0 text-primary">
+                <button id="chat-send-btn" class="chat-send-btn text-white w-9 h-9 rounded-full flex items-center justify-center transition-colors">
+                    <span class="material-symbols-outlined text-sm">send</span>
+                </button>
+            </div>
+            <div class="text-[10px] text-on-surface-variant px-1 flex flex-wrap gap-x-2 gap-y-1">
+                <span class="font-bold">Examples:</span>
+                <button class="chat-chip hover:text-primary hover:underline example-question rounded-full px-2 py-0.5" data-question="Why did profit fall?">Why did profit fall?</button>
+                <button class="chat-chip hover:text-primary hover:underline example-question rounded-full px-2 py-0.5" data-question="Explain revenue growth">Explain revenue growth</button>
+                <button class="chat-chip hover:text-primary hover:underline example-question rounded-full px-2 py-0.5" data-question="What are the risks?">What are the risks?</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

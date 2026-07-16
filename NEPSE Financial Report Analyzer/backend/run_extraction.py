@@ -40,7 +40,7 @@ def create_argument_parser():
     parser.add_argument(
         "--report-type",
         default="quarterly",
-        help="Report type (quarterly/annual)"
+        help="Report type (quarterly)"
     )
 
     parser.add_argument(

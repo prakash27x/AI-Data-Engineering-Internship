@@ -21,3 +21,74 @@ body {
     backdrop-filter: blur(8px);
     border: 1px solid rgba(224, 228, 232, 0.6);
 }
+
+.dashboard-loading {
+    opacity: 0.65;
+    transition: opacity 0.2s ease;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #6b7280;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #9ca3af #f3f4f6;
+}
+
+/* Floating Chat Button */
+#floating-chat-btn {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+    opacity: 1;
+    background-color: #10b981 !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+#floating-chat-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
+    background-color: #059669 !important;
+}
+
+/* Chat Window Header */
+#chat-window .bg-primary {
+    background-color: #10b981 !important;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+#floating-chat-btn {
+    animation: pulse 2s infinite;
+}
+
+#floating-chat-btn:hover {
+    animation: none;
+}

@@ -1,5 +1,4 @@
 from backend.database.connection import get_db_connection, close_connection
-from backend.services.ai_service import generate_dashboard_insights
 
 
 # ==========================================
@@ -116,9 +115,57 @@ def profit_growth_info(current, previous):
 
 
 # ==========================================
+# Trend Insights Generator
+# ==========================================
+def generate_trend_insights(trend_data, metric_name="Revenue"):
+    if not trend_data or len(trend_data) < 2:
+        return {
+            "badge": "No Data",
+            "text": f"Insufficient {metric_name} trend data available.",
+            "latest": "-",
+            "qoq": "-",
+            "best": "-"
+        }
+
+    latest = trend_data[-1]
+    previous = trend_data[-2]
+
+    # Calculate QoQ
+    qoq_growth = None
+    if previous["value"] != 0:
+        qoq_growth = ((latest["value"] - previous["value"]) / previous["value"]) * 100
+
+    # Find best quarter
+    best = max(trend_data, key=lambda x: x["value"])
+
+    # Determine badge and text
+    if qoq_growth is None:
+        badge = "Stable"
+        text = f"{metric_name} remains consistent in {latest['quarter']}."
+    elif qoq_growth > 0:
+        badge = "Up"
+        text = f"{metric_name} increased by {abs(round(qoq_growth, 2))}% in {latest['quarter']} compared to {previous['quarter']}."
+    elif qoq_growth < 0:
+        badge = "Down"
+        text = f"{metric_name} decreased by {abs(round(qoq_growth, 2))}% in {latest['quarter']} compared to {previous['quarter']}."
+    else:
+        badge = "Stable"
+        text = f"{metric_name} remained unchanged in {latest['quarter']}."
+
+    return {
+        "badge": badge,
+        "text": text,
+        "latest": latest["value"],
+        "qoq": qoq_growth,
+        "best": best["value"],
+        "best_quarter": best["quarter"]
+    }
+
+
+# ==========================================
 # Dashboard Data
 # ==========================================
-def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
+def get_dashboard_data(symbol, fiscal_year=None, quarter=None, include_ai_insights=True):
 
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
@@ -183,6 +230,52 @@ def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
             previous["total_equity"] if previous else None
         )
 
+        # Additional metrics growth
+        gross_profit_growth = growth_info(
+            current["gross_profit"],
+            previous["gross_profit"] if previous else None
+        )
+
+        profit_before_tax_growth = growth_info(
+            current["profit_before_tax"],
+            previous["profit_before_tax"] if previous else None
+        )
+
+        finance_costs_growth = growth_info(
+            current["finance_costs"],
+            previous["finance_costs"] if previous else None
+        )
+
+        total_current_assets_growth = growth_info(
+            current["total_current_assets"],
+            previous["total_current_assets"] if previous else None
+        )
+
+        cash_and_cash_equivalents_growth = growth_info(
+            current["cash_and_cash_equivalents"],
+            previous["cash_and_cash_equivalents"] if previous else None
+        )
+
+        total_current_liabilities_growth = growth_info(
+            current["total_current_liabilities"],
+            previous["total_current_liabilities"] if previous else None
+        )
+
+        total_liabilities_growth = growth_info(
+            current["total_liabilities"],
+            previous["total_liabilities"] if previous else None
+        )
+
+        share_capital_growth = growth_info(
+            current["share_capital"],
+            previous["share_capital"] if previous else None
+        )
+
+        reserves_and_surplus_growth = growth_info(
+            current["reserves_and_surplus"],
+            previous["reserves_and_surplus"] if previous else None
+        )
+
         # -------------------------
         # Chart Data
         # -------------------------
@@ -202,9 +295,6 @@ def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
                 "value": report["net_profit"] or 0
             })
 
-        # -------------------------
-        # AI Insights
-        # -------------------------
         company_data = {
             "symbol": current["company_symbol"],
             "name": current["company_name"],
@@ -218,15 +308,31 @@ def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
             "net_profit": current["net_profit"],
             "assets": current["total_assets"],
             "equity": current["total_equity"],
+            "gross_profit": current["gross_profit"],
+            "profit_before_tax": current["profit_before_tax"],
+            "finance_costs": current["finance_costs"],
+            "total_current_assets": current["total_current_assets"],
+            "cash_and_cash_equivalents": current["cash_and_cash_equivalents"],
+            "total_current_liabilities": current["total_current_liabilities"],
+            "total_liabilities": current["total_liabilities"],
+            "share_capital": current["share_capital"],
+            "reserves_and_surplus": current["reserves_and_surplus"],
             "revenue_growth": revenue_growth,
             "profit_growth": profit_growth
         }
 
-        ai_insights = generate_dashboard_insights(company_data, metrics_data)
+        ai_insights = None
+        if include_ai_insights:
+            from backend.services.ai_service import generate_dashboard_insights
+            ai_insights = generate_dashboard_insights(company_data, metrics_data)
 
         # -------------------------
         # Return Dashboard
         # -------------------------
+
+        # Generate trend insights
+        revenue_trend_insights = generate_trend_insights(revenue_trend, "Revenue")
+        profit_trend_insights = generate_trend_insights(net_profit_trend, "Net Profit")
 
         return {
 
@@ -239,16 +345,36 @@ def get_dashboard_data(symbol, fiscal_year=None, quarter=None):
                 "assets": current["total_assets"],
                 "equity": current["total_equity"],
                 "comprehensive_income": current["total_comprehensive_income"],
+                "gross_profit": current["gross_profit"],
+                "profit_before_tax": current["profit_before_tax"],
+                "finance_costs": current["finance_costs"],
+                "total_current_assets": current["total_current_assets"],
+                "cash_and_cash_equivalents": current["cash_and_cash_equivalents"],
+                "total_current_liabilities": current["total_current_liabilities"],
+                "total_liabilities": current["total_liabilities"],
+                "share_capital": current["share_capital"],
+                "reserves_and_surplus": current["reserves_and_surplus"],
 
                 "revenue_growth": revenue_growth,
                 "profit_growth": profit_growth,
                 "asset_growth": asset_growth,
-                "equity_growth": equity_growth
+                "equity_growth": equity_growth,
+                "gross_profit_growth": gross_profit_growth,
+                "profit_before_tax_growth": profit_before_tax_growth,
+                "finance_costs_growth": finance_costs_growth,
+                "total_current_assets_growth": total_current_assets_growth,
+                "cash_and_cash_equivalents_growth": cash_and_cash_equivalents_growth,
+                "total_current_liabilities_growth": total_current_liabilities_growth,
+                "total_liabilities_growth": total_liabilities_growth,
+                "share_capital_growth": share_capital_growth,
+                "reserves_and_surplus_growth": reserves_and_surplus_growth
 
             },
 
             "revenue_trend": revenue_trend,
+            "revenue_trend_insights": revenue_trend_insights,
             "net_profit_trend": net_profit_trend,
+            "net_profit_trend_insights": profit_trend_insights,
 
             "current_period": {
                 "fiscal_year": current["fiscal_year"],
