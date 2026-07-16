@@ -33,8 +33,11 @@ function setGrowth(elementId, growth) {
 
     const element = document.getElementById(elementId);
 
+    if (!element) return;
+
     if (!growth || growth.direction === "none") {
         element.innerText = "-";
+        element.className = "metric-growth";
         return;
     }
 
@@ -60,9 +63,10 @@ function setGrowth(elementId, growth) {
     }
 
     element.className =
-        growth.direction === "up"
-            ? "text-green-600 font-bold"
-            : "text-red-600 font-bold";
+        "metric-growth has-data " +
+        (growth.direction === "up"
+            ? "text-green-600"
+            : "text-red-600");
 }
 
 function setDashboardLoading(isLoading) {

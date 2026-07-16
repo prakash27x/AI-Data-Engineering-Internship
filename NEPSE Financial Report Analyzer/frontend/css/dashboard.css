@@ -22,6 +22,49 @@ body {
     border: 1px solid rgba(224, 228, 232, 0.6);
 }
 
+/* Compact metric cards (dashboard) */
+.metric-card {
+    padding: 12px 14px;
+    border: 1px solid #e1e3e4;
+    border-radius: 12px;
+    background: #edeeef;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 72px;
+    justify-content: center;
+}
+
+.metric-label {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #45474d;
+}
+
+.metric-value {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #051125;
+    word-break: break-word;
+}
+
+.metric-growth {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    min-height: 16px;
+}
+
+/* Hide the placeholder growth dash to avoid empty space */
+.metric-growth:empty,
+.metric-growth:not(.has-data) {
+    visibility: hidden;
+}
+
+
 .dashboard-loading {
     opacity: 0.65;
     transition: opacity 0.2s ease;
