@@ -1,3 +1,5 @@
+import re
+
 from mysql.connector import Error
 
 from backend.database.connection import (
@@ -35,6 +37,10 @@ def save_extraction(result):
                 result,
                 period,
             )
+
+            # Skip headers that are not valid reporting periods.
+            if report_id is None:
+                continue
 
             save_hydropower_financials(
                 connection,
@@ -140,6 +146,34 @@ def build_fiscal_year(end_year, quarter):
 
 
 
+def parse_period(period, metadata):
+    """
+    Extract (quarter, year) from a header like 'Q2_2082', 'Q2' or 'col_1'.
+
+    Returns (quarter, year) or (None, None) when the period is invalid.
+    The year falls back to the metadata fiscal year when the header
+    does not include one (e.g. 'Q2').
+    """
+
+    if not period or period.startswith("col_"):
+        return None, None
+
+    parts = period.split("_")
+    quarter = parts[0].upper()
+
+    if quarter not in ("Q1", "Q2", "Q3", "Q4"):
+        return None, None
+
+    if len(parts) > 1 and parts[1].isdigit():
+        year = int(parts[1])
+    else:
+        fy = (metadata or {}).get("fiscal_year", "")
+        match = re.search(r"(\d{4})", str(fy))
+        year = int(match.group(1)) if match else None
+
+    return quarter, year
+
+
 def create_report(connection, company_id, result, period):
     """
     Create one report record for a specific reporting period.
@@ -149,7 +183,12 @@ def create_report(connection, company_id, result, period):
     cursor = connection.cursor()
     metadata = result.metadata
 
-    quarter, year = period.split("_")
+    quarter, year = parse_period(period, metadata)
+    if quarter is None or year is None:
+        # Skip headers that are not valid reporting periods.
+        cursor.close()
+        return None
+
     fiscal_year = build_fiscal_year(int(year), quarter)
     report_type = metadata.get("report_type", "quarterly")
     pdf_path = metadata.get("source_pdf")
