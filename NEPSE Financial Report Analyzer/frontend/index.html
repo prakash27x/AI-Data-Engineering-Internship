@@ -58,10 +58,10 @@
                     </div>
                     <div>
                         <h1 class="text-xl font-bold text-primary">
-                            NEPSE Financial Intelligence
+                            NEPSE Insight
                         </h1>
                         <p class="text-sm text-gray-500 hidden sm:block">
-                            AI Powered Financial Report Analyzer
+                            AI Market Intelligence
                         </p>
                     </div>
                 </a>
@@ -77,7 +77,7 @@
                     <!-- Launch -->
                     <a href="dashboard.html"
                         class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition">
-                        Launch Application
+                        Launch
                     </a>
                 </div>
             </div>
@@ -119,13 +119,6 @@
                 <!-- Buttons -->
                 <div
                     class="mt-12 flex flex-col sm:flex-row justify-center gap-5">
-                    <a href="upload_file.html"
-                        class="inline-flex items-center justify-center gap-2 bg-white text-primary font-semibold px-8 py-4 rounded-xl hover:scale-105 transition">
-                        <span class="material-symbols-outlined">
-                            cloud_upload
-                        </span>
-                        Upload Report
-                    </a>
                     <a href="dashboard.html"
                         class="inline-flex items-center justify-center gap-2 border border-white text-white font-semibold px-8 py-4 rounded-xl hover:bg-white hover:text-primary transition">
                         <span class="material-symbols-outlined">
@@ -318,23 +311,30 @@
                 </h2>
                 <p class="section-description">
                     Our platform currently supports financial report analysis
-                    for major sectors listed on the Nepal Stock Exchange (NEPSE).
+                    for NEPSE-listed hydropower companies with NFRS PDF reports.
+                    More sectors like commercial banks are on the way.
                 </p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 mt-16">
                 <!-- Hydropower -->
                  <div class="sector-card">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="sector-icon bg-blue-100 p-3 rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-blue-600">water_drop</span>
+                <div class="flex items-start justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="sector-icon bg-blue-100 p-3 rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-blue-600">water_drop</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Hydropower Companies</h3>
+                            <p class="text-sm text-gray-600">
+                                Revenue, production, profitability, assets and energy sector analysis.
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-lg">Hydropower Companies</h3>
-                        <p class="text-sm text-gray-600">
-                            Revenue, production, profitability, assets and energy sector analysis.
-                        </p>
-                    </div>
-                    </div>
+                    <span class="supported-badge">
+                        <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                        Supported
+                    </span>
+                </div>
                     <div class="flex flex-wrap gap-3">
                         <span class="sector-tag">UPPER</span>
                         <span class="sector-tag">CHCL</span>
@@ -344,49 +344,33 @@
                 </div>
                 <!-- Banking -->
                 <div class="sector-card">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="sector-icon bg-green-100">
-                            <span class="material-symbols-outlined">
-                                account_balance
-                            </span>
+                    <div class="flex items-start justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="sector-icon bg-green-100">
+                                <span class="material-symbols-outlined">
+                                    account_balance
+                                </span>
+                            </div>
+                            <div>
+                                <h3>Commercial Banks</h3>
+                                <p>
+                                    Analyze loans, deposits, ROE, ROA,
+                                    EPS and banking performance.
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <h3>Commercial Banks</h3>
-                            <p>
-                                Analyze loans, deposits, ROE, ROA,
-                                EPS and banking performance.
-                            </p>
-                        </div>
+                        <button type="button" disabled class="coming-soon-btn">
+                            <span class="material-symbols-outlined text-[16px]">schedule</span>
+                            Coming Soon
+                        </button>
                     </div>
                     <div class="flex flex-wrap gap-3">
-                        <span class="sector-tag">NABIL</span>
-                        <span class="sector-tag">NICA</span>
-                        <span class="sector-tag">ADBL</span>
-                        <span class="sector-tag">+ More</span>
+                        <span class="sector-tag opacity-60">NABIL</span>
+                        <span class="sector-tag opacity-60">NICA</span>
+                        <span class="sector-tag opacity-60">ADBL</span>
+                        <span class="sector-tag opacity-60">+ More</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- ================================= -->
-    <!-- CTA -->
-    <!-- ================================= -->
-    <section class="cta-section">
-        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold text-white">
-                Ready to Analyze Your First Financial Report?
-            </h2>
-            <p class="mt-6 text-lg text-gray-200 leading-relaxed">
-                Upload a quarterly or annual report and let AI extract,
-                organize and visualize financial insights in seconds.
-            </p>
-            <div class="mt-10">
-                <a href="upload_file.html" class="primary-btn-light">
-                    <span class="material-symbols-outlined">
-                        cloud_upload
-                    </span>
-                    Upload Report
-                </a>
             </div>
         </div>
     </section>
@@ -413,9 +397,10 @@
                         Platform
                     </h3>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Features</a></li>
-                        
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="upload_file.html">Report Upload</a></li>
+                        <li><a href="comparative_analysis.html">Comparative Analysis</a></li>
                     </ul>
                 </div>
                 <!-- Resources -->
@@ -437,6 +422,7 @@
                     </h3>
                     <p class="footer-text">
                         Financial reports published by NEPSE listed companies.
+                        Currently supporting hydropower NFRS PDFs.
                     </p>
                 </div>
             </div>
@@ -447,7 +433,7 @@
                     All Rights Reserved.
                 </p>
                 <p class="text-sm text-gray-500">
-                    Built with ❤️ using Python
+                    Data source: Nepal Stock Exchange
                 </p>
             </div>
         </div>
