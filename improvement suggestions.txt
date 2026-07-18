@@ -1,0 +1,9 @@
+— Improve Metrics mapping mechanism (instead of mapping each metric type manually, first give extracted data into LLM then store back their response into database)
+ 
+— give chatbot context (ex: should i invest in it?)
+— Add Nepse INDEX live value
+— Auto webscrapping PDF data from any site.
+— Implement OCR to support image upload
+
+
+——> Host this project somewhere

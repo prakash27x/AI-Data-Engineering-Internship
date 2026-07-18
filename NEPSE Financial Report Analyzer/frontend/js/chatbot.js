@@ -29,6 +29,13 @@
                 "and compares their financial data.",
         },
         {
+            keywords: ["developer","founder", "developers", "who made", "who build", "who created", "creator", "prakash"],
+            answer:
+                "This platform is developed by Er. Prakash Mahara, IT Engineering Graduate from NCIT," +
+                "an AI/ML enthusiast, and YouTuber at RPM Vlog and Tech4K Nepal! " +
+                "You can learn more about him at https://www.prakashmahara.com.np/",
+        },
+        {
             keywords: ["feature", "features", "can you do", "capability", "capabilities", "offer"],
             answer:
                 "Key features:\n" +
@@ -55,7 +62,7 @@
                 "reports (e.g. UPPER, CHCL, PHCL). Commercial bank analysis is marked 'Coming Soon'.",
         },
         {
-            keywords: ["report", "quarterly", "annual", "pdf", "type", "upload"],
+            keywords: ["report", "quarterly", "pdf", "type", "upload"],
             answer:
                 "You upload quarterly financial report PDFs from NEPSE-listed hydropower companies. " +
                 "Each report is tagged with a fiscal year and quarter (Q1–Q4) and stored in MySQL.",
@@ -103,6 +110,14 @@
     }
 
     function formatText(text) {
+        // Function to convert URLs in text to clickable links
+        function linkify(text) {
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, function(url) {
+                return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color: #3b82f6; text-decoration: underline;">' + url + '</a>';
+            });
+        }
+        
         const wrapper = document.createElement("div");
         text.split("\n").forEach((raw) => {
             const line = raw.trim();
@@ -110,12 +125,12 @@
             const block = document.createElement("div");
             if (line.startsWith("•")) {
                 block.style.marginLeft = "14px";
-                block.textContent = "• " + line.slice(1).trim();
+                block.innerHTML = "• " + linkify(line.slice(1).trim());
             } else if (/^\d+\./.test(line)) {
                 block.style.marginTop = "6px";
-                block.textContent = line;
+                block.innerHTML = linkify(line);
             } else {
-                block.textContent = line;
+                block.innerHTML = linkify(line);
             }
             wrapper.appendChild(block);
         });

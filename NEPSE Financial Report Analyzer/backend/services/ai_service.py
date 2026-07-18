@@ -199,59 +199,25 @@ def generate_comparative_chat_response(question, company_a, company_b, compariso
     
     # Check for platform/identity questions
     identity_keywords = ["who are you", "what are you", "what is this", "what do you do", "what is this platform"]
+    developer_keywords = ["developer", "developers", "who made", "who build", "who created", "creator", "prakash"]
     if any(k in q_lower for k in identity_keywords):
         return (
             "I'm the AI assistant for the NEPSE Financial Report Analyzer platform! "
             "This platform helps you analyze and compare the financial performance of Nepalese hydropower companies listed on the Nepal Stock Exchange (NEPSE). "
-            "I can help you with comparing financial metrics of two companies, analyzing trends, and answering questions about their financial data."
+            "I can help you with comparing financial metrics of two companies, analyzing trends, evaluating investment potential, and answering questions about their financial data."
         )
-        
-    allowed_keywords = [
-        "compare",
-        "comparison",
-        "which",
-        "better",
-        "worse",
-        "risk",
-        "revenue",
-        "sale",
-        "profit",
-        "loss",
-        "income",
-        "expense",
-        "margin",
-        "growth",
-        "trend",
-        "assets",
-        "asset",
-        "equity",
-        "liability",
-        "debt",
-        "cash",
-        "liquidity",
-        "solvency",
-        "ratio",
-        "quarter",
-        "fiscal",
-        "nepse",
-        "hydro",
-        company_a_clean.get("symbol", "").lower(),
-        company_a_clean.get("name", "").lower(),
-        company_b_clean.get("symbol", "").lower(),
-        company_b_clean.get("name", "").lower(),
-    ]
-
-    if not any(k and k in q_lower for k in allowed_keywords):
+    if any(k in q_lower for k in developer_keywords):
         return (
-            "I can only answer questions about comparing these two companies' NEPSE financial metrics "
-            "(e.g., revenue, profit, assets, equity, growth, liquidity, risk)."
+            "This platform was developed by Er. Prakash Mahara, an IT Engineering student at NCIT, "
+            "an AI and Cyber Security enthusiast, and YouTuber at RPM Vlog and Tech4K Nepal! "
+            "You can learn more about him at https://www.prakashmahara.com.np/"
         )
 
     comparison_json = json.dumps(comparison_rows_clean, ensure_ascii=False, indent=2)
     
     system_prompt = f"""
-You are a financial assistant specializing only in comparing Nepalese hydropower companies listed on NEPSE.
-You can only answer questions related to comparing the financial metrics and performance of:
+You are a financial assistant specializing in Nepalese hydropower companies listed on NEPSE.
+You can answer questions related to comparing the financial metrics, performance, and investment potential of:
 - {company_a_clean['name']} ({company_a_clean['symbol']})
 - {company_b_clean['name']} ({company_b_clean['symbol']})
 
@@ -263,10 +229,11 @@ Metrics Comparison:
 {comparison_json}
 
 IMPORTANT RULES:
-1. If the question is NOT related to comparing these companies' financial performance, metrics, hydropower sector, or NEPSE, politely decline and say you can only help with questions about comparing these two companies' financial data.
+1. Answer questions about comparing these companies' financial performance, metrics, investment potential, hydropower sector, or NEPSE.
 2. Always base your answers on the provided financial data.
 3. Keep answers concise and professional.
-4. Do not make up information not present in the data.
+4. When discussing investment potential, include appropriate disclaimers about financial risks (not personalized advice).
+5. Do not make up information not present in the data.
 """
 
     try:
@@ -277,7 +244,7 @@ IMPORTANT RULES:
 
 def generate_chat_response(question, dashboard_data):
     """
-    Generate chat response, guard against out-of-context questions
+    Generate chat response
     """
     if not client:
         return "AI insights are currently disabled. Please configure your API key in the .env file."
@@ -292,52 +259,25 @@ def generate_chat_response(question, dashboard_data):
     
     # Check for platform/identity questions
     identity_keywords = ["who are you", "what are you", "what is this", "what do you do", "what is this platform"]
+    developer_keywords = ["developer", "developers", "who made", "who build", "who created", "creator", "prakash"]
     if any(k in q_lower for k in identity_keywords):
         return (
             "I'm the AI assistant for the NEPSE Financial Report Analyzer platform! "
             "This platform helps you analyze and compare the financial performance of Nepalese hydropower companies listed on the Nepal Stock Exchange (NEPSE). "
-            "I can help you with analyzing a company's financial metrics, trends, and answering questions about their financial data."
+            "I can help you with analyzing a company's financial metrics, trends, investment potential, and answering questions about their financial data."
         )
-        
-    allowed_keywords = [
-        "risk",
-        "revenue",
-        "sale",
-        "profit",
-        "loss",
-        "income",
-        "expense",
-        "margin",
-        "growth",
-        "trend",
-        "assets",
-        "asset",
-        "equity",
-        "liability",
-        "debt",
-        "cash",
-        "liquidity",
-        "solvency",
-        "ratio",
-        "quarter",
-        "fiscal",
-        "nepse",
-        "hydro",
-        dashboard_data_clean.get("company", {}).get("symbol", "").lower(),
-        dashboard_data_clean.get("company", {}).get("name", "").lower(),
-    ]
-
-    if not any(k and k in q_lower for k in allowed_keywords):
+    if any(k in q_lower for k in developer_keywords):
         return (
-            "I can only answer questions about the selected company's NEPSE financial metrics for the selected quarter "
-            "(e.g., revenue, profit, assets, equity, growth, liquidity, risk)."
+            "This platform was developed by Er. Prakash Mahara, an IT Engineering student at NCIT, "
+            "an AI and Cyber Security enthusiast, and YouTuber at RPM Vlog and Tech4K Nepal! "
+            "You can learn more about him at https://www.prakashmahara.com.np/"
         )
 
     metrics_json = json.dumps(dashboard_data_clean.get("metrics", {}), ensure_ascii=False, indent=2)
     
     system_prompt = f"""
-You are a financial assistant specializing only in Nepalese hydropower companies listed on NEPSE.
-You can only answer questions related to the financial metrics and performance of {dashboard_data_clean['company']['name']} ({dashboard_data_clean['company']['symbol']}).
+You are a financial assistant specializing in Nepalese hydropower companies listed on NEPSE.
+You can answer questions related to the financial metrics, performance, and investment potential of {dashboard_data_clean['company']['name']} ({dashboard_data_clean['company']['symbol']}).
 
 Here is the company's financial data for context:
 Company: {dashboard_data_clean['company']['name']}
@@ -348,10 +288,11 @@ Financial Metrics:
 {metrics_json}
 
 IMPORTANT RULES:
-1. If the question is NOT related to this company's financial performance, metrics, hydropower sector, or NEPSE, politely decline and say you can only help with questions about this company's financial data.
+1. Answer questions about this company's financial performance, metrics, investment potential, hydropower sector, or NEPSE.
 2. Always base your answers on the provided financial data.
 3. Keep answers concise and professional.
-4. Do not make up information not present in the data.
+4. When discussing investment potential, always include appropriate disclaimers about financial risks and that this is not personalized financial advice.
+5. Do not make up information not present in the data.
 """
 
     try:
