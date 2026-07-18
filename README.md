@@ -13,7 +13,7 @@ AI-Data-Engineering-Internship/
 │   ├── mulplication-table_generator.py
 │   ├── file_handling.py
 │   └── README.md
-|
+│
 ├── Week-2 April_21/          # API data fetching & analysis
 │   ├── task_1.py
 │   ├── task_2.py
@@ -23,7 +23,7 @@ AI-Data-Engineering-Internship/
 │   ├── weather.csv
 │   ├── weather_summary.txt
 │   └── README.md
-|
+│
 ├── Week-2 April_24/          # News data pipeline & analytics
 │   ├── data_collection.py
 │   ├── answer_assigned_task.py
@@ -32,9 +32,9 @@ AI-Data-Engineering-Internship/
 │   ├── Assigned_task.txt
 │   ├── task_output.png
 │   └── README.md  # Detailed instructions and analysis
-|
+│
 ├── Week-3 April_28/          # MySQL storage, reporting & capstone analysis
-|   ├── Assigned_task.txt
+│   ├── Assigned_task.txt
 │   ├── Task_1.py
 │   ├── Task_2.py
 │   ├── Task_3.py
@@ -42,15 +42,15 @@ AI-Data-Engineering-Internship/
 │   ├── Task_5.py
 │   ├── outputs/
 │   └── README.md
-|
+│
 ├── Week-4 May_4/             # MySQL database tasks and API monitoring
 │   ├── multi-table_relational_system.py
 │   ├── api_monitor_mysql.py
 │   ├── revenue_report.csv
 │   ├── assigned_task.txt
-|   |── outputs
+│   ├── outputs
 │   └── README.md
-|
+│
 ├── Week-4 May_8/             # Advanced ETL & Data Engineering
 │   ├── Task_1.ipynb          # Clean messy CSV with grading
 │   ├── Task_2.ipynb          # API → Clean → Save pipeline
@@ -64,7 +64,7 @@ AI-Data-Engineering-Internship/
 │   ├── etl_data_run2.csv
 │   ├── Assigned_Task.txt
 │   └── README.md
-|
+│
 ├── Week-5 May_12/            # Final unified data pipeline & audit
 │   ├── Task_1.ipynb          # Fault-tolerant multi-source ETL with conflict resolution
 │   ├── Task_2.ipynb          # Data quality audit pipeline
@@ -74,7 +74,7 @@ AI-Data-Engineering-Internship/
 │   ├── task_2_audit_report.csv
 │   ├── task_3_final_data.csv
 │   └── README.md             # Week 5 summary and outputs
-|
+│
 ├── Week-5 May_15/            # EDA, distributions, correlation analysis, and reporting
 │   ├── Task_1.ipynb          # EDA checklist on existing data
 │   ├── Task_2.ipynb          # Distribution deep dive on weather data
@@ -89,7 +89,7 @@ AI-Data-Engineering-Internship/
 │   ├── task_3/                 # Histogram, BoxPlot, HeatMap, Pairplot
 │   ├── task_4/                 # Histogram, BoxPlot, HeatMap, Pairplot, ScatterPlot
 │   └── readme.md             # Week 5 analysis summary and charts
-|
+│
 ├── Week-6 May_26/            # Data visualization, dashboards, and chart redesign
 │   ├── Task_01.ipynb         # Multi-chart visualization notebook
 │   ├── Task_02.ipynb         # Storytelling dashboard
@@ -101,7 +101,7 @@ AI-Data-Engineering-Internship/
 │   ├── Task3/                # Interactive HTML chart outputs
 │   ├── Task4/                # Redesigned chart outputs
 │   └── README.md
-|
+│
 ├── Week-7 Jun_2/             # Feature preparation, feature engineering, and encoding
 │   ├── Task 01/
 │   │   └── Task_1.ipynb      # Full feature preparation pipeline
@@ -115,10 +115,17 @@ AI-Data-Engineering-Internship/
 │   │   └── task4_grouped_bar_chart.png
 │   ├── assigned _tasks.txt
 │   └── readme.md             # Week 7 task summary and results
-
-└── README.md
+│
+└── NEPSE Financial Report Analyzer/
+    ├── backend/
+    ├── frontend/
+    └── README.md             # Main capstone project
 ```
 
 ---
 
-*Last Updated: June 16, 2026*
+## 📊 Capstone Project
+[NEPSE Financial Report Analyzer](NEPSE%20Financial%20Report%20Analyzer/README.md) is the final capstone project for this internship, an AI-powered platform for analyzing NEPSE-listed company financial reports!
+
+---
+*Last Updated: July 18, 2026*

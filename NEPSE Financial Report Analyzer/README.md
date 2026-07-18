@@ -7,6 +7,8 @@ AI-powered platform for extracting, storing, analyzing, and comparing financial 
 - PDF extraction using pdfplumber
 - Structured storage in MySQL
 - Interactive dashboard and comparative analysis
+- AI-powered financial insights (using Gemini API)
+- Chatbot support for finance-related questions
 - No authentication (public access)
 
 ## Project Structure
@@ -24,80 +26,50 @@ nepse-financial-analyzer/
 │
 ├── backend/
 │   ├── app.py                   # FastAPI entry point
-│   ├── main.py                  # Alternative entry if needed
-│   │
 │   ├── core/                    # Core configuration and utilities
-│   │   ├── config.py
-│   │   ├── database.py
-│   │   └── logging.py
-│   │
-│   ├── api/                     # API route handlers (thin layer)
+│   │   └── config.py
+│   ├── database/                # Database connection and setup
+│   │   ├── connection.py
+│   │   └── init_db.py
+│   ├── api/                     # API route handlers
 │   │   ├── __init__.py
 │   │   ├── upload.py
 │   │   ├── dashboard.py
 │   │   ├── comparison.py
 │   │   └── ai.py
-│   │
-│   ├── models/                  # SQLAlchemy database models
-│   │   ├── __init__.py
-│   │   ├── company.py
-│   │   ├── report.py
-│   │   └── hydropower_metrics.py
-│   │
-│   ├── schemas/                 # Pydantic models for API
-│   │   ├── __init__.py
-│   │   ├── report.py
-│   │   └── metrics.py
-│   │
 │   ├── services/                # Business logic
 │   │   ├── __init__.py
 │   │   ├── upload_service.py
-│   │   ├── extraction_service.py
+│   │   ├── database_service.py
 │   │   ├── dashboard_service.py
 │   │   ├── comparison_service.py
 │   │   └── ai_service.py
-│   │
-│   ├── extraction/              # PDF parsing logic (sector-specific)
-│   │   ├── __init__.py
-│   │   ├── pdf_reader.py
-│   │   ├── hydropower.py
-│   │   ├── metric_mapper.py     # Future: centralized mapping
-│   │   └── utils.py
-│   │
-│   ├── repositories/            # Data access layer (optional but recommended)
-│   │   └── report_repository.py
-│   │
-│   ├── utils/                   # Shared utilities
-│   │   └── helpers.py
-│   │
-│   └── ai/                      # Future LLM integration
-│       ├── llm_service.py
-│       └── prompts.py
-│
-├── database/                    # Database scripts
-│   ├── init_db.py
-│   └── migrations/              # Alembic migrations later
+│   └── extraction/              # PDF parsing logic
+│       ├── __init__.py
+│       ├── pdf_reader.py
+│       └── hydropower.py
 │
 ├── uploads/                     # Original uploaded PDFs (gitignored)
-├── outputs/                     # Temporary JSON outputs (gitignored)
-├── logs/                        # Application and extraction logs
-├── data/                        # Any other processed data
+├── outputs/                     # Temporary JSON/CSV outputs
+├── sample_upload_reports/       # Sample PDF reports for testing
 │
 ├── requirements.txt
-├── .env                         # Environment variables
-├── .env.example
-├── README.md
-└── tests/                       # Unit tests (future)
+└── README.md
 ```
 
 ## Quick Start
 
 1. Clone the repo
-2. Copy `.env.example` to `.env`
+2. Create a `.env` file with your MySQL credentials and Gemini API key (see backend/core/config.py for required env vars)
 3. Install dependencies: `pip install -r requirements.txt`
-4. Set up database
-5. Run: `uvicorn backend.app:app --reload`
+4. Set up the database (run backend/database/init_db.py if needed)
+5. Run the backend: `cd backend && python -m uvicorn app:app --reload`
+6. Open frontend files in your browser!
 
 ---
 
-This structure supports clean architecture, scalability across sectors, and maintainability.
+## Developer Info
+This platform is developed by **Er. Prakash Mahara**, an IT Engineering student at NCIT, AI/ML enthusiast, and YouTuber at [RPM Vlog](https://youtube.com/@rpmvlog2) and [Tech4K Nepal](https://youtube.com/@tech4knepal). Learn more about him at [prakashmahara.com.np](https://www.prakashmahara.com.np).
+
+---
+*Last Updated: July 18, 2026*
