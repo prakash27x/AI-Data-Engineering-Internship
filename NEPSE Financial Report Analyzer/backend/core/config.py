@@ -17,11 +17,11 @@ class Settings:
     UPLOAD_DIR = BASE_DIR / "uploads"
     OUTPUT_DIR = BASE_DIR / "outputs"
 
-    DB_HOST = "localhost"
-    DB_PORT = 3306
-    DB_USER = "root"
-    DB_PASSWORD = "root"
-    DB_NAME = "nepse_analyzer"
+    DB_HOST = os.getenv("MYSQLHOST", "localhost")
+    DB_PORT = int(os.getenv("MYSQLPORT", "3306"))
+    DB_USER = os.getenv("MYSQLUSER", "root")
+    DB_PASSWORD = os.getenv("MYSQLPASSWORD", "root")
+    DB_NAME = os.getenv("MYSQLDATABASE", "nepse_analyzer")
 
     # Google AI Studio API Key
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
