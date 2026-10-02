@@ -68,8 +68,24 @@ nepse-financial-analyzer/
 
 ---
 
+## UI Screenshots
+
+### Landing Page
+![Landing Page](System%20UI/landing_page.png)
+
+### Dashboard
+![Dashboard](System%20UI/dashboard.png)
+
+### Upload Report
+![Upload Report](System%20UI/upload_file.png)
+
+### Comparative Analysis
+![Comparative Analysis](System%20UI/comparative_analysis.png)
+
+---
+
 ## Developer Info
-This platform is developed by **Er. Prakash Mahara**, an IT Engineering student at NCIT, AI/ML enthusiast, and YouTuber at [RPM Vlog](https://youtube.com/@rpmvlog2) and [Tech4K Nepal](https://youtube.com/@tech4knepal). Learn more about him at [prakashmahara.com.np](https://www.prakashmahara.com.np).
+This platform is developed by **Prakash Mahara**, an IT Engineer, AI/ML enthusiast. Learn more about him at [prakashmahara.com.np](https://www.prakashmahara.com.np).
 
 ---
 *Last Updated: July 18, 2026*
